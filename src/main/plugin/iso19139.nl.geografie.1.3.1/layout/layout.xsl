@@ -12,21 +12,6 @@
 
   <xsl:include href="utility-tpl.xsl"/>
 
-  <xsl:template name="get-iso19139.nl.geografie.1.3.1-is-service">
-    <xsl:value-of
-      select="count($metadata/gmd:identificationInfo/srv:SV_ServiceIdentification) > 0"/>
-  </xsl:template>
-
-  <!-- Get the main metadata languages -->
-  <xsl:template name="get-iso19139.nl.geografie.1.3.1-language">
-    <xsl:value-of select="$metadata/gmd:identificationInfo/*/gmd:date"/>
-  </xsl:template>
-
-  <xsl:template name="get-iso19139.nl.geografie.1.3.1-title">
-    <xsl:value-of select="$metadata/gmd:identificationInfo/*/gmd:citation/*/gmd:title/gco:CharacterString"/>
-  </xsl:template>
-
-
   <!-- Visit all XML tree recursively -->
   <xsl:template mode="mode-iso19139.nl.geografie.1.3.1" match="*|@*">
     <xsl:param name="schema" select="$schema" required="no"/>

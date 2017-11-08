@@ -25,6 +25,7 @@
   <xmlViewTitle><h3>XML weergave</h3></xmlViewTitle>
   <xmlViewDescription><div>In deze weergave worden alle ingevulde elementen getoond in XML.</div></xmlViewDescription>
 
+  <dutchprofile>Nederlands profiel</dutchprofile>
   <advanced>Full</advanced>
   <default>Simple</default>
   <simple>Simple</simple>
