@@ -11,6 +11,18 @@
 
   <!-- New strings added for the AngularJS editor -->
   <!-- View and tabs -->
+  <viewTitle><h3>Basis weergave</h3></viewTitle>
+  <viewDescription><div>Het basis formulier kan gebruikt worden voor het bewerken van metadata van Nederlandstalige datasets die gebaseerd zijn op het Rijksdriehoekstelsel. Dit formulier toont een beperkte set van elementen en doet een aantal aannames. Voor het bewerken van alle elementen uit het Nederlands profiel gebruikt u het formulier met titel "Nederlands profiel" (via de weergave knop met het "oogje" aan de rechter zijkant).</div></viewDescription>
+
+  <dutchProfileTitle><h3>Nederlands profiel weergave</h3></dutchProfileTitle>
+  <dutchProfileDescription><div>In deze weergave worden alle elementen van het Nederlands profiel getoond.</div></dutchProfileDescription>
+
+  <fullViewTitle><h3>Volledige weergave</h3></fullViewTitle>
+  <fullViewDescription><div>De volledige weergave toont alle ISO elementen.</div></fullViewDescription>
+
+  <xmlViewTitle><h3>XML weergave</h3></xmlViewTitle>
+  <xmlViewDescription><div>In deze weergave worden alle ingevulde elementen getoond in XML.</div></xmlViewDescription>
+
   <advanced>Volledig</advanced>
   <default>Basis</default>
   <dutchprofile>Nederlands profiel</dutchprofile>
@@ -174,7 +186,7 @@
     <conformance>Conformiteit</conformance>
 	<AddKeyword>Trefwoord toevoegen</AddKeyword>
 	<AddKeywordFromThesaurus>Trefwoord uit woordenlijst toevoegen</AddKeywordFromThesaurus>
-	<legalConstraints>Juridische beperkingen</legalConstraints>  
+	<legalConstraints>Juridische beperkingen</legalConstraints>
 	<addReferenceSystem>Referentie systeem toevoegen</addReferenceSystem>
 
 	<restrictions>Restricties en beperkingen</restrictions>

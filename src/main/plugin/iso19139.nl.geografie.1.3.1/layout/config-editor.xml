@@ -228,8 +228,16 @@
   <views>
 
     <view name="default" default="true" upAndDownControlHidden="true">
-
+      <sidePanel>
+        <directive data-gn-validation-report=""/>
+        <directive data-gn-suggestion-list=""/>
+      </sidePanel>
       <tab id="default" default="true" mode="flat">
+
+        <text ref="viewTitle"/>
+        <text ref="viewDescription"/>
+
+        <directive data-gn-onlinesrc-list=""/>
 
         <section name="Basis">
 
@@ -247,7 +255,7 @@
               </snippet>
             </template>
           </action>
-			
+
           <field name="datasetcode"
                  xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation/gmd:identifier/gmd:MD_Identifier/gmd:code"/>
 
@@ -366,7 +374,7 @@
             </template>
           </action>
 
-          
+
           <field name="useLimitation" del="." removable="true"
                  xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_Constraints"/>
 		<action type="add"
@@ -385,12 +393,12 @@
                 </gmd:resourceConstraints>
               </snippet>
             </template>
-          </action>	
+          </action>
 
-			
+
 		<field name="legalConstraints" removable="true"
                  xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints"/>
-				 
+
           <action type="add"
                   btnLabel="addLegalConstraints"
                   name="legalConstraints" or="resourceConstraints" forceLabel="true"
@@ -509,10 +517,10 @@
             xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/
               gmd:extent/gmd:EX_Extent/gmd:geographicElement/gmd:EX_GeographicBoundingBox"/>
 
-			  
+
 		  <field name="equivalentScale"
                  xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:spatialResolution"/>
-				 
+
           <!-- scale -->
           <action type="add"
                   btnLabel="addScale"
@@ -640,10 +648,18 @@
 
 
     <view name="dutchprofile" upAndDownControlHidden="true">
-
+      <sidePanel>
+        <directive data-gn-validation-report=""/>
+        <directive data-gn-suggestion-list=""/>
+      </sidePanel>
       <tab id="dutch-default" default="true" mode="flat">
 
-		<section name="dataIdentificatie">
+        <text ref="dutchProfileTitle"/>
+        <text ref="dutchProfileDescription"/>
+
+        <directive data-gn-onlinesrc-list=""/>
+
+        <section name="dataIdentificatie">
         <!-- 5.1 Titel van de bron  -->
 
         <field
@@ -761,7 +777,7 @@
             </snippet>
           </template>
         </action>
-		         
+
         <!--   40. Karakterset van de bron .. 16-->
         <field del="."
                xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:characterSet"
@@ -781,7 +797,7 @@
             </snippet>
           </template>
         </action>
-		
+
         <!--   41. Onderwerp. -->
         <field
           xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:topicCategory/gmd:MD_TopicCategoryCode"/>
@@ -797,8 +813,8 @@
               </gmd:topicCategory>
             </snippet>
           </template>
-        </action>		
-		
+        </action>
+
 		<field name="seriesName"
                xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation/gmd:series/gmd:CI_Series/gmd:name"/>
 
@@ -819,8 +835,8 @@
             </snippet>
           </template>
         </action>
-		
-	
+
+
 
         <!-- 5.2 Samenvatting. -->
         <field
@@ -855,10 +871,10 @@
             </snippet>
           </template>
         </action>
-		
-		
+
+
         <!-- 5.3 Status -->
-		
+
         <field
           xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:status"/>
         <action type="add"
@@ -878,11 +894,11 @@
 		<!-- 29 pointofcontact-->
 
 		 <!--           5.44 Verantwoordelijke organisatie bron ... -->
-        <field name="pointOfContact" 
+        <field name="pointOfContact"
                xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:pointOfContact"
 			   templateModeOnly="true" notDisplayedIfMissing="true" del="."
                if="count(gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification) > 0">
-         
+
 		 <template>
             <values readonlyIf="count(@xlink:href) > 0">
 				<key label="individualName"
@@ -904,11 +920,11 @@
 				<key label="postalCode"
 					xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:postalCode/gco:CharacterString"/>
 				<key label="country"
-					xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:country/gco:CharacterString"/>  
+					xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:country/gco:CharacterString"/>
 				<key label="electronicMailAddress"
 					xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString"
 					use="email"/>
-				<key label="onlineResource" 
+				<key label="onlineResource"
 					xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:onlineResource/gmd:CI_OnlineResource/gmd:linkage/gmd:URL"/>
 				<key label="role"
 					xpath="gmd:CI_ResponsibleParty/gmd:role/gmd:CI_RoleCode/@codeListValue">
@@ -952,7 +968,7 @@
 
         <action type="add"
                 btnLabel="addPointOfContact"
-                name="pointOfContact" 
+                name="pointOfContact"
                 or="pointOfContact"
                 in="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification">
                 <template>
@@ -975,7 +991,7 @@
                     </snippet>
                   </template>
         </action>
-		
+
 		<!-- 30 resource maintenance -->
 		<field name="resourceMaintenance" templateModeOnly="true" notDisplayedIfMissing="true" del="."
                xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceMaintenance">
@@ -1018,9 +1034,9 @@
             </snippet>
           </template>
         </action>
-		
+
 		<!-- 5.12 graphic overview, zie zijpaneel -->
-		
+
         <!--   5.13 Trefwoord .. 17-->
         <field
           xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords"
@@ -1043,7 +1059,7 @@
               </snippet>
             </template>
           </action>
-		  
+
 		 <action type="add"
                   or="descriptiveKeywords"
 				  btnLabel="AddKeywordFromThesaurus"
@@ -1094,7 +1110,7 @@
 
 		</section>
 		<section name="restrictions">
-		
+
 		<field name="useLimitation" removable="true"
                  xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_Constraints"/>
 		<action type="add"
@@ -1112,12 +1128,12 @@
                 </gmd:resourceConstraints>
               </snippet>
             </template>
-          </action>	
+          </action>
 
-			
+
 		  <field name="legalConstraints" removable="true"
                  xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints"/>
-				 
+
           <action type="add"
                   btnLabel="addLegalConstraints"
                   name="legalConstraints" or="resourceConstraints" forceLabel="true"
@@ -1142,7 +1158,7 @@
               </snippet>
             </template>
           </action>
-		
+
 		 <action type="add"
                   btnLabel="addOtherConstraint"
                    or="otherConstraints" forceLabel="true"
@@ -1156,9 +1172,9 @@
               </snippet>
             </template>
           </action>
-		
+
 		<!-- aggregation info, zie zijpaneel -->
-		
+
 		<!-- 37. Ruimtelijk schema -->
         <field name="spatialRepresentationType"
 
@@ -1178,7 +1194,7 @@
             </snippet>
           </template>
         </action>
-		
+
         <!--   38 Toepassingsschaal .. -->
         <!-- of resolutie -->
         <field name="equivalentScale"
@@ -1187,7 +1203,7 @@
         <!-- of afstand -->
         <action type="add"
                 btnLabel="addResolution"
-                name="distance" or="spatialResolution"  
+                name="distance" or="spatialResolution"
                 in="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification"
 				if="count(gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:spatialResolution/gmd:MD_Resolution/gmd:distance)&lt;2">
           <template>
@@ -1225,7 +1241,7 @@
             </snippet>
           </template>
         </action>
-		
+
         <!--   5.17 bounds -->
         <field
           xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:geographicElement"/>
@@ -1246,11 +1262,11 @@
 				   </gmd:extent>
               </snippet>
             </template>
-          </action>	  
-			  
-			  
+          </action>
+
+
         <field name="temporalRangeSection"
-               xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:temporalElement"/> 
+               xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:temporalElement"/>
 			<!--
           <template>
             <values>
@@ -1284,7 +1300,7 @@
                 </gmd:EX_TemporalExtent>
               </gmd:temporalElement></gmd:EX_Extent></gmd:extent>
             </snippet>
-				   
+
           </template>
         </field>-->
 
@@ -1343,11 +1359,11 @@
             </snippet>
           </template>
         </action>
-		
+
 	</section>
-		
+
 		<!-- content info - featurecatalogue - via zijpaneel -->
-		
+
 		       <!--
     Titel van de featurecatalogMD_Metadata. contentInfo>MD_FeatureCatalogueDescription. includedWithDataset
 
@@ -1356,7 +1372,7 @@
     Datum van de featurecatalog
     Datum type van de featurecatalog
               -->
-			  
+
 		<section name="referenceSystemInfo">
         <!--     5.27 Code referentiesysteem ... -->
         <field name="rsIdentifier" templateModeOnly="true"
@@ -1409,11 +1425,11 @@
             </snippet>
           </template>
         </action>
-		
+
 		</section>
-			  
+
 		<section name="distributionInfo">
-		
+
         <!--        271 Naam distributie formaat . -->
         <field name="encoding" templateModeOnly="true" notDisplayedIfMissing="true"
                xpath="/gmd:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:distributionFormat"
@@ -1473,7 +1489,7 @@
             </snippet>
           </template>
         </action>
-		
+
         <!--       5.31 Versie distributie formaat. -->
         <!--   5.32 Specificatie distributie formaat . -->
 
@@ -1483,7 +1499,7 @@
                xpath="/gmd:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact"
                del="."
                if="count(gmd:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution) > 0">
-         
+
           <template>
             <values readonlyIf="count(@xlink:href) > 0">
 				<key label="individualName"
@@ -1505,7 +1521,7 @@
 				<key label="postalCode"
 					xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:postalCode/gco:CharacterString"/>
 				<key label="country"
-					xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:country/gco:CharacterString"/>  
+					xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:country/gco:CharacterString"/>
 				<key label="electronicMailAddress"
 					xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString"
 					use="email"/>
@@ -1550,7 +1566,7 @@
             </snippet>
           </template>
         </field>
-		
+
 		<action type="add"
                 btnLabel="addDistributor"
                 or="distributor"
@@ -1612,16 +1628,16 @@
           </template>
         </action>
 
-       
+
 
 
 
 
         </section>
-        
+
         <section name="DataQuality">
 
-		
+
 		 <action type="add"
                 if="count(gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality) = 0"
                 btnLabel="Add_Quality"
@@ -1838,7 +1854,7 @@
 
         <field name="DQ_CompletenessOmission"
                xpath="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:lineage/gmd:LI_Lineage/gmd:processStep/gmd:LI_ProcessStep"></field>
-               
+
         <action type="add"
                 btnLabel="AddProcessStep"
                 or="processStep"
@@ -1869,9 +1885,9 @@
 
         <field name="LI_Source" removable="true" del="."
                xpath="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:lineage/gmd:LI_Lineage/gmd:source"></field>
-               
-               
-               
+
+
+
         <action type="add"
                 btnLabel="AddSource"
                 or="source"
@@ -1908,7 +1924,7 @@
 
         <section name="metadata">
         <!-- Metadata unieke identifier -->
-		
+
 		   <!--  5.53 Taal van de metadata.. -->
         <field name="md_language" xpath="/gmd:MD_Metadata/gmd:language" or="language" in="/gmd:MD_Metadata"/>
         <action type="add"
@@ -1945,7 +1961,7 @@
           </template>
         </action>
 
-	
+
 
         <!-- 5.5 Hiërarchieniveau naam -->
         <!--   5.6 URL...-->
@@ -1964,7 +1980,7 @@
             </snippet>
           </template>
         </action>
-		
+
 			 <!-- 5.4 Hiërarchieniveau.-->
         <field
           xpath="/gmd:MD_Metadata/gmd:hierarchyLevel" removable="false" />
@@ -2023,7 +2039,7 @@
 				<key label="postalCode"
 					xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:postalCode/gco:CharacterString"/>
 				<key label="country"
-					xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:country/gco:CharacterString"/>  
+					xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:country/gco:CharacterString"/>
               <key label="electronicMailAddress" required="true"
 					xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString"
                    use="email"/>
@@ -2070,7 +2086,7 @@
         </field>
 
         <action type="add" name="metadataPointOfContact"
-                
+
                 btnLabel="addPointOfContact"
                 or="contact" in="/gmd:MD_Metadata">
           <template>
@@ -2080,7 +2096,7 @@
                   <gmd:organisationName>
                     <gco:CharacterString></gco:CharacterString>
                   </gmd:organisationName>
-                  
+
                   <gmd:role>
                     <gmd:CI_RoleCode                      codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_RoleCode"
                       codeListValue="pointOfContact"/>
@@ -2096,7 +2112,7 @@
         <!--  5.51 Verantwoordelijke organisatie metadata: e-mail . -->
         <!--    5.52 Metadata datum . -->
 
-     
+
         <!--      5.54 Metadata standaard naam -->
         <field xpath="/gmd:MD_Metadata/gmd:metadataStandardName"/>
         <action type="add"
@@ -2130,7 +2146,7 @@
             </snippet>
           </template>
         </action>
-          
+
 
 		  <!--    5.56 locale -->
         <field xpath="/gmd:MD_Metadata/gmd:locale/gmd:PT_Locale"/>
@@ -2144,7 +2160,7 @@
 				  <gmd:PT_Locale>
 				  <gmd:languageCode>
 					 <gmd:LanguageCode codeList="http://www.loc.gov/standards/iso639-2/" codeListValue="dut">Nederlands</gmd:LanguageCode>
-				  </gmd:languageCode>  
+				  </gmd:languageCode>
 				  </gmd:PT_Locale>
 				</gmd:locale>
             </snippet>
@@ -2155,7 +2171,7 @@
     </section>
 
       </tab>
-	  
+
 	        <!-- Elements that should not use the "flat" mode -->
       <flatModeExceptions>
         <for name="gmd:descriptiveKeywords"/>
@@ -2170,7 +2186,16 @@
     </view>
 
     <view name="advanced">
+      <sidePanel>
+        <directive data-gn-validation-report=""/>
+        <directive data-gn-suggestion-list=""/>
+      </sidePanel>
+
+
       <tab id="identificationInfo" default="true">
+
+        <text ref="fullViewTitle"/>
+        <text ref="fullViewDescription"/>
 
         <section xpath="/gmd:MD_Metadata/gmd:spatialRepresentationInfo"
                  or="spatialRepresentationInfo" in="/gmd:MD_Metadata"/>
@@ -2180,29 +2205,59 @@
                  in="/gmd:MD_Metadata"/>
       </tab>
       <tab id="distributionInfo">
+
+        <text ref="fullViewTitle"/>
+        <text ref="fullViewDescription"/>
+
+        <directive data-gn-onlinesrc-list=""/>
+
         <section xpath="/gmd:MD_Metadata/gmd:distributionInfo" or="distributionInfo"
                  in="/gmd:MD_Metadata"/>
       </tab>
       <tab id="dataQualityInfo">
+
+        <text ref="fullViewTitle"/>
+        <text ref="fullViewDescription"/>
+
         <section xpath="/gmd:MD_Metadata/gmd:dataQualityInfo" or="dataQualityInfo"
                  in="/gmd:MD_Metadata"/>
       </tab>
       <tab id="spatialRepresentationInfo">
+
+        <text ref="fullViewTitle"/>
+        <text ref="fullViewDescription"/>
+
         <section xpath="/gmd:MD_Metadata/gmd:spatialRepresentationInfo"
                  or="spatialRepresentationInfo" in="/gmd:MD_Metadata"/>
       </tab>
       <tab id="referenceSystemInfo">
+
+        <text ref="fullViewTitle"/>
+        <text ref="fullViewDescription"/>
+
         <section xpath="/gmd:MD_Metadata/gmd:referenceSystemInfo" or="referenceSystemInfo"
                  in="/gmd:MD_Metadata"/>
       </tab>
       <tab id="contentInfo" toggle="true">
+
+        <text ref="fullViewTitle"/>
+        <text ref="fullViewDescription"/>
+
         <section xpath="/gmd:MD_Metadata/gmd:contentInfo" or="contentInfo" in="/gmd:MD_Metadata"/>
       </tab>
       <tab id="portrayalCatalogueInfo" toggle="true">
+
+        <text ref="fullViewTitle"/>
+        <text ref="fullViewDescription"/>
+
         <section xpath="/gmd:MD_Metadata/gmd:portrayalCatalogueInfo" or="portrayalCatalogueInfo"
                  in="/gmd:MD_Metadata"/>
       </tab>
       <tab id="metadata">
+
+        <text ref="fullViewTitle"/>
+        <text ref="fullViewDescription"/>
+
         <section name="metadata">
           <field xpath="/gmd:MD_Metadata/gmd:fileIdentifier"/>
           <field xpath="/gmd:MD_Metadata/gmd:language" or="language" in="/gmd:MD_Metadata"/>
@@ -2227,20 +2282,42 @@
         </section>
       </tab>
       <tab id="metadataConstraints" toggle="true">
+
+        <text ref="fullViewTitle"/>
+        <text ref="fullViewDescription"/>
+
         <section xpath="/gmd:MD_Metadata/gmd:metadataConstraints" or="metadataConstraints"
                  in="/gmd:MD_Metadata"/>
       </tab>
       <tab id="metadataMaintenance" toggle="true">
+
+        <text ref="fullViewTitle"/>
+        <text ref="fullViewDescription"/>
+
         <section xpath="/gmd:MD_Metadata/gmd:metadataMaintenance" or="metadataMaintenance"
                  in="/gmd:MD_Metadata"/>
       </tab>
       <tab id="applicationSchemaInfo" toggle="true">
+
+        <text ref="fullViewTitle"/>
+        <text ref="fullViewDescription"/>
+
         <section xpath="/gmd:MD_Metadata/gmd:applicationSchemaInfo" or="applicationSchemaInfo"
                  in="/gmd:MD_Metadata"/>
       </tab>
     </view>
 
     <view name="xml">
+      <sidePanel>
+        <directive data-gn-validation-report=""/>
+        <directive data-gn-suggestion-list=""/>
+      </sidePanel>
+
+      <text ref="xmlViewTitle"/>
+      <text ref="xmlViewDescription"/>
+
+      <directive data-gn-onlinesrc-list=""/>
+
       <tab id="xml" default="true"/>
     </view>
   </views>
