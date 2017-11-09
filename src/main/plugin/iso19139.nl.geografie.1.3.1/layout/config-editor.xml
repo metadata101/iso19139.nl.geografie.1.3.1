@@ -227,7 +227,7 @@
   <!-- View configuration -->
   <views>
 
-    <view name="default" default="true" upAndDownControlHidden="true">
+    <view name="default" default="true" upAndDownControlHidden="true" displayTooltips="true" displayTooltipsMode="icon">
       <sidePanel>
         <directive data-gn-validation-report=""/>
         <directive data-gn-suggestion-list=""/>
@@ -647,7 +647,7 @@
     </view>
 
 
-    <view name="dutchprofile" upAndDownControlHidden="true">
+    <view name="dutchprofile" upAndDownControlHidden="true" displayTooltips="true" displayTooltipsMode="icon">
       <sidePanel>
         <directive data-gn-validation-report=""/>
         <directive data-gn-suggestion-list=""/>
@@ -2185,7 +2185,7 @@
       </flatModeExceptions>
     </view>
 
-    <view name="advanced">
+    <view name="advanced" displayTooltips="true" displayTooltipsMode="icon">
       <sidePanel>
         <directive data-gn-validation-report=""/>
         <directive data-gn-suggestion-list=""/>
