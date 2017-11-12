@@ -247,7 +247,7 @@
 		  <action type="add"
                   btnLabel="addTitle"
                   if="count(gmd:MD_Metadata/gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation/gmd:title) = 0"
-                  name="title" or="title"
+                  name="title"
                   in="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation">
             <template>
               <snippet>
@@ -256,7 +256,7 @@
             </template>
           </action>
 
-          <field name="datasetcode"
+          <field
                  xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation/gmd:identifier/gmd:MD_Identifier/gmd:code"/>
 
           <action type="add"
@@ -374,7 +374,7 @@
           </action>
 
 
-          <field name="useLimitation" del="." removable="true"
+          <field del="." removable="true"
                  xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_Constraints"/>
 		<action type="add"
                   btnLabel="addResourceConstraints"
@@ -395,7 +395,7 @@
           </action>
 
 
-		<field name="legalConstraints" removable="true"
+		<field removable="true"
                  xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints"/>
 
           <action type="add"
@@ -444,13 +444,13 @@
                  if="count(gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification) > 0">
         		 <template>
               <values readonlyIf="count(@xlink:href) > 0">
-                              <key label="organisationName"
+                              <key label="organisationName" required="true"
                                    xpath="gmd:CI_ResponsibleParty/gmd:organisationName/gco:CharacterString"/>
                               <key label="electronicMailAddress"
                                    xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/
                                   gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString"
-                                   use="email"/>
-                              <key label="role"
+                                   use="email" required="true"/>
+                              <key label="role" required="true"
                                    xpath="gmd:CI_ResponsibleParty/gmd:role/gmd:CI_RoleCode/@codeListValue">
                                 <codelist name="gmd:CI_RoleCode"/>
                               </key>
@@ -517,7 +517,7 @@
               gmd:extent/gmd:EX_Extent/gmd:geographicElement/gmd:EX_GeographicBoundingBox"/>
 
 
-		  <field name="equivalentScale"
+		  <field
                  xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:spatialResolution"/>
 
           <!-- scale -->
@@ -570,13 +570,13 @@
                  xpath="/gmd:MD_Metadata/gmd:contact" del=".">
         		 <template>
               <values readonlyIf="count(@xlink:href) > 0">
-                              <key label="organisationName"
+                              <key label="organisationName" required="true"
                                    xpath="gmd:CI_ResponsibleParty/gmd:organisationName/gco:CharacterString"/>
                               <key label="electronicMailAddress"
                                    xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/
                                   gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString"
-                                   use="email"/>
-                              <key label="role"
+                                   use="email" required="true"/>
+                              <key label="role" required="true"
                                    xpath="gmd:CI_ResponsibleParty/gmd:role/gmd:CI_RoleCode/@codeListValue">
                                 <codelist name="gmd:CI_RoleCode"/>
                               </key>
@@ -678,7 +678,7 @@
           </template>
         </action>
 
-        <field name="alternateTitle"
+        <field
                xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:alternateTitle"></field>
         <action type="add" del="." removable="true"
                 btnLabel="addAlternateTitle"
@@ -720,7 +720,7 @@
           </template>
         </action>
 
-		<field name="edition" del="."
+		<field del="."
                xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:edition"></field>
         <action type="add"
                 if="count(gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:edition) = 0"
@@ -737,7 +737,7 @@
         </action>
 
         <!--   5.9 Unieke Identifier van de bron -->
-        <field name="datasetcode"
+        <field
                xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation/gmd:identifier/gmd:MD_Identifier/gmd:code"/>
 
         <action type="add"
@@ -760,7 +760,7 @@
         </action>
 
 <!--   39. Taal van de bron. -->
-        <field name="ds_language"
+        <field 
                xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:language"
                in="/gmd:MD_Metadata"/>
         <action type="add"
@@ -779,8 +779,7 @@
 
         <!--   40. Karakterset van de bron .. 16-->
         <field del="."
-               xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:characterSet"
-               name="ResourceCharacterset"></field>
+               xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:characterSet"></field>
         <action type="add"
                 name="DsCharacterSet" or="characterSet"
                 btnLabel="addCharacterset"
@@ -814,7 +813,7 @@
           </template>
         </action>
 
-		<field name="seriesName"
+		<field
                xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation/gmd:series/gmd:CI_Series/gmd:name"/>
 
         <action type="add"
@@ -855,7 +854,7 @@
           </template>
         </action>
 
-		<field name="purpose"
+		<field 
                xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:purpose"></field>
         <action type="add"
                 if="count(gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:purpose) = 0"
@@ -922,10 +921,10 @@
 					xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:country/gco:CharacterString"/>
 				<key label="electronicMailAddress"
 					xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString"
-					use="email"/>
+					use="email" required="true"/>
 				<key label="onlineResource"
 					xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:onlineResource/gmd:CI_OnlineResource/gmd:linkage/gmd:URL"/>
-				<key label="role"
+				<key label="role" required="true"
 					xpath="gmd:CI_ResponsibleParty/gmd:role/gmd:CI_RoleCode/@codeListValue">
 				<codelist name="gmd:CI_RoleCode"/>
 				</key>
@@ -1110,7 +1109,7 @@
 		</section>
 		<section name="restrictions">
 
-		<field name="useLimitation" removable="true"
+		<field removable="true"
                  xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_Constraints"/>
 		<action type="add"
                   btnLabel="addResourceConstraints"
@@ -1130,7 +1129,7 @@
           </action>
 
 
-		  <field name="legalConstraints" removable="true"
+		  <field  removable="true"
                  xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints"/>
 
           <action type="add"
@@ -1175,8 +1174,7 @@
 		<!-- aggregation info, zie zijpaneel -->
 
 		<!-- 37. Ruimtelijk schema -->
-        <field name="spatialRepresentationType"
-
+        <field 
                xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:spatialRepresentationType"></field>
         <action type="add"
                 btnLabel="addSpatialRepresentationType"
@@ -1196,7 +1194,7 @@
 
         <!--   38 Toepassingsschaal .. -->
         <!-- of resolutie -->
-        <field name="equivalentScale"
+        <field 
                xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:spatialResolution"/>
 
         <!-- of afstand -->
@@ -1264,7 +1262,7 @@
           </action>
 
 
-        <field name="temporalRangeSection"
+        <field 
                xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:temporalElement"/>
 			<!--
           <template>
@@ -1327,7 +1325,7 @@
         <!--
             Beschrijving temporeledekking
             -->
-        <field name="ExtentDescription"
+        <field 
                xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:description"></field>
         <action type="add"
                 if="count(gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:description) = 0"
@@ -1343,7 +1341,7 @@
           </template>
         </action>
 
-        <field name="supplementalInformation"
+        <field 
                xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:supplementalInformation"></field>
         <action type="add"
                 if="count(gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:supplementalInformation) = 0"
@@ -1523,10 +1521,10 @@
 					xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:country/gco:CharacterString"/>
 				<key label="electronicMailAddress"
 					xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString"
-					use="email"/>
+					use="email" required="true"/>
 				<key label="onlineResource"
 					xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:onlineResource/gmd:CI_OnlineResource/gmd:linkage/gmd:URL"/>
-				<key label="role"
+				<key label="role" required="true"
 					xpath="gmd:CI_ResponsibleParty/gmd:role/gmd:CI_RoleCode/@codeListValue">
 				    <codelist name="gmd:CI_RoleCode"/>
 				</key>
@@ -1652,7 +1650,7 @@
         </action>
           <!--    5.23 Niveau kwaliteitsbeschrijving -->
 
-          <field name="scope"
+          <field
                  xpath="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:scope"/>
 
           <action type="add"
@@ -1705,7 +1703,7 @@
           </action>
 
         <!--   5.33 Conformiteitindicatie met de specificatie  -->
-        <field name="conformance"
+        <field
                xpath="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_DomainConsistency/gmd:result"/>
 
         <action type="add"
@@ -1759,7 +1757,7 @@
         <!--     5.38 Type waarde .. -->
 
         <!--    5.39 Topologische samenhang . -->
-        <field name="DQ_TopologicalConsistency"
+        <field
                xpath="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_TopologicalConsistency/gmd:result/gmd:DQ_QuantitativeResult"></field>
 
         <action type="add"
@@ -1788,7 +1786,7 @@
           </template>
         </action>
 
-        <field name="DQ_AbsoluteExternalPositionalAccuracyUnit"
+        <field 
                xpath="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_AbsoluteExternalPositionalAccuracy/gmd:result/gmd:DQ_QuantitativeResult"></field>
 
         <action type="add"
@@ -1819,7 +1817,7 @@
         </action>
 
 
-        <field name="DQ_CompletenessOmission"
+        <field 
                xpath="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_CompletenessOmission/gmd:result/gmd:DQ_QuantitativeResult"></field>
 
         <action type="add"
@@ -1850,7 +1848,7 @@
 
         <!-- 84. Li-processstep-->
 
-        <field name="DQ_CompletenessOmission"
+        <field 
                xpath="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:lineage/gmd:LI_Lineage/gmd:processStep/gmd:LI_ProcessStep"></field>
 
         <action type="add"
@@ -1881,7 +1879,7 @@
 
         <!-- 85. li-source -->
 
-        <field name="LI_Source" removable="true" del="."
+        <field removable="true" del="."
                xpath="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:lineage/gmd:LI_Lineage/gmd:source"></field>
 
 
@@ -1924,7 +1922,7 @@
         <!-- Metadata unieke identifier -->
 
 		   <!--  5.53 Taal van de metadata.. -->
-        <field name="md_language" xpath="/gmd:MD_Metadata/gmd:language" or="language" in="/gmd:MD_Metadata"/>
+        <field xpath="/gmd:MD_Metadata/gmd:language" in="/gmd:MD_Metadata"/>
         <action type="add"
                 btnLabel="addLanguage"
                 if="count(gmd:MD_Metadata/gmd:language) = 0"
