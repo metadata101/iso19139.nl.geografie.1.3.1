@@ -1208,11 +1208,35 @@
 		<description>Informatie over een bewerking in het proces waarmee de dataset tot stand is gekomen.</description>
 	</element>
 	<!-- ==================================================== -->
-	<element name="gmd:protocol" context="/gmd:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource/gmd:protocol">
+	<element name="gmd:protocol" context="/gmd:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource/gmd:protocol"  alias="protocol">
 		<label>Protocol</label>
 		<description>Protocol waarmee de webkoppeling benaderbaar is. Verplicht als er een URL is opgegeven. Als bij URL de lokale dataset locatie is opgenomen hier de waarde 'dataset' opnemen</description>
 		<help_link>http://wiki.geonovum.nl/index.php/2.4.6_Protocol</help_link>
-		<condition>C</condition>
+		<helper>
+      <option value="OGC:CSW"> Web Catalog service </option>
+      <option value="OGC:WMS"> Web Map service</option>
+      <option value="OGC:WMTS"> Web Mapping Tiling Service</option>
+      <option value="OGC:WFS"> Web Feature Service</option>
+      <option value="OGC:WCS"> Web Coverage Service</option>
+      <option value="INSPIRE Atom">Atom Service Feed Download</option>
+      <option value="OGC:WCTS"> Web Coordinate Transformation</option>
+      <option value="OGC:WPS"> Web Processing Service</option>
+      <option value="UKST"> Unknown Service Type</option>
+      <option value="OGC:WMC"> Web Map Context</option>
+      <option value="OGC:KML"> Keyhole Mark-up Language</option>
+      <option value="OGC:GML"> Geography Markup Language</option>
+      <option value="OGC:WFS-G"> Gazzetteer service</option>
+      <option value="OGC:SOS"> Sensor Observation Service</option>
+      <option value="OGC:SPS"> Sensor Planning Service</option>
+      <option value="OGC:SAS"> Sensor Alert Service</option>
+      <option value="OGC:WNS"> Web Notification Service</option>
+      <option value="OGC:ODS"> OpenLS Directory Service</option>
+      <option value="OGC:OGS"> OpenLS Gateway Service </option>
+      <option value="OGC:OUS"> OpenLS Utility Service </option>
+      <option value="OGC:OPS"> OpenLS Presentation Service </option>
+      <option value="OGC:ORS"> OpenLS Route Service</option>
+    </helper>
+		<condition>mandatory</condition>
 	</element>
 	<!-- ==================================================== -->
 	<element name="gmd:purpose" context="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:purpose">

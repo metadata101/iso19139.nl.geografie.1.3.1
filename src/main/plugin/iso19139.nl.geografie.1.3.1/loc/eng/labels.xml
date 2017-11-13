@@ -4,7 +4,6 @@
 	xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:srv="http://www.isotc211.org/2005/srv"
 	xmlns:gml="http://www.opengis.net/gml" xmlns:gts="http://www.isotc211.org/2005/gts"
 	xmlns:gmx="http://www.isotc211.org/2005/gmx">
-
 	<element name="gmd:MD_ScopeCode">
 		<label>Scope code</label>
 		<description>Class of information to which the referencing entity applies</description>
@@ -830,7 +829,6 @@
 			<option value="500000">1:500´000</option>
 			<option value="1000000">1:1´000´000</option>
 		</helper>
-
 	</element>
 	<element name="gmd:density" id="293.0">
 		<label>Density</label>
@@ -1902,37 +1900,35 @@
 		<description>Identification of, and means of communication with, person(s) and
             organization(s) associated with the process step</description>
 	</element>
-	<element name="gmd:protocol" id="398.0">
-		<label>Protocol</label>
-		<description>Connection protocol to be used</description>
-		<helper sort="true">
-			<option show="-" value="download">Download</option>
-			<option show="y" value="OGC:CSW">OGC-CSW Catalogue Service for the Web</option>
-			<option show="y" value="OGC:WMS">OGC-WMS Web Map Service</option>
-			<option show="y" value="OGC:WMTS">OGC-WMTS Web Map Tiled Service</option>
-			<option show="y" value="OGC:WFS">OGC-WFS Web Feature Service</option>
-			<option show="y" value="OGC:WCS">OGC-WCS Web Coverage Service</option>
-			<option show="y" value="OGC:WCTS">OGC-WCTS Web Coordinate Transformation Service</option>
-			<option show="y" value="OGC:WPS">OGC-WPS Web Processing Service</option>
-			<option show="y" value="OGC:WMC">OGC-WMC Web Map Context (ver 1.1)</option>
-			<option show="y" value="OGC:OWS-C">OGC-OWS Context</option>
-			<option show="y" value="OGC:KML">OGC-KML Keyhole Markup Language</option>
-			<option show="y" value="OGC:GML">OGC-GML Geography Markup Language</option>
-			<option show="y" value="OGC:WFS-G">OGC-WFS-G Gazzetteer Service</option>
-			<option show="y" value="OGC:SOS">OGC-SOS Sensor Observation Service</option>
-			<option show="y" value="OGC:SPS">OGC-SPS Sensor Planning Service</option>
-			<option show="y" value="OGC:SAS">OGC-SAS Sensor Alert Service</option>
-			<option show="y" value="OGC:WNS">OGC-WNS Web Notification Service</option>
-			<option show="y" value="OGC:ODS">OGC-ODS OpenLS Directory Service</option>
-			<option show="y" value="OGC:OGS">OGC-ODS OpenLS Gateway Service</option>
-			<option show="y" value="OGC:OUS">OGC-ODS OpenLS Utility Service</option>
-			<option show="y" value="OGC:OPS">OGC-ODS OpenLS Presentation Service</option>
-			<option show="y" value="OGC:ORS">OGC-ODS OpenLS Route Service</option>
-			<option show="y" value="OGC:GPKG">OGC-GPKG GeoPackage</option>
-			<option show="y" value="INSPIRE Atom">INSPIRE Atom</option>
-			<option show="y" value="UKST">Unknown Service Type</option>
-		</helper>
-	</element>
+	<element name="gmd:protocol" context="/gmd:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource/gmd:protocol"  alias="protocol">
+    <label>Protocol </label>
+    <description>Protocol of the resource</description>
+    <helper>
+      <option value="OGC:CSW"> Web Catalog service </option>
+      <option value="OGC:WMS"> Web Map service</option>
+      <option value="OGC:WMTS"> Web Mapping Tiling Service</option>
+      <option value="OGC:WFS"> Web Feature Service</option>
+      <option value="OGC:WCS"> Web Coverage Service</option>
+      <option value="INSPIRE Atom">Atom Service Feed Download</option>
+      <option value="OGC:WCTS"> Web Coordinate Transformation</option>
+      <option value="OGC:WPS"> Web Processing Service</option>
+      <option value="UKST"> Unknown Service Type</option>
+      <option value="OGC:WMC"> Web Map Context</option>
+      <option value="OGC:KML"> Keyhole Mark-up Language</option>
+      <option value="OGC:GML"> Geography Markup Language</option>
+      <option value="OGC:WFS-G"> Gazzetteer service</option>
+      <option value="OGC:SOS"> Sensor Observation Service</option>
+      <option value="OGC:SPS"> Sensor Planning Service</option>
+      <option value="OGC:SAS"> Sensor Alert Service</option>
+      <option value="OGC:WNS"> Web Notification Service</option>
+      <option value="OGC:ODS"> OpenLS Directory Service</option>
+      <option value="OGC:OGS"> OpenLS Gateway Service </option>
+      <option value="OGC:OUS"> OpenLS Utility Service </option>
+      <option value="OGC:OPS"> OpenLS Presentation Service </option>
+      <option value="OGC:ORS"> OpenLS Route Service</option>
+    </helper>
+    <condition>conditional</condition>
+  </element>
 	<element name="gmd:purpose" id="26.0">
 		<label>Purpose</label>
 		<description>Summary of the intentions with which the resource(s) was
@@ -2357,59 +2353,49 @@
 		<label>Begin date</label>
 		<description>Formatted as 2007-09-12T15:00:00 (YYYY-MM-DDTHH:mm:ss)</description>
 	</element>
-
 	<element name="gml:endPosition">
 		<label>End date</label>
 		<description>Formatted as 2007-09-12T15:00:00 (YYYY-MM-DDTHH:mm:ss)</description>
 	</element>
-
 	<element name="gml:relatedTime">
 		<label>Related time</label>
 		<description>Defines the relation of a given time to the object.</description>
 	</element>
-
 	<element name="gml:coordinates">
 		<label>Coordinates</label>
 		<description>Used to record an array of tuples or coordinates.</description>
 	</element>
-
 	<element name="gml:Polygon">
 		<label>Polygon</label>
 		<description>A gml:Polygon is a special surface that is defined by a single surface patch.
             The boundary of this patch is coplanar and the polygon uses planar interpolation in its
             interior.</description>
 	</element>
-
 	<element name="gml:Point">
 		<label>Point</label>
 		<description>A gml:Point is defined by a single coordinate tuple.</description>
 		<example>74. -37.</example>
 	</element>
-
 	<element name="gml:LineString">
 		<label>Line</label>
 		<description>A gml:LineString is a special curve that consists of a single segment with
             linear interpolation. It is defined by two or more coordinate tuples, with linear
             interpolation between them.</description>
 	</element>
-
 	<element name="gml:LinearRing">
 		<label>Linear ring</label>
 		<description>A gml:LinearRing is defined by four or more coordinate tuples, with linear
             interpolation between them; the first and last coordinates shall be
             coincident.</description>
 	</element>
-
 	<element name="gml:exterior">
 		<label>Outer boundary</label>
 		<description>The outer boundary of a solid.</description>
 	</element>
-
 	<element name="gml:interior">
 		<label>Inner boundary</label>
 		<description>The inner boundary of a solid</description>
 	</element>
-
 
 	<element name="gml:begin">
 		<label>Begin</label>
@@ -2477,12 +2463,10 @@
 		<label>Projected CRS</label>
 		<description />
 	</element>
-
 	<element name="gml:id">
 		<label>Identifier</label>
 		<description>Unique identifier</description>
 	</element>
-
 	<element name="gml:id" id="191.0" context="gmd:MD_CRS">
 		<label>Ellipsoid</label>
 		<description>Identity of the ellipsoid used</description>
@@ -2516,8 +2500,6 @@
 		<label>Factor</label>
 		<description></description>
 	</element>
-
-
 
 	<element name="srv:SV_ServiceIdentification">
 		<label>Service Identification (19119)</label>
