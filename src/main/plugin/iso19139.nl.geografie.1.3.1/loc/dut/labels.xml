@@ -1208,7 +1208,7 @@
 		<description>Informatie over een bewerking in het proces waarmee de dataset tot stand is gekomen.</description>
 	</element>
 	<!-- ==================================================== -->
-	<element name="gmd:protocol" context="/gmd:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource/gmd:protocol"  alias="protocol">
+	<element name="gmd:protocol" alias="protocol">
 		<label>Protocol</label>
 		<description>Protocol waarmee de webkoppeling benaderbaar is. Verplicht als er een URL is opgegeven. Als bij URL de lokale dataset locatie is opgenomen hier de waarde 'dataset' opnemen</description>
 		<help_link>http://wiki.geonovum.nl/index.php/2.4.6_Protocol</help_link>
