@@ -237,7 +237,8 @@
         <text ref="viewTitle"/>
         <text ref="viewDescription"/>
 
-        <directive data-gn-onlinesrc-list=""/>
+        <directive data-gn-onlinesrc-list=""
+          types="thumbnail|onlinesrc|parent|service|fcats"/>
 
         <section name="Basis">
 
@@ -656,7 +657,8 @@
         <text ref="dutchProfileTitle"/>
         <text ref="dutchProfileDescription"/>
 
-        <directive data-gn-onlinesrc-list=""/>
+        <directive data-gn-onlinesrc-list=""
+          types="thumbnail|onlinesrc|parent|service|fcats"/>
 
         <section name="dataIdentificatie">
         <!-- 5.1 Titel van de bron  -->
@@ -2205,7 +2207,8 @@
         <text ref="fullViewTitle"/>
         <text ref="fullViewDescription"/>
 
-        <directive data-gn-onlinesrc-list=""/>
+        <directive data-gn-onlinesrc-list=""
+          types="thumbnail|onlinesrc|parent|service|fcats"/>
 
         <section xpath="/gmd:MD_Metadata/gmd:distributionInfo" or="distributionInfo"
                  in="/gmd:MD_Metadata"/>
