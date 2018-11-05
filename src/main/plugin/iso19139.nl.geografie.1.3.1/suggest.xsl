@@ -37,7 +37,7 @@
   <xsl:include href="process/linked-data-checker.xsl"/>
   <xsl:include href="process/related-metadata-checker.xsl"/>
   <xsl:include href="process/add-resource-id.xsl"/>
-  <xsl:include href="process/upgrade-schema-version.xsl" />
+  <xsl:include href="process/upgrade200-schemaupgrade.xsl" />
 
   <!--<xsl:include href="process/vacuum.xsl"/>-->
   <!--  Disabled by default because related to INSPIRE only
@@ -55,7 +55,7 @@
     <p>linked-data-checker</p>
     <p>related-metadata-checker</p>
     <p>add-resource-id</p>
-    <p>upgrade-schema-version</p>
+    <p>upgrade200-schemaupgrade</p>
     <!--<p>vacuum</p>-->
     <!--  Disabled by default because related to INSPIRE only
         <p>inspire-add-conformity</p>

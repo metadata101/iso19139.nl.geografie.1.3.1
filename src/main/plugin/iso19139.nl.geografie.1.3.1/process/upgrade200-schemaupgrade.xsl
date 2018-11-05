@@ -38,15 +38,15 @@
     <msg id="a" xml:lang="dut">Update metadata to Nederlandse metadata profiel op ISO 19115 voor geografie 2.0</msg>
   </xsl:variable>
 
-  <xsl:template name="list-upgrade-schema-version">
+  <xsl:template name="list-upgrade200-schemaupgrade">
     <suggestion process="upgrade-schema-version"/>
   </xsl:template>
 
   <!-- Analyze the metadata record and return available suggestion
     for that process -->
-  <xsl:template name="analyze-upgrade-schema-version">
+  <xsl:template name="analyze-upgrade200-schemaupgrade">
     <xsl:param name="root"/>
-      <suggestion process="upgrade-schema-version" id="{generate-id()}" category="keyword"
+      <suggestion process="upgrade200-schemaupgrade" id="{generate-id()}" category="keyword"
                   target="keyword">
         <name xml:lang="en">
           <xsl:value-of select="geonet:i18n($upgrade-schema-version-loc, 'a', $guiLang)"/>
@@ -70,12 +70,8 @@
 
   <!-- Update metadataStandardVersion -->
   <xsl:template match="gmd:metadataStandardVersion" priority="2">
-    <xsl:variable name="update" select="java:updateMetadataSchema(//gmd:fileIdentifier/gco:CharacterString/text(), 'iso19139.nl.geografie.2.0.0')" />
-
-    <xsl:if test="$update = true()">
-      <gmd:metadataStandardVersion>
-        <gco:CharacterString>Nederlandse metadata profiel op ISO 19115 voor geografie 2.0</gco:CharacterString>
-      </gmd:metadataStandardVersion>
-    </xsl:if>
+    <gmd:metadataStandardVersion>
+      <gco:CharacterString>Nederlandse metadata profiel op ISO 19115 voor geografie 2.0</gco:CharacterString>
+    </gmd:metadataStandardVersion>
   </xsl:template>
 </xsl:stylesheet>
