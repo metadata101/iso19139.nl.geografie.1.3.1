@@ -321,6 +321,20 @@
             in="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/
             gmd:descriptiveKeywords/gmd:MD_Keywords[not(gmd:thesaurusName)]"/>
 
+          <action type="add"
+                  btnLabel="addKeyword"
+                  name="keyword" or="keyword"
+                  in="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/
+            gmd:descriptiveKeywords/gmd:MD_Keywords">
+            <template>
+              <snippet>
+                <gmd:keyword>
+                  <gco:CharacterString></gco:CharacterString>
+                </gmd:keyword>
+              </snippet>
+            </template>
+          </action>
+
           <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation/gmd:date"/>
 
           <action type="add" name="referenceDate" or="date"
