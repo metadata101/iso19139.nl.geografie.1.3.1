@@ -137,7 +137,6 @@
     <name>gmd:contentInfo</name>
     <name>gmd:distributionFormat</name>
     <name>gmd:referenceSystemInfo</name>
-    <name>gmd:spatialResolution</name>
     <name>gmd:offLine</name>
     <name>gmd:onLine</name>
     <name>gmd:address</name>
@@ -227,7 +226,7 @@
   <!-- View configuration -->
   <views>
 
-    <view name="default" default="true" upAndDownControlHidden="true" displayTooltips="true" displayTooltipsMode="icon">
+    <view name="default" default="true" hideTimeInCalendar="true" upAndDownControlHidden="true" displayTooltips="true" displayTooltipsMode="icon">
       <sidePanel>
         <directive data-gn-validation-report=""/>
         <directive data-gn-suggestion-list=""/>
@@ -580,6 +579,25 @@
 
         <section name="metadata">
 
+        <!-- 5.4 Hiërarchieniveau.
+        <field
+          xpath="/gmd:MD_Metadata/gmd:hierarchyLevel" removable="false" />
+        <action type="add"
+                btnLabel="addHierarchy"
+                or="hierarchyLevel"
+                if="count(gmd:MD_Metadata/gmd:hierarchyLevel) = 0"
+                in="/gmd:MD_Metadata" >
+          <template>
+            <snippet>
+              <gmd:hierarchyLevel>
+                <gmd:MD_ScopeCode
+                  codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_ScopeCode"
+                  codeListValue="dataset"/>
+              </gmd:hierarchyLevel>
+            </snippet>
+          </template>
+        </action>-->
+
           <field name="metadataPointOfContact" templateModeOnly="true"
                  notDisplayedIfMissing="true"
                  xpath="/gmd:MD_Metadata/gmd:contact" del=".">
@@ -661,7 +679,11 @@
     </view>
 
 
-    <view name="dutchprofile" upAndDownControlHidden="true" displayTooltips="true" displayTooltipsMode="icon">
+    <view name="dutchprofile"
+       hideTimeInCalendar="true"
+       upAndDownControlHidden="true"
+       displayTooltips="true"
+       displayTooltipsMode="icon">
       <sidePanel>
         <directive data-gn-validation-report=""/>
         <directive data-gn-suggestion-list=""/>
@@ -776,7 +798,7 @@
         </action>
 
 <!--   39. Taal van de bron. -->
-        <field 
+        <field
                xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:language"
                in="/gmd:MD_Metadata"/>
         <action type="add"
@@ -799,6 +821,7 @@
         <action type="add"
                 name="DsCharacterSet" or="characterSet"
                 btnLabel="addCharacterset"
+                if="count(gmd:MD_Metadata/gmd:identificationInfo/*/gmd:characterSet) = 0"
                 in="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification">
           <template>
             <snippet>
@@ -870,7 +893,7 @@
           </template>
         </action>
 
-		<field 
+		<field
                xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:purpose"></field>
         <action type="add"
                 if="count(gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:purpose) = 0"
@@ -893,6 +916,7 @@
           xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:status"/>
         <action type="add"
                 btnLabel="addStatus"
+                if="count(gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:status) = 0"
                 name="status" or="status"
                 in="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification">
           <template>
@@ -1052,76 +1076,10 @@
 		<!-- 5.12 graphic overview, zie zijpaneel -->
 
         <!--   5.13 Trefwoord .. 17-->
-        <field
-          xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords"
-          name="descriptiveKeywords"
-        />
-
-		<action type="add"
-                  or="descriptiveKeywords"
-				  btnLabel="AddKeyword"
-                  in="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification">
-		<template>
-              <snippet>
-                <gmd:descriptiveKeywords>
-                  <gmd:MD_Keywords>
-                    <gmd:keyword>
-                      <gco:CharacterString></gco:CharacterString>
-                    </gmd:keyword>
-					</gmd:MD_Keywords>
-                </gmd:descriptiveKeywords>
-              </snippet>
-            </template>
-          </action>
-
-		 <action type="add"
-                  or="descriptiveKeywords"
-				  btnLabel="AddKeywordFromThesaurus"
-                  in="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification">
-
-            <template>
-              <snippet>
-                <gmd:descriptiveKeywords>
-                  <gmd:MD_Keywords>
-                    <gmd:keyword>
-                      <gco:CharacterString></gco:CharacterString>
-                    </gmd:keyword>
-                    <gmd:type>
-                      <gmd:MD_KeywordTypeCode
-                        codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_KeywordTypeCode"
-                        codeListValue="theme"/>
-                    </gmd:type>
-                    <gmd:thesaurusName>
-                      <gmd:CI_Citation>
-                        <gmd:title>
-                          <gco:CharacterString>
-                          </gco:CharacterString>
-                        </gmd:title>
-                        <gmd:date>
-                          <gmd:CI_Date>
-                            <gmd:date>
-                              <gco:Date></gco:Date>
-                            </gmd:date>
-                            <gmd:dateType>
-                              <gmd:CI_DateTypeCode
-                                codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_DateTypeCode"
-                                codeListValue="publication"/>
-                            </gmd:dateType>
-                          </gmd:CI_Date>
-                        </gmd:date>
-
-                      </gmd:CI_Citation>
-                    </gmd:thesaurusName>
-                  </gmd:MD_Keywords>
-                </gmd:descriptiveKeywords>
-              </snippet>
-            </template>
-          </action>
-
-        <!--   5.14 Thesaurus..-->
-        <!--   5.15 Thesaurus datum -->
-        <!--   5.16 Thesaurus datum type. -->
-
+          <field
+            xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords"
+            or="descriptiveKeywords"
+            in="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification"/>
 		</section>
 		<section name="restrictions">
 
@@ -1173,7 +1131,7 @@
             </template>
           </action>
 
-		 <action type="add"
+		      <action type="add"
                   btnLabel="addOtherConstraint"
                    or="otherConstraints" forceLabel="true"
                   in="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints"
@@ -1187,10 +1145,39 @@
             </template>
           </action>
 
+          <field  removable="true"
+                 xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_SecurityConstraints"/>
+
+          <action type="add"
+                  btnLabel="addSecurityConstraints"
+                  name="securityConstraints" or="resourceConstraints" forceLabel="true"
+                  in="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification">
+            <template>
+              <snippet>
+                <gmd:resourceConstraints>
+                  <gmd:MD_SecurityConstraints>
+                     <gmd:useLimitation>
+                        <gco:CharacterString/>
+                     </gmd:useLimitation>
+                     <gmd:classification>
+                        <gmd:MD_ClassificationCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_ClassificationCode" codeListValue=""></gmd:MD_ClassificationCode>
+                     </gmd:classification>
+                     <gmd:userNote>
+                        <gco:CharacterString/>
+                     </gmd:userNote>
+                  </gmd:MD_SecurityConstraints>
+                </gmd:resourceConstraints>
+              </snippet>
+            </template>
+          </action>
+
+</section>
+<section name="spatial">
+
 		<!-- aggregation info, zie zijpaneel -->
 
 		<!-- 37. Ruimtelijk schema -->
-        <field 
+        <field
                xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:spatialRepresentationType"></field>
         <action type="add"
                 btnLabel="addSpatialRepresentationType"
@@ -1210,7 +1197,7 @@
 
         <!--   38 Toepassingsschaal .. -->
         <!-- of resolutie -->
-        <field 
+        <field
                xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:spatialResolution"/>
 
         <!-- of afstand -->
@@ -1259,11 +1246,10 @@
         <field
           xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:geographicElement"/>
 
-		<action type="add"
+		    <action type="add"
                   btnLabel="addGeographicBoundingBox"
                    or="extent" name="geographicElement" forceLabel="true"
-                  in="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification"
-				  if="count(gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:geographicElement)=0">
+                  in="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification">
             <template>
               <snippet>
                    <gmd:extent>
@@ -1278,7 +1264,7 @@
           </action>
 
 
-        <field 
+        <field
                xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:temporalElement"/>
 			<!--
           <template>
@@ -1341,7 +1327,7 @@
         <!--
             Beschrijving temporeledekking
             -->
-        <field 
+        <field
                xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:description"></field>
         <action type="add"
                 if="count(gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:description) = 0"
@@ -1357,7 +1343,7 @@
           </template>
         </action>
 
-        <field 
+        <field
                xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:supplementalInformation"></field>
         <action type="add"
                 if="count(gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:supplementalInformation) = 0"
@@ -1802,7 +1788,7 @@
           </template>
         </action>
 
-        <field 
+        <field
                xpath="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_AbsoluteExternalPositionalAccuracy/gmd:result/gmd:DQ_QuantitativeResult"></field>
 
         <action type="add"
@@ -1833,7 +1819,7 @@
         </action>
 
 
-        <field 
+        <field
                xpath="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_CompletenessOmission/gmd:result/gmd:DQ_QuantitativeResult"></field>
 
         <action type="add"
@@ -1864,7 +1850,7 @@
 
         <!-- 84. Li-processstep-->
 
-        <field 
+        <field
                xpath="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:lineage/gmd:LI_Lineage/gmd:processStep/gmd:LI_ProcessStep"></field>
 
         <action type="add"
@@ -1984,6 +1970,7 @@
 		<field xpath="/gmd:MD_Metadata/gmd:parentIdentifier" />
 	`	<action type="add"
                 btnLabel="addParentIdentifier"
+                if="count(gmd:MD_Metadata/gmd:parentIdentifier) = 0"
                 name="parentIdentifier" or="parentIdentifier"
                 in="/gmd:MD_Metadata">
           <template>
@@ -1999,6 +1986,7 @@
         <action type="add"
                 btnLabel="addHierarchy"
                 or="hierarchyLevel"
+                if="count(gmd:MD_Metadata/gmd:hierarchyLevel) = 0"
                 in="/gmd:MD_Metadata" >
           <template>
             <snippet>
@@ -2014,6 +2002,7 @@
         <field
           xpath="/gmd:MD_Metadata/gmd:hierarchyLevelName" removable="true" />
         <action type="add"
+                if="count(gmd:MD_Metadata/gmd:hierarchyLevelName) = 0"
                 btnLabel="addhierarchyLevelName"
                 name="hierarchyLevelName" or="hierarchyLevelName"
                 in="/gmd:MD_Metadata">
@@ -2197,7 +2186,7 @@
       </flatModeExceptions>
     </view>
 
-    <view name="advanced" displayTooltips="true" displayTooltipsMode="icon">
+    <view name="advanced"  hideTimeInCalendar="true" displayTooltips="true" displayTooltipsMode="icon">
       <sidePanel>
         <directive data-gn-validation-report=""/>
         <directive data-gn-suggestion-list=""/>
