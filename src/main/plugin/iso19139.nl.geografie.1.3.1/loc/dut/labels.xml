@@ -122,7 +122,7 @@
 		<help_link>http://wiki.geonovum.nl/index.php/2.4.33_Juridische_toegangsrestricties</help_link>
 		<condition>C</condition>
 	</element>
-	
+
 	<!-- ==================================================== -->
 	<element name="gmd:address" context="/gmd:MD_Metadata/gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address">
 		<label>Adres</label>
@@ -529,7 +529,7 @@
 		<help_link>http://wiki.geonovum.nl/index.php/2.4.25_Resolutie</help_link>
 		<condition>C</condition>
 	</element>
-	
+
 	<!-- ==================================================== -->
 	<element name="gmd:distributionFormat" context="/gmd:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:distributionFormat">
 		<label>Distributie formaat</label>
@@ -1534,12 +1534,33 @@ GEMET - INSPIRE themes, version 1.0 </description>
 		<label>Compleetheid</label>
 		<description>Omschrijving in hoeverre een dataset compleet is, of anders gezegd, een inschatting van wat er nog ontbreekt.</description>
 	</element>
+  <element name="gmd:DQ_QuantitativeResult" context="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_CompletenessOmission/gmd:result/gmd:DQ_QuantitativeResult">
+    <label>Compleetheid</label>
+    <description>Omschrijving in hoeverre een dataset compleet is, of anders gezegd, een inschatting van wat er nog ontbreekt.</description>
+  </element>
+  <element name="gmd:DQ_QuantitativeResult" context="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_AbsoluteExternalPositionalAccuracy/gmd:result/gmd:DQ_QuantitativeResult">
+    <label>Geometrische nauwkeurigheid</label>
+    <description>Afwijking van de x- en ycoordinaten ten opzichte van de werkelijke plaats op aarde.</description>
+  </element>
 	<element name="gmd:value" context="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_AbsoluteExternalPositionalAccuracy/gmd:result/gmd:DQ_QuantitativeResult/gmd:value">
 		<label>Geometrische nauwkeurigheid</label>
 		<description>Afwijking van de x- en ycoordinaten ten opzichte van de werkelijke plaats op aarde.</description>
 	</element>
+
+  <element name="gmd:DQ_QuantitativeResult" context="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_TopologicalConsistency/gmd:result/gmd:DQ_QuantitativeResult">
+    <label>Topologische consistentie</label>
+    <description>Juistheid van de topologische kenmerkenvan de dataset, Verplicht voor INSPIRE als voor netwerken de aansluiting van hartlijnen niet is verzekerd. In dat geval moet de Connectivity tolerance parameter vastgelegd worden om automatische creatie van hartlijn topologie mogelijk te maken</description>
+  </element>
+  <element name="gmd:value" context="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_TopologicalConsistency/gmd:result/gmd:DQ_QuantitativeResult/gmd:value">
+    <label>Topologische consistentie</label>
+    <description>Juistheid van de topologische kenmerkenvan de dataset, Verplicht voor INSPIRE als voor netwerken de aansluiting van hartlijnen niet is verzekerd. In dat geval moet de Connectivity tolerance parameter vastgelegd worden om automatische creatie van hartlijn topologie mogelijk te maken</description>
+  </element>
 	<!-- ==================================================== -->
-	<element name="gmd:valueUnit" context="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_CompletenessOmission/gmd:result/gmd:DQ_QuantitativeResult/gmd:valueUnit">
+	<element name="gmd:DQ_QuantitativeResult" context="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_CompletenessOmission/gmd:result/gmd:DQ_QuantitativeResult">
+    <label>Compleetheid</label>
+    <description>Compleetheid</description>
+  </element>
+  <element name="gmd:valueUnit" context="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_CompletenessOmission/gmd:result/gmd:DQ_QuantitativeResult/gmd:valueUnit">
 		<label>Type waarde</label>
 		<description>Indien bij Compleetheid geen numerieke waarde wordt ingevuld, dient de waarde: tekst ingevuld te worden.</description>
 	</element>
@@ -1553,6 +1574,17 @@ GEMET - INSPIRE themes, version 1.0 </description>
 			<help_link>http://wiki.geonovum.nl/index.php/Type waarde</help_link>
 		<condition>C</condition>
 		</element>
+    <element name="gmd:valueType">
+      <label>Type waarde</label>
+      <description>Het type van de ingevulde waarde</description>
+      <helper>
+          <option value="string">textueel</option>
+          <option value="numeric">numeriek</option>
+          <option value="boolean">boolean</option>
+          <option value="date">datum</option>
+      </helper>
+    </element>
+
 
 	<!-- ==================================================== -->
 	<element name="gmd:verticalElement" context="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:verticalElement">

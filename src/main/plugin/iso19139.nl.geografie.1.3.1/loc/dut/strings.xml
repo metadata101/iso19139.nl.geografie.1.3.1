@@ -38,13 +38,13 @@
   <dataQualityInfo>Kwaliteit</dataQualityInfo>
   <spatialRepresentationInfo>Spatial rep.</spatialRepresentationInfo>
   <referenceSystemInfo>Referentie systeem</referenceSystemInfo>
-  <contentInfo>Content</contentInfo>
+  <contentInfo>Inhoud</contentInfo>
   <portrayalCatalogueInfo>Portrayal</portrayalCatalogueInfo>
-  <metadataConstraints>Md. constraints</metadataConstraints>
-  <metadataMaintenance>Md. maintenance</metadataMaintenance>
+  <metadataConstraints>Beperkingen</metadataConstraints>
+  <metadataMaintenance>Onderhoud</metadataMaintenance>
   <applicationSchemaInfo>Schema info</applicationSchemaInfo>
   <noThesaurusName>Trefwoorden</noThesaurusName>
-  <bboxesSection>Geographic coverage</bboxesSection>
+  <bboxesSection>Dekking</bboxesSection>
 
   <resource>Bron</resource>
   <xml>XML</xml>
@@ -128,7 +128,9 @@
 	<addLineage>Herkomst toevoegen</addLineage>
 	<addUseLimitation>Gebruiksbeperkingen toevoegen</addUseLimitation>
 	<addLegalConstraints>Juridische beperkingen toevoegen</addLegalConstraints>
-	<addResourceConstraints>Bron beperkingen toevoegen</addResourceConstraints>
+  <addSecurityConstraints>Veiligheids beperking toevoegen</addSecurityConstraints>
+	<addResourceConstraints>Beperkingen toevoegen</addResourceConstraints>
+  <addGeographicBoundingBox>Ruimtelijke dekking toevoegen</addGeographicBoundingBox>
 	<addUrl>URL toevoegen</addUrl>
 	<addStandardName>Standaard toevoegen</addStandardName>
 	<addStandardVersion>Standaard versie toevoegen</addStandardVersion>
@@ -187,7 +189,7 @@
 	<AddKeywordFromThesaurus>Trefwoord uit woordenlijst toevoegen</AddKeywordFromThesaurus>
 	<legalConstraints>Juridische beperkingen</legalConstraints>
 	<addReferenceSystem>Referentie systeem toevoegen</addReferenceSystem>
-
+<addDistributionInfo>Distributie informatie toevoegen</addDistributionInfo>
 	<restrictions>Restricties en beperkingen</restrictions>
 	<addParentIdentifier>Voeg parent toe</addParentIdentifier>
   <spatial>Ruimtelijke informatie</spatial>
