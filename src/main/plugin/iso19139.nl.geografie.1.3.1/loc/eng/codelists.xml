@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-	
+
  * Hide in edit mode : If some codelist needs to be hidden
  in edit mode, the hideInEditMode attribute could be added
  to any entries.
- 
+
  eg.
 	<entry hideInEditMode="true">
-	
+
  This will restrict the number of available entries for end
  user editors and keep all records ISO compatible when using
  codelist (eg. harvested records could use codelist hidden
  in local node and needs to be displayed in view mode).
- 
+
  By default, this attribute is not used.
- 
+
  * editorMode attribute allows to configure the editor form field.
- 
+
  * - not set -: simple combo box
  * radio : radio button in one line
  * radio_linebreak : radio button with line break
  * radio_withdesc : radion button with line break and codelist entry description
  * select : select box with size set to the number of items if lower than 7 entries.
- 
+
 -->
 <codelists xmlns:gmd="http://www.isotc211.org/2005/gmd">
 	<!-- ==================================================== -->
@@ -253,7 +253,7 @@
 			<label>Author</label>
 			<description>Party who authored the resource</description>
 		</entry>
-		<!-- ISO PROFIL CHE ONLY 
+		<!-- ISO PROFIL CHE ONLY
 		<entry>
 			<code>editor</code>
 			<label>Editor</label>
@@ -1216,7 +1216,7 @@
 			<description>Pamphlet or leaflet giving descriptive information</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-		<!-- ISO PROFIL CHE ONLY 
+		<!-- ISO PROFIL CHE ONLY
 		<entry>
 			<code>zip100</code>
 			<label>Zip100</label>
@@ -1525,7 +1525,7 @@
 			<label>Publication</label>
 			<description>Publication</description>
 		</entry>-->
-		
+
 		<!-- Used for facet translation only and not displayed in editor -->
 		<entry hideInEditMode="true">
 			<code>map</code>
@@ -1979,71 +1979,6 @@
 				type.</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-	</codelist>
-	<!-- ==================================================== -->
-	<codelist name="srv:DCPList">
-			<entry>
-					<description>DCP is XML</description>
-					<code>XML</code>
-					<label>XML</label>
-			</entry>
-			<entry>
-					<description>DCP is CORBA</description>
-					<code>CORBA</code>
-					<label>CORBA</label>
-			</entry>
-			<entry>
-					<description>DCP is JAVA</description>
-					<code>JAVA</code>
-					<label>JAVA</label>
-			</entry>
-			<entry>
-					<description>DCP is COM</description>
-					<code>COM</code>
-					<label>COM</label>
-			</entry>
-			<entry>
-					<description>DCP is SQL</description>
-					<code>SQL</code>
-					<label>SQL</label>
-			</entry>
-			<entry>
-					<description>DCP is WebServices</description>
-					<code>WebServices</code>
-					<label>Web services</label>
-			</entry>
-	</codelist>
-	<!--=== CouplingType from ISO19119 ===-->
-	<codelist name="srv:SV_CouplingType">
-			<entry>
-					<code>tight</code>
-					<label>Tight</label>
-					<description>Tightly coupled: data associated</description>
-			</entry>
-			<entry>
-					<code>mixed</code>
-					<label>Mixed</label>
-					<description>Mixed coupled: data associated; in addition, external data might be processed</description>
-			</entry>
-			<entry>
-					<code>loose</code>
-					<label>Loose</label>
-					<description>Loosely coupled: no data associated</description>
-			</entry>
-	</codelist>
-	<codelist name="srv:SV_ParameterDirection">
-		<entry>
-			<code>in</code>
-			<label>Input</label>
-		</entry>
-		<entry>
-			<code>out</code>
-			<label>Output</label>
-		</entry>
-		<entry>
-			<code>in/out</code>
-			<label>Input/output</label>
-		</entry>
 	</codelist>
 
   <codelist name="gco:nilReason">

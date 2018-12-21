@@ -185,7 +185,7 @@
     <LI_Source>Bron</LI_Source>
     <seriesName>Naam</seriesName>
     <conformance>Conformiteit</conformance>
-	<AddKeyword>Trefwoord toevoegen</AddKeyword>
+	<addKeyword>Trefwoord toevoegen</addKeyword>
 	<AddKeywordFromThesaurus>Trefwoord uit woordenlijst toevoegen</AddKeywordFromThesaurus>
 	<legalConstraints>Juridische beperkingen</legalConstraints>
 	<addReferenceSystem>Referentie systeem toevoegen</addReferenceSystem>
