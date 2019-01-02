@@ -127,10 +127,11 @@
 	<addDate>Datum toevoegen</addDate>
 	<addLineage>Herkomst toevoegen</addLineage>
 	<addUseLimitation>Gebruiksbeperkingen toevoegen</addUseLimitation>
-	<addLegalConstraints>Juridische beperkingen toevoegen</addLegalConstraints>
+  <addLegalConstraints>Juridische beperkingen toevoegen</addLegalConstraints>
   <addSecurityConstraints>Veiligheids beperking toevoegen</addSecurityConstraints>
-	<addResourceConstraints>Beperkingen toevoegen</addResourceConstraints>
+  <addResourceConstraints>Beperkingen toevoegen</addResourceConstraints>
   <addGeographicBoundingBox>Ruimtelijke dekking toevoegen</addGeographicBoundingBox>
+  <addOtherConstraint>Overige beperking toevoegen</addOtherConstraint>
 	<addUrl>URL toevoegen</addUrl>
 	<addStandardName>Standaard toevoegen</addStandardName>
 	<addStandardVersion>Standaard versie toevoegen</addStandardVersion>
@@ -193,4 +194,6 @@
 	<restrictions>Restricties en beperkingen</restrictions>
 	<addParentIdentifier>Voeg parent toe</addParentIdentifier>
   <spatial>Ruimtelijke informatie</spatial>
+
+
 </strings>
