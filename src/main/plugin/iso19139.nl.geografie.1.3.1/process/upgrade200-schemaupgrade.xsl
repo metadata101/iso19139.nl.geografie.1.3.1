@@ -116,8 +116,40 @@
       <xsl:copy-of select="@*" />
       
       <xsl:variable name="protocol" select="gmd:protocol/*/text()" />
-    
-      <xsl:apply-templates select="gmd:linkage" />
+
+      <xsl:choose>
+        <!-- Add request=GetCapabilities if missing -->
+        <xsl:when test="geonet:contains-any-of($protocol, ('OGC:WMS', 'OGC:WMTS', 'OGC:WFS', 'OGC:WCS'))">
+          <xsl:variable name="url" select="gmd:linkage/gmd:URL" />
+          <xsl:variable name="paramRequest" select="'request=GetCapabilities'" />
+          <gmd:linkage>
+            <xsl:choose>
+              <xsl:when test="not(contains(lower-case($url), lower-case($paramRequest)))">
+                <xsl:choose>
+                  <xsl:when test="ends-with($url, '?')">
+                    <gmd:URL><xsl:value-of select="concat($url, $paramRequest)" /></gmd:URL>
+                  </xsl:when>
+                  <xsl:when test="contains($url, '?')">
+                    <gmd:URL><xsl:value-of select="concat($url, '&amp;', $paramRequest)" /></gmd:URL>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <gmd:URL><xsl:value-of select="concat($url, '?', $paramRequest)" /></gmd:URL>
+                  </xsl:otherwise>
+                </xsl:choose>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:apply-templates select="gmd:linkage" />
+              </xsl:otherwise>
+            </xsl:choose>
+          </gmd:linkage>
+
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates select="gmd:linkage" />
+        </xsl:otherwise>
+      </xsl:choose>
+
+
       <xsl:apply-templates select="gmd:protocol" />
       <xsl:apply-templates select="gmd:applicationProfile" />
       <xsl:apply-templates select="gmd:name" />
@@ -167,8 +199,7 @@
       <gml:endPosition><xsl:value-of select="gml:end/gml:TimeInstant/gml:timePosition"/></gml:endPosition> 
     </xsl:copy>
   </xsl:template>
-  
-  
+
   <!-- INSPIRE Theme thesaurus name -->
   <xsl:template match="gmd:thesaurusName/gmd:CI_Citation[gmd:title/gco:CharacterString = 'GEMET - INSPIRE themes, version 1.0']" priority="2">
     <xsl:copy>
@@ -218,4 +249,18 @@
       
     </xsl:copy>
   </xsl:template>
+
+
+  <!-- Reference System Identifier - use Anchor -->
+  <xsl:template match="gmd:referenceSystemIdentifier[gmd:RS_Identifier/gmd:code/gco:CharacterString = '28992']">
+    <gmd:referenceSystemIdentifier>
+      <gmd:RS_Identifier>
+        <gmd:code>
+          <gmx:Anchor
+            xlink:href="http://www.opengis.net/def/crs/EPSG/0/28992">28992</gmx:Anchor>
+        </gmd:code>
+      </gmd:RS_Identifier>
+    </gmd:referenceSystemIdentifier>
+  </xsl:template>
+
 </xsl:stylesheet>

@@ -5,7 +5,6 @@
         xmlns:gco="http://www.isotc211.org/2005/gco"
         xmlns:gmd="http://www.isotc211.org/2005/gmd"
         xmlns:gmx="http://www.isotc211.org/2005/gmx"
-        xmlns:srv="http://www.isotc211.org/2005/srv"
         xmlns:gml="http://www.opengis.net/gml"
         xmlns:xlink="http://www.w3.org/1999/xlink">
 
@@ -47,10 +46,10 @@
       <directiveAttributes data-hide-time="true"/>
     </for>
 	<for name="gml:beginPosition" use="data-gn-date-picker">
-      <directiveAttributes data-hide-time="true"/>
+      <directiveAttributes data-hide-time="false"/>
     </for>
 	<for name="gml:endPosition" use="data-gn-date-picker">
-      <directiveAttributes data-hide-time="true"/>
+      <directiveAttributes data-hide-time="false"/>
     </for>
 
     <!-- gmx:FileName/@src attribute -->
@@ -229,7 +228,234 @@
     </exclude>
   </multilingualFields>
 
+<tableFields>
+    <table for="gmd:CI_ResponsibleParty">
+      <header>
+        <!-- TODO: Add label from strings.xml / label with context-->
+        <col label="gmd:organisationName"/>
+        <col label="gmd:electronicMailAddress"/>
+        <col label="gmd:role"/>
+        <col/>
+      </header>
+      <row>
+        <col xpath="gmd:organisationName"/>
+        <col xpath="gmd:contactInfo/*/gmd:address/*/gmd:electronicMailAddress"/>
+        <col xpath="gmd:role"/>
+        <col del=".."/>
+      </row>
+    </table>
+    <table for="gmd:CI_OnlineResource">
+      <header>
+        <col label="gmd:protocol"/>
+        <col label="gmd:linkage"/>
+        <col label="gmd:name"/>
+        <col/>
+      </header>
+      <row>
+        <col xpath="gmd:protocol"/>
+        <col xpath="gmd:linkage"/>
+        <col xpath="gmd:name"/>
+        <col del=".."/>
+      </row>
+    </table>
+    <table for="gmd:MD_Format">
+      <header>
+        <col label="gmd:name"/>
+        <col label="gmd:version"/>
+        <col label="gmd:specification"/>
+        <col/>
+      </header>
+      <row>
+        <col xpath="gmd:name"/>
+        <col xpath="gmd:version"/>
+        <col xpath="gmd:specification"/>
+        <col del=".."/>
+      </row>
+    </table>
+    <table for="gmd:PT_Locale">
+      <header>
+        <col label="gmd:languageCode"/>
+        <col label="gmd:characterEncoding"/>
+        <col/>
+      </header>
+      <row>
+        <col xpath="gmd:languageCode"/>
+        <col xpath="gmd:characterEncoding"/>
+        <col del=".."/>
+      </row>
+    </table>
 
+  <!--  <table for="gmd:MD_LegalConstraints" label="MD_LegalConstraints">
+      <header>
+        <col label="gmd:MD_Constraints"/>
+        <col label="gmd:otherConstraints"/>
+        <col/>
+      </header>
+      <row>
+        <col xpath="*[name()='gmd:useLimitation' or name()='gmd:accessConstraints' or name()='gmd:useConstraints']"/>
+        <col xpath="gmd:otherConstraints"/>
+        <col del=".."/>
+      </row>
+    </table> -->
+
+    <table for="gmd:MD_Constraints" label="MD_Constraints">
+      <header>
+        <col label="gmd:useLimitation"/>
+        <col/>
+      </header>
+      <row>
+        <col xpath="gmd:useLimitation"/>
+        <col del=".."/>
+      </row>
+    </table>
+
+    <table for="gmd:MD_SecurityConstraints" label="MD_SecurityConstraints">
+      <header>
+        <col label="gmd:useLimitation"/>
+        <col label="gmd:classification"/>
+        <col label="gmd:userNote"/>
+        <col label="gmd:classificationSystem"/>
+        <col label="gmd:handlingDescription"/>
+        <col/>
+      </header>
+      <row>
+        <col xpath="gmd:useLimitation"/>
+        <col xpath="gmd:classification"/>
+        <col xpath="gmd:userNote"/>
+        <col xpath="gmd:classificationSystem"/>
+        <col xpath="gmd:handlingDescription"/>
+        <col del=".."/>
+      </row>
+    </table>
+
+    <table for="gmd:DQ_ConformanceResult" label="ConformanceResult">
+      <header>
+        <col label="gmd:title"/>
+        <col label="gmd:date"/>
+        <col label="gmd:explanation"/>
+        <col label="gmd:pass"/>
+        <col/>
+      </header>
+      <row>
+        <col xpath="gmd:specification/gmd:CI_Citation/gmd:title"/>
+        <col xpath="gmd:specification/gmd:CI_Citation/gmd:date/gmd:CI_Date/gmd:date"/>
+        <col xpath="gmd:explanation"/>
+        <col xpath="gmd:pass"/>
+        <col del=".."/>
+      </row>
+    </table>
+
+    <table for="gmd:DQ_DomainConsistency" label="DomainConsistency">
+      <header>
+        <col label="gmd:title"/>
+        <col label="gmd:date"/>
+        <col label="gmd:explanation"/>
+        <col label="gmd:pass"/>
+        <col/>
+      </header>
+      <row>
+        <col xpath="gmd:result/gmd:DQ_ConformanceResult/gmd:specification/gmd:CI_Citation/gmd:title"/>
+        <col xpath="gmd:result/gmd:DQ_ConformanceResult/gmd:specification/gmd:CI_Citation/gmd:date/gmd:CI_Date/gmd:date"/>
+        <col xpath="gmd:result/gmd:DQ_ConformanceResult/gmd:explanation"/>
+        <col xpath="gmd:result/gmd:DQ_ConformanceResult/gmd:pass"/>
+        <col del=".."/>
+      </row>
+    </table>
+
+    <table for="gmd:DQ_ConceptualConsistency" label="qos">
+      <header>
+        <col label="gmd:nameOfMeasure"/>
+        <col label="gmd:measureDescription"/>
+        <col label="gml:identifier"/>
+        <col label="gml:unitsSystem"/>
+        <col label="gmd:value"/>
+        <col/>
+      </header>
+      <row>
+        <col xpath="gmd:nameOfMeasure"/>
+        <col xpath="gmd:measureDescription"/>
+        <col xpath="gmd:result/gmd:DQ_QuantitativeResult/gmd:valueUnit/gml:BaseUnit/gml:identifier"/>
+        <col xpath="gmd:result/gmd:DQ_QuantitativeResult/gmd:valueUnit/gml:BaseUnit/gml:unitsSystem"/>
+        <col xpath="gmd:result/gmd:DQ_QuantitativeResult/gmd:value"/>
+        <col del=".."/>
+      </row>
+    </table>
+
+    <table for="gmd:DQ_TopologicalConsistency" label="TopologicalConsistency">
+      <header>
+        <col label="gmd:nameOfMeasure"/>
+        <col label="gmd:measureDescription"/>
+        <col label="gml:identifier"/>
+        <col label="gml:unitsSystem"/>
+        <col label="gmd:value"/>
+        <col/>
+      </header>
+      <row>
+        <col xpath="gmd:nameOfMeasure"/>
+        <col xpath="gmd:measureDescription"/>
+        <col xpath="gmd:result/gmd:DQ_QuantitativeResult/gmd:valueUnit/gml:BaseUnit/gml:identifier"/>
+        <col xpath="gmd:result/gmd:DQ_QuantitativeResult/gmd:valueUnit/gml:BaseUnit/gml:unitsSystem"/>
+        <col xpath="gmd:result/gmd:DQ_QuantitativeResult/gmd:value"/>
+        <col del=".."/>
+      </row>
+    </table>
+
+
+    <table for="gmd:DQ_CompletenessOmission" label="CompletenessOmission">
+      <header>
+        <col label="gmd:nameOfMeasure"/>
+        <col label="gmd:measureDescription"/>
+        <col label="gml:identifier"/>
+        <col label="gml:unitsSystem"/>
+        <col label="gmd:value"/>
+        <col/>
+      </header>
+      <row>
+        <col xpath="gmd:nameOfMeasure"/>
+        <col xpath="gmd:measureDescription"/>
+        <col xpath="gmd:result/gmd:DQ_QuantitativeResult/gmd:valueUnit/gml:BaseUnit/gml:identifier"/>
+        <col xpath="gmd:result/gmd:DQ_QuantitativeResult/gmd:valueUnit/gml:BaseUnit/gml:unitsSystem"/>
+        <col xpath="gmd:result/gmd:DQ_QuantitativeResult/gmd:value"/>
+        <col del=".."/>
+      </row>
+    </table>
+
+    <table for="gmd:DQ_AbsoluteExternalPositionalAccuracy" label="AbsoluteExternalPositionalAccuracy">
+      <header>
+        <col label="gmd:nameOfMeasure"/>
+        <col label="gmd:measureDescription"/>
+        <col label="gml:identifier"/>
+        <col label="gml:unitsSystem"/>
+        <col label="gmd:value"/>
+        <col/>
+      </header>
+      <row>
+        <col xpath="gmd:nameOfMeasure"/>
+        <col xpath="gmd:measureDescription"/>
+        <col xpath="gmd:result/gmd:DQ_QuantitativeResult/gmd:valueUnit/gml:BaseUnit/gml:identifier"/>
+        <col xpath="gmd:result/gmd:DQ_QuantitativeResult/gmd:valueUnit/gml:BaseUnit/gml:unitsSystem"/>
+        <col xpath="gmd:result/gmd:DQ_QuantitativeResult/gmd:value"/>
+        <col del=".."/>
+      </row>
+    </table>
+
+    <table for="gmd:LI_ProcessStep" label="ProcessStep">
+      <header>
+        <col label="gmd:description"/>
+        <col label="gmd:dateTime"/>
+        <col label="gmd:organisationName"/>
+        <col label="gmd:electronicMailAddress"/>
+        <col/>
+      </header>
+      <row>
+        <col xpath="gmd:description"/>
+        <col xpath="gmd:dateTime"/>
+        <col xpath="gmd:processor/gmd:CI_ResponsibleParty/gmd:organisationName"/>
+        <col xpath="gmd:processor/gmd:CI_ResponsibleParty/gmd:address/gmd:CI_Address/gmd:electronicMailAddress" />
+      </row>
+    </table>
+
+  </tableFields>
   <!-- View configuration -->
   <views>
 
@@ -392,7 +618,38 @@
               </snippet>
             </template>
           </action>
+<field name="pointOfContact"
+            xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:pointOfContact"/>
 
+          <action type="add"
+                  btnLabel="addPointOfContact"
+                  or="pointOfContact"
+                  if="count(gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:pointOfContact)=0"
+                  in="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification">
+            <template>
+              <snippet>
+                <gmd:pointOfContact>
+                  <gmd:CI_ResponsibleParty>
+                    <gmd:organisationName><gco:CharacterString /></gmd:organisationName>
+                    <gmd:contactInfo>
+                      <gmd:CI_Contact>
+                        <gmd:address>
+                          <gmd:CI_Address>
+                            <gmd:electronicMailAddress>
+                              <gco:CharacterString />
+                            </gmd:electronicMailAddress>
+                          </gmd:CI_Address>
+                        </gmd:address>
+                      </gmd:CI_Contact>
+                    </gmd:contactInfo>
+                    <gmd:role>
+                      <gmd:CI_RoleCode codeListValue="pointOfContact" codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode"/>
+                    </gmd:role>
+                  </gmd:CI_ResponsibleParty>
+                </gmd:pointOfContact>
+              </snippet>
+            </template>
+          </action>
 </section>
 <section name="restrictions">
 
@@ -462,25 +719,9 @@
             </template>
           </action>
 
-          <field name="pointOfContact"
-            notDisplayedIfMissing="true"
-            xpath="/gmd:MD_Metadata/gmd:identificationInfo/srv:MD_DataIdentification/gmd:pointOfContact"/>
+</section>
+<section name="spatial">
 
-          <action type="add"
-                  btnLabel="addPointOfContact"
-                  or="pointOfContact"
-                  in="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/pointOfContact">
-            <template>
-                <snippet>
-                  <gmd:pointOfContact>
-    			   <gmd:CI_ResponsibleParty>
-    					<gmd:organisationName><gco:CharacterString></gco:CharacterString></gmd:organisationName>
-    					<gmd:role><gmd:CI_RoleCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="pointOfContact"/></gmd:role>
-    				</gmd:CI_ResponsibleParty>
-                  </gmd:pointOfContact>
-                </snippet>
-              </template>
-          </action>
 
           <field
             xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/
@@ -537,76 +778,39 @@
 
         <section name="metadata">
 
-          <field name="metadataPointOfContact" templateModeOnly="true"
+          <field name="metadataPointOfContact"
                  notDisplayedIfMissing="true"
-                 xpath="/gmd:MD_Metadata/gmd:contact" del=".">
-        		 <template>
-              <values readonlyIf="count(@xlink:href) > 0">
-                              <key label="organisationName" required="true" tooltip="gmd:organisationName"
-                                   xpath="gmd:CI_ResponsibleParty/gmd:organisationName/gco:CharacterString"/>
-                              <key label="electronicMailAddress" tooltip="gmd:electronicMailAddress"
-                                   xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/
-                                  gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString"
-                                   use="email" required="true"/>
-                              <key label="role" required="true" tooltip="gmd:CI_RoleCode"
-                                   xpath="gmd:CI_ResponsibleParty/gmd:role/gmd:CI_RoleCode/@codeListValue">
-                                <codelist name="gmd:CI_RoleCode"/>
-                              </key>
-                            </values>
-                            <snippet>
-                              <gmd:contact>
-                                <gmd:CI_ResponsibleParty>
-                                  <gn:copy select="gmd:individualName"/>
-                                  <gmd:organisationName>
-                                    <gco:CharacterString>{{organisationName}}</gco:CharacterString>
-                                    <gn:copy select="gmd:PT_FreeText"/>
-                                  </gmd:organisationName>
-                                  <gn:copy select="gmd:positionName"/>
-                                  <gmd:contactInfo>
-                                    <gmd:CI_Contact>
-                                      <gn:copy select="gmd:phone"/>
-                                      <gmd:address>
-                                        <gmd:CI_Address>
-                                          <gn:copy select="gmd:deliveryPoint"/>
-                                          <gn:copy select="gmd:city"/>
-                                          <gn:copy select="gmd:administrativeArea"/>
-                                          <gn:copy select="gmd:postalCode"/>
-                                          <gn:copy select="gmd:country"/>
-                                          <gmd:electronicMailAddress>
-                                            <gco:CharacterString>{{electronicMailAddress}}</gco:CharacterString>
-                                            <gn:copy select="gmd:PT_FreeText"/>
-                                          </gmd:electronicMailAddress>
-                                        </gmd:CI_Address>
-                                      </gmd:address>
-                                      <gn:copy select="gmd:onlineResource"/>
-                                      <gn:copy select="gmd:hoursOfService"/>
-                                      <gn:copy select="gmd:contactInstructions"/>
-                                    </gmd:CI_Contact>
-                                  </gmd:contactInfo>
-                                  <gmd:role>
-                                    <gmd:CI_RoleCode
-                                      codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_RoleCode"
-                                      codeListValue="{{role}}"/>
-                                  </gmd:role>
-                                </gmd:CI_ResponsibleParty>
-                              </gmd:contact>
-            </snippet>
-          </template>
-          </field>
+                 xpath="/gmd:MD_Metadata/gmd:contact" del="." />
 
           <action type="add" name="metadataPointOfContact"
                   btnLabel="addPointOfContact"
+                  if="count(gmd:MD_Metadata/gmd:contact)=0"
                   or="contact" in="/gmd:MD_Metadata">
-                  <template>
-                      <snippet>
-                        <gmd:contact>
-          			   <gmd:CI_ResponsibleParty>
-          					<gmd:organisationName><gco:CharacterString></gco:CharacterString></gmd:organisationName>
-          					<gmd:role><gmd:CI_RoleCode codeListValue="pointOfContact" codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode"/></gmd:role>
-          				</gmd:CI_ResponsibleParty>
-                        </gmd:contact>
-                      </snippet>
-                    </template>
+            <template>
+              <snippet>
+                <gmd:contact>
+                  <gmd:CI_ResponsibleParty>
+                    <gmd:organisationName>
+                      <gco:CharacterString />
+                    </gmd:organisationName>
+                    <gmd:contactInfo>
+                      <gmd:CI_Contact>
+                        <gmd:address>
+                          <gmd:CI_Address>
+                            <gmd:electronicMailAddress>
+                              <gco:CharacterString />
+                            </gmd:electronicMailAddress>
+                          </gmd:CI_Address>
+                        </gmd:address>
+                      </gmd:CI_Contact>
+                    </gmd:contactInfo>
+                    <gmd:role>
+                      <gmd:CI_RoleCode codeListValue="pointOfContact" codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode"/>
+                    </gmd:role>
+                  </gmd:CI_ResponsibleParty>
+                </gmd:contact>
+              </snippet>
+            </template>
           </action>
 
 
