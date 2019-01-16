@@ -126,12 +126,13 @@
 	<addCharacterset>Karakterset toevoegen</addCharacterset>
 	<addDate>Datum toevoegen</addDate>
 	<addLineage>Herkomst toevoegen</addLineage>
+	<addLocale>Taal toevoegen</addLocale>
 	<addUseLimitation>Gebruiksbeperkingen toevoegen</addUseLimitation>
-  <addLegalConstraints>Juridische beperkingen toevoegen</addLegalConstraints>
-  <addSecurityConstraints>Veiligheids beperking toevoegen</addSecurityConstraints>
-  <addResourceConstraints>Beperkingen toevoegen</addResourceConstraints>
-  <addGeographicBoundingBox>Ruimtelijke dekking toevoegen</addGeographicBoundingBox>
-  <addOtherConstraint>Overige beperking toevoegen</addOtherConstraint>
+	<addLegalConstraints>Juridische beperkingen toevoegen</addLegalConstraints>
+	<addSecurityConstraints>Veiligheids beperking toevoegen</addSecurityConstraints>
+	<addResourceConstraints>Beperkingen toevoegen</addResourceConstraints>
+	<addGeographicBoundingBox>Ruimtelijke dekking toevoegen</addGeographicBoundingBox>
+	<addOtherConstraint>Overige beperking toevoegen</addOtherConstraint>
 	<addUrl>URL toevoegen</addUrl>
 	<addStandardName>Standaard toevoegen</addStandardName>
 	<addStandardVersion>Standaard versie toevoegen</addStandardVersion>
