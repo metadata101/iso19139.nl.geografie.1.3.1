@@ -328,133 +328,6 @@
       </row>
     </table>
 
-    <table for="gmd:DQ_ConformanceResult" label="ConformanceResult">
-      <header>
-        <col label="gmd:title"/>
-        <col label="gmd:date"/>
-        <col label="gmd:explanation"/>
-        <col label="gmd:pass"/>
-        <col/>
-      </header>
-      <row>
-        <col xpath="gmd:specification/gmd:CI_Citation/gmd:title"/>
-        <col xpath="gmd:specification/gmd:CI_Citation/gmd:date/gmd:CI_Date/gmd:date"/>
-        <col xpath="gmd:explanation"/>
-        <col xpath="gmd:pass"/>
-        <col del=".."/>
-      </row>
-    </table>
-
-    <table for="gmd:DQ_DomainConsistency" label="DomainConsistency">
-      <header>
-        <col label="gmd:title"/>
-        <col label="gmd:date"/>
-        <col label="gmd:explanation"/>
-        <col label="gmd:pass"/>
-        <col/>
-      </header>
-      <row>
-        <col xpath="gmd:result/gmd:DQ_ConformanceResult/gmd:specification/gmd:CI_Citation/gmd:title"/>
-        <col xpath="gmd:result/gmd:DQ_ConformanceResult/gmd:specification/gmd:CI_Citation/gmd:date/gmd:CI_Date/gmd:date"/>
-        <col xpath="gmd:result/gmd:DQ_ConformanceResult/gmd:explanation"/>
-        <col xpath="gmd:result/gmd:DQ_ConformanceResult/gmd:pass"/>
-        <col del=".."/>
-      </row>
-    </table>
-
-    <table for="gmd:DQ_ConceptualConsistency" label="qos">
-      <header>
-        <col label="gmd:nameOfMeasure"/>
-        <col label="gmd:measureDescription"/>
-        <col label="gml:identifier"/>
-        <col label="gml:unitsSystem"/>
-        <col label="gmd:value"/>
-        <col/>
-      </header>
-      <row>
-        <col xpath="gmd:nameOfMeasure"/>
-        <col xpath="gmd:measureDescription"/>
-        <col xpath="gmd:result/gmd:DQ_QuantitativeResult/gmd:valueUnit/gml:BaseUnit/gml:identifier"/>
-        <col xpath="gmd:result/gmd:DQ_QuantitativeResult/gmd:valueUnit/gml:BaseUnit/gml:unitsSystem"/>
-        <col xpath="gmd:result/gmd:DQ_QuantitativeResult/gmd:value"/>
-        <col del=".."/>
-      </row>
-    </table>
-
-    <table for="gmd:DQ_TopologicalConsistency" label="TopologicalConsistency">
-      <header>
-        <col label="gmd:nameOfMeasure"/>
-        <col label="gmd:measureDescription"/>
-        <col label="gml:identifier"/>
-        <col label="gml:unitsSystem"/>
-        <col label="gmd:value"/>
-        <col/>
-      </header>
-      <row>
-        <col xpath="gmd:nameOfMeasure"/>
-        <col xpath="gmd:measureDescription"/>
-        <col xpath="gmd:result/gmd:DQ_QuantitativeResult/gmd:valueUnit/gml:BaseUnit/gml:identifier"/>
-        <col xpath="gmd:result/gmd:DQ_QuantitativeResult/gmd:valueUnit/gml:BaseUnit/gml:unitsSystem"/>
-        <col xpath="gmd:result/gmd:DQ_QuantitativeResult/gmd:value"/>
-        <col del=".."/>
-      </row>
-    </table>
-
-
-    <table for="gmd:DQ_CompletenessOmission" label="CompletenessOmission">
-      <header>
-        <col label="gmd:nameOfMeasure"/>
-        <col label="gmd:measureDescription"/>
-        <col label="gml:identifier"/>
-        <col label="gml:unitsSystem"/>
-        <col label="gmd:value"/>
-        <col/>
-      </header>
-      <row>
-        <col xpath="gmd:nameOfMeasure"/>
-        <col xpath="gmd:measureDescription"/>
-        <col xpath="gmd:result/gmd:DQ_QuantitativeResult/gmd:valueUnit/gml:BaseUnit/gml:identifier"/>
-        <col xpath="gmd:result/gmd:DQ_QuantitativeResult/gmd:valueUnit/gml:BaseUnit/gml:unitsSystem"/>
-        <col xpath="gmd:result/gmd:DQ_QuantitativeResult/gmd:value"/>
-        <col del=".."/>
-      </row>
-    </table>
-
-    <table for="gmd:DQ_AbsoluteExternalPositionalAccuracy" label="AbsoluteExternalPositionalAccuracy">
-      <header>
-        <col label="gmd:nameOfMeasure"/>
-        <col label="gmd:measureDescription"/>
-        <col label="gml:identifier"/>
-        <col label="gml:unitsSystem"/>
-        <col label="gmd:value"/>
-        <col/>
-      </header>
-      <row>
-        <col xpath="gmd:nameOfMeasure"/>
-        <col xpath="gmd:measureDescription"/>
-        <col xpath="gmd:result/gmd:DQ_QuantitativeResult/gmd:valueUnit/gml:BaseUnit/gml:identifier"/>
-        <col xpath="gmd:result/gmd:DQ_QuantitativeResult/gmd:valueUnit/gml:BaseUnit/gml:unitsSystem"/>
-        <col xpath="gmd:result/gmd:DQ_QuantitativeResult/gmd:value"/>
-        <col del=".."/>
-      </row>
-    </table>
-
-    <table for="gmd:LI_ProcessStep" label="ProcessStep">
-      <header>
-        <col label="gmd:description"/>
-        <col label="gmd:dateTime"/>
-        <col label="gmd:organisationName"/>
-        <col label="gmd:electronicMailAddress"/>
-        <col/>
-      </header>
-      <row>
-        <col xpath="gmd:description"/>
-        <col xpath="gmd:dateTime"/>
-        <col xpath="gmd:processor/gmd:CI_ResponsibleParty/gmd:organisationName"/>
-        <col xpath="gmd:processor/gmd:CI_ResponsibleParty/gmd:address/gmd:CI_Address/gmd:electronicMailAddress" />
-      </row>
-    </table>
-
   </tableFields>
   <!-- View configuration -->
   <views>
@@ -470,7 +343,7 @@
         <text ref="viewDescription"/>
 
         <directive data-gn-onlinesrc-list=""
-          types="thumbnail|onlinesrc|parent|service|fcats"/>
+          types="thumbnail|onlinesrc|parent|fcats"/>
 
         <section name="Basis">
 
@@ -837,7 +710,7 @@
         <text ref="dutchProfileDescription"/>
 
         <directive data-gn-onlinesrc-list=""
-          types="thumbnail|onlinesrc|parent|service|fcats"/>
+          types="thumbnail|onlinesrc|parent|fcats"/>
 
         <section name="dataIdentificatie">
         <!-- 5.1 Titel van de bron  -->
@@ -1580,18 +1453,6 @@
 
 		<section name="distributionInfo">
 
-<action type="add"
-                btnLabel="addDistributionInfo"
-                name="distributionInfo" or="MD_Distribution"
-                in="/gmd:MD_Metadata"
-        if="count(gmd:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution)&lt;2">
-          <template>
-            <snippet>
-              <gmd:distributionInfo><gmd:MD_Distribution></gmd:MD_Distribution></gmd:distributionInfo>
-            </snippet>
-          </template>
-</action>
-
         <!--        271 Naam distributie formaat . -->
         <field name="encoding" templateModeOnly="true" notDisplayedIfMissing="true"
                xpath="/gmd:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:distributionFormat"
@@ -1790,11 +1651,20 @@
           </template>
         </action>
 
-
-
-
-
-
+       <!-- Button to add distribution section if not present -->
+          <action type="add"
+                  btnLabel="addDistribution"
+                  name="distributionInfo" or="distributionInfo"
+                  if="count(gmd:MD_Metadata/gmd:distributionInfo)=0"
+                  in="/gmd:MD_Metadata">
+            <template>
+              <snippet>
+                <gmd:distributionInfo>
+                  <gmd:MD_Distribution />
+                </gmd:distributionInfo>
+              </snippet>
+            </template>
+          </action>
         </section>
 
         <section name="DataQuality">
@@ -1992,6 +1862,8 @@
                    <gmd:processor>
                       <gmd:CI_ResponsibleParty>
                         <gmd:organisationName><gco:CharacterString></gco:CharacterString></gmd:organisationName>
+                        <gmd:contactInfo><gmd:CI_Contact><gmd:address><gmd:CI_Address>
+          <gmd:electronicMailAddress><gco:CharacterString /></gmd:electronicMailAddress></gmd:CI_Address></gmd:address></gmd:CI_Contact></gmd:contactInfo>
      					<gmd:role><gmd:CI_RoleCode codeListValue="pointOfContact" codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode"/></gmd:role>
                       </gmd:CI_ResponsibleParty>
                    </gmd:processor>
@@ -2029,7 +1901,9 @@
                      </gmd:dateTime>
                      <gmd:processor>
                         <gmd:CI_ResponsibleParty>
-                           <gmd:organisationName><gco:CharacterString></gco:CharacterString></gmd:organisationName>
+                           <gmd:organisationName><gco:CharacterString></gco:CharacterString></gmd:organisationName><gmd:contactInfo>
+          <gmd:CI_Contact><gmd:address><gmd:CI_Address><gmd:electronicMailAddress><gco:CharacterString /></gmd:electronicMailAddress>
+          </gmd:CI_Address></gmd:address></gmd:CI_Contact></gmd:contactInfo>
        					<gmd:role><gmd:CI_RoleCode codeListValue="pointOfContact" codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode"/></gmd:role>
                         </gmd:CI_ResponsibleParty>
                      </gmd:processor>
@@ -2065,7 +1939,7 @@
     <field xpath="/gmd:MD_Metadata/gmd:locale/gmd:PT_Locale" in="/gmd:MD_Metadata"/>
 
         <action type="add"
-                btnLabel="addExtraLanguage"
+                btnLabel="addLocale"
                 name="locale" or="locale"
                 in="/gmd:MD_Metadata">
           <template>
@@ -2219,8 +2093,15 @@
                 <gmd:CI_ResponsibleParty>
                   <gmd:organisationName>
                     <gco:CharacterString></gco:CharacterString>
-                  </gmd:organisationName>
-
+                  </gmd:organisationName><gmd:contactInfo>
+          <gmd:CI_Contact>
+          <gmd:address>
+          <gmd:CI_Address>
+          <gmd:electronicMailAddress><gco:CharacterString /></gmd:electronicMailAddress>
+          </gmd:CI_Address>
+          </gmd:address>
+          </gmd:CI_Contact>
+          </gmd:contactInfo>
                   <gmd:role>
                     <gmd:CI_RoleCode                      codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_RoleCode"
                       codeListValue="pointOfContact"/>
@@ -2313,7 +2194,7 @@
         <text ref="fullViewDescription"/>
 
         <directive data-gn-onlinesrc-list=""
-          types="thumbnail|onlinesrc|parent|service|fcats"/>
+          types="thumbnail|onlinesrc|parent|fcats"/>
 
         <section xpath="/gmd:MD_Metadata/gmd:distributionInfo" or="distributionInfo"
                  in="/gmd:MD_Metadata"/>
