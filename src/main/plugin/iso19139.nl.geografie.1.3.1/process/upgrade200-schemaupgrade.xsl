@@ -252,12 +252,13 @@
 
 
   <!-- Reference System Identifier - use Anchor -->
-  <xsl:template match="gmd:referenceSystemIdentifier[gmd:RS_Identifier/gmd:code/gco:CharacterString = '28992']">
+  <xsl:template match="gmd:referenceSystemIdentifier[string(gmd:RS_Identifier/gmd:code/gco:CharacterString)]">
+    <xsl:variable name="code" select="normalize-space(gmd:RS_Identifier/gmd:code/gco:CharacterString)"/>
     <gmd:referenceSystemIdentifier>
       <gmd:RS_Identifier>
         <gmd:code>
           <gmx:Anchor
-            xlink:href="http://www.opengis.net/def/crs/EPSG/0/28992">28992</gmx:Anchor>
+            xlink:href="http://www.opengis.net/def/crs/EPSG/0/{$code}"><xsl:value-of select="$code" /></gmx:Anchor>
         </gmd:code>
       </gmd:RS_Identifier>
     </gmd:referenceSystemIdentifier>
@@ -290,4 +291,15 @@
     </xsl:copy>
   </xsl:template>
 
+  <!-- Add gmx namespace to schemaLocation if not present -->
+  <xsl:template match="gmd:MD_Metadata">
+    <xsl:copy>
+      <xsl:copy-of select="@*[name() != 'xsi:schemaLocation']" />
+      <xsl:attribute name="xsi:schemaLocation">
+        <xsl:value-of select="@xsi:schemaLocation"/>
+        <xsl:if test="not(contains(@xsi:schemaLocation, 'http://www.isotc211.org/2005/gmx'))"> http://www.isotc211.org/2005/gmx http://www.isotc211.org/2005/gmx/gmx.xsd</xsl:if>
+      </xsl:attribute>
+      <xsl:apply-templates select="*" />
+    </xsl:copy>
+  </xsl:template>
 </xsl:stylesheet>
