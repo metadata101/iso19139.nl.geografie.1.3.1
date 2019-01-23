@@ -263,4 +263,31 @@
     </gmd:referenceSystemIdentifier>
   </xsl:template>
 
+
+  <!-- Legal constraints with 2 otherContraints: 1 with a link and other with a text -> join them using an Anchor -->
+  <xsl:template match="gmd:resourceConstraints/gmd:MD_LegalConstraints[count(gmd:otherConstraints[gco:CharacterString]) = 2]">
+    <xsl:copy>
+      <xsl:copy-of select="@*" />
+
+      <xsl:apply-templates select="gmd:accessConstraints" />
+      <xsl:apply-templates select="gmd:useConstraints" />
+
+      <xsl:choose>
+        <xsl:when test="count(gmd:otherConstraints[starts-with(normalize-space(gco:CharacterString), 'http')]) = 1">
+          <xsl:variable name="textValue" select="normalize-space(gmd:otherConstraints[not(starts-with(normalize-space(gco:CharacterString), 'http'))]/gco:CharacterString)" />
+          <xsl:variable name="linkValue" select="normalize-space(gmd:otherConstraints[starts-with(normalize-space(gco:CharacterString), 'http')]/gco:CharacterString)" />
+
+          <gmd:otherConstraints>
+            <gmx:Anchor
+              xlink:href="{$linkValue}"><xsl:value-of select="$textValue" /></gmx:Anchor>
+          </gmd:otherConstraints>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates select="gmd:otherConstraints" />
+        </xsl:otherwise>
+      </xsl:choose>
+
+    </xsl:copy>
+  </xsl:template>
+
 </xsl:stylesheet>
