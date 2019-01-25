@@ -1119,7 +1119,7 @@
 		<label>Inwinnende organisatie</label>
 		<description>Naam van de organisatie die de brongegevens heeft ingewonnen.</description>
 	</element>
-	<element name="gmd:otherConstraints" context="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:otherConstraints">
+	<element name="gmd:otherConstraints" >
 		<label>Overige beperkingen</label>
 		<description>Andere restricties of beperkingen. Dit veld is te gebruiken om de URL naar de licentie van Public domain, Creative Commons of Geo Gedeeld in te vullen. </description>
         <helper>
@@ -1133,6 +1133,7 @@
 			<option value="http://creativecommons.org/licenses/by-nc-nd/3.0/nl">Gebruiksvoorwaarden (naamsvermelding, niet commerieel, geen afgeleide werken)</option>
 			<option value="http://">Gebruiksvoorwaarden Geogedeeld</option>
         </helper>
+		<btnLabel>Overige beperking toevoegen</btnLabel>
 		<help_link>http://wiki.geonovum.nl/index.php/2.4.34_Overige_beperkingen</help_link>
 	</element>
 	<!-- ==================================================== -->
