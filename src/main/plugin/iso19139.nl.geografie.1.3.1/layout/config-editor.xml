@@ -59,24 +59,11 @@
     <for name="gmd:country" use="data-gn-country-picker"/>
     <for name="gmd:referenceSystemInfo" addDirective="data-gn-crs-selector"/>
 
-    <for name="gmd:contact" addDirective="data-gn-directory-entry-selector">
-      <directiveAttributes data-template-add-action="true" data-search-action="true" data-popup-action="true" data-template-type="contact" data-variables="gmd:role/gmd:CI_RoleCode/@codeListValue~{role}"/>
-    </for>
-    <for name="gmd:pointOfContact" addDirective="data-gn-directory-entry-selector">
-      <directiveAttributes data-template-add-action="true" data-search-action="true" data-popup-action="true" data-template-type="contact" data-variables="gmd:role/gmd:CI_RoleCode/@codeListValue~{role}"/>
-    </for>
-    <for name="gmd:distributorContact" addDirective="data-gn-directory-entry-selector">
-      <directiveAttributes data-template-add-action="true" data-search-action="true" data-popup-action="true" data-template-type="contact" data-variables="gmd:role/gmd:CI_RoleCode/@codeListValue~{role}"/>
-    </for>
-    <for name="gmd:processor" addDirective="data-gn-directory-entry-selector">
-      <directiveAttributes data-template-add-action="true" data-search-action="true" data-popup-action="true" data-template-type="contact" data-variables="gmd:role/gmd:CI_RoleCode/@codeListValue~{role}"/>
-    </for>
-    <for name="gmd:citedResponsibleParty" addDirective="data-gn-directory-entry-selector">
-      <directiveAttributes data-template-add-action="true" data-search-action="true" data-popup-action="true" ata-template-type="contact" data-variables="gmd:role/gmd:CI_RoleCode/@codeListValue~{role}"/>
-    </for>
-
     <for name="gmd:report" addDirective="data-gn-directory-entry-selector" xpath="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_DomainConsistency/gmd:result">
-      <directiveAttributes data-template-add-action="true" data-search-action="true" data-popup-action="false" data-filter='{"_root": "gmd:DQ_DomainConsistency"}' data-template-type="report"/>
+      <directiveAttributes 
+        data-template-add-action="true" data-search-action="true" 
+        data-insert-modes="text" data-template-type="report"
+        data-popup-action="false" data-filter='{"_root": "gmd:DQ_DomainConsistency"}'/>
     </for>
 
     <!-- Example configuration: Add onLine source from subtemplate
@@ -119,15 +106,17 @@
     <name>gmd:geographicBox</name>
     <name>gmd:EX_TemporalExtent</name>
     <name>gmd:MD_Distributor</name>
-    <name>gmd:metadataConstraints</name>
     <name>gmd:aggregationInfo</name>
     <name>gmd:processStep</name>
     <name>gmd:lineage</name>
+    <name>gmd:locale</name>
     <name>gmd:centerPoint</name>
     <name>gmd:verticalCRS</name>
     <name>gml:verticalCS</name>
     <name>gml:verticalDatum</name>
-
+    <name>gmd:MD_LegalConstraints</name>
+    <name>gmd:MD_SecurityConstraints</name>
+    <name>gmd:MD_Constraints</name>
   </fieldsWithFieldset>
 
   <multilingualFields>
@@ -251,45 +240,15 @@
       </row>
     </table>
 
-    <!--  <table for="gmd:MD_LegalConstraints" label="MD_LegalConstraints">
-      <header>
-        <col label="gmd:MD_Constraints"/>
-        <col label="gmd:otherConstraints"/>
-        <col/>
-      </header>
-      <row>
-        <col xpath="*[name()='gmd:useLimitation' or name()='gmd:accessConstraints' or name()='gmd:useConstraints']"/>
-        <col xpath="gmd:otherConstraints"/>
-        <col del=".."/>
-      </row>
-    </table> -->
-
-    <table for="gmd:MD_Constraints" label="MD_Constraints">
-      <header>
-        <col label="gmd:useLimitation"/>
-        <col/>
-      </header>
-      <row>
-        <col xpath="gmd:useLimitation"/>
-        <col del=".."/>
-      </row>
-    </table>
-
     <table for="gmd:MD_SecurityConstraints" label="MD_SecurityConstraints">
       <header>
-        <col label="gmd:useLimitation"/>
         <col label="gmd:classification"/>
         <col label="gmd:userNote"/>
-        <col label="gmd:classificationSystem"/>
-        <col label="gmd:handlingDescription"/>
         <col/>
       </header>
       <row>
-        <col xpath="gmd:useLimitation"/>
         <col xpath="gmd:classification"/>
         <col xpath="gmd:userNote"/>
-        <col xpath="gmd:classificationSystem"/>
-        <col xpath="gmd:handlingDescription"/>
         <col del=".."/>
       </row>
     </table>
@@ -451,11 +410,8 @@
               </snippet>
             </template>
           </action>
-        </section>
 
-        <section name="restrictions">
-
-          <field del="." removable="true" name="useLimitation" or="resourceConstraints" xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_Constraints"/>
+          <field del="../.." name="useLimitation" or="resourceConstraints" xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_Constraints/gmd:useLimitation"/>
 
           <action type="add" btnLabel="addResourceConstraints" name="resourceConstraints" or="resourceConstraints" forceLabel="true" in="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification" if="count(gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_Constraints)=0">
             <template>
@@ -471,20 +427,7 @@
             </template>
           </action>
 
-
-
           <field removable="true" del=".." xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints"/>
-
-          <action type="add" btnLabel="addOtherConstraint" or="otherConstraints" forceLabel="true" 
-          in="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints">
-            <template>
-              <snippet>
-                <gmd:otherConstraints>
-                  <gco:CharacterString></gco:CharacterString>
-                </gmd:otherConstraints>
-              </snippet>
-            </template>
-          </action>
 
           <action type="add" btnLabel="addLegalConstraints" name="legalConstraints" or="resourceConstraints" forceLabel="true" in="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification" if="count(gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints)=0">
             <template>
@@ -981,16 +924,6 @@
             </template>
           </action>
 
-          <action type="add" btnLabel="addOtherConstraint" or="otherConstraints" forceLabel="true" in="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints" if="count(gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:otherConstraints) &lt; 2">
-            <template>
-              <snippet>
-                <gmd:otherConstraints>
-                  <gco:CharacterString></gco:CharacterString>
-                </gmd:otherConstraints>
-              </snippet>
-            </template>
-          </action>
-
           <field removable="true" xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_SecurityConstraints"/>
 
           <action type="add" btnLabel="addSecurityConstraints" name="securityConstraints" or="resourceConstraints" forceLabel="true" in="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification">
@@ -998,9 +931,6 @@
               <snippet>
                 <gmd:resourceConstraints>
                   <gmd:MD_SecurityConstraints>
-                    <gmd:useLimitation>
-                      <gco:CharacterString/>
-                    </gmd:useLimitation>
                     <gmd:classification>
                       <gmd:MD_ClassificationCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_ClassificationCode" codeListValue=""></gmd:MD_ClassificationCode>
                     </gmd:classification>
@@ -1059,7 +989,10 @@
 
           <!-- 37. Ruimtelijk schema -->
           <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:spatialRepresentationType"></field>
-          <action type="add" btnLabel="addSpatialRepresentationType" name="spatialRepresentationType" or="spatialRepresentationType" in="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification">
+          <action type="add" btnLabel="addSpatialRepresentationType" 
+            name="spatialRepresentationType" or="spatialRepresentationType" 
+            if="count(gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:spatialRepresentationType)=0"
+            in="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification">
             <template>
               <snippet>
                 <gmd:spatialRepresentationType>
@@ -1089,45 +1022,30 @@
           </action>
 
 
-          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:temporalElement"/>
-          <!--
-          <template>
-            <values>
-              <key label="beginPosition" xpath="gmd:EX_TemporalExtent/gmd:extent/gml:TimePeriod/*/gml:beginPosition" use="gn-date-picker" tooltip="gmd:extent|gmd:EX_TemporalExtent">
-                <directiveAttributes data-hide-time="true" data-tag-name="gml:beginPosition"/>
-              </key>
-              <key label="endPosition" xpath="gmd:EX_TemporalExtent/gmd:extent/gml:TimePeriod/*/gml:endPosition" use="gn-date-picker" tooltip="gmd:extent|gmd:EX_TemporalExtent">
-                <directiveAttributes data-hide-time="true" data-tag-name="gml:endPosition"/> data-indeterminate-position="eval#gmd:EX_TemporalExtent/gmd:extent/gml:TimePeriod/*/gml:endPosition/@indeterminatePosition"/>
-              </key>
-            </values>
-            <snippet><gmd:extent>
-				   <gmd:EX_Extent>
-              <gmd:temporalElement>
-                <gmd:EX_TemporalExtent>
-                  <gmd:extent>
-                    <gml:TimePeriod>
-                      {{beginPosition}}
-                      {{endPosition}}
-                    </gml:TimePeriod>
-                  </gmd:extent>
-                </gmd:EX_TemporalExtent>
-              </gmd:temporalElement></gmd:EX_Extent></gmd:extent>
-            </snippet>
-
-          </template>
-        </field>-->
+          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent[gmd:EX_Extent/gmd:temporalElement]"/>
 
           <action type="add" btnLabel="addTemporalExtent" name="temporalExtent" or="extent" in="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification">
             <template>
               <snippet>
                 <gmd:extent>
                   <gmd:EX_Extent>
+                    <gmd:description>
+                      <gco:CharacterString>..</gco:CharacterString>
+                    </gmd:description>
                     <gmd:temporalElement>
                       <gmd:EX_TemporalExtent>
                         <gmd:extent>
-                          <gml:TimePeriod id="period">
-                            <gml:beginPosition>2018-01-01</gml:beginPosition>
-                            <gml:endPosition>2018-01-01</gml:endPosition>
+                          <gml:TimePeriod gml:id="">
+                          <gml:begin>
+                          <gml:TimeInstant gml:id="">
+                          <gml:timePosition/>
+                          </gml:TimeInstant>
+                          </gml:begin>
+                          <gml:end>
+                          <gml:TimeInstant gml:id="">
+                          <gml:timePosition/>
+                          </gml:TimeInstant>
+                          </gml:end>
                           </gml:TimePeriod>
                         </gmd:extent>
                       </gmd:EX_TemporalExtent>
@@ -1140,7 +1058,7 @@
 
           <!--
             Beschrijving temporeledekking
-            -->
+           
           <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:description"></field>
           <action type="add" if="count(gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:description) = 0" btnLabel="addExtentDescription" name="ExtentDescription" or="description" in="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent">
             <template>
@@ -1150,7 +1068,7 @@
                 </gmd:description>
               </snippet>
             </template>
-          </action>
+          </action> -->
 
           <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:supplementalInformation"></field>
           <action type="add" if="count(gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:supplementalInformation) = 0" btnLabel="addSupplementalInformation" name="supplementalInformation" or="supplementalInformation" forceLabel="true" removable="true" in="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification">
@@ -1584,7 +1502,7 @@
 
           <!-- 84. Li-processstep-->
 
-          <field name="processStep" xpath="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:lineage/gmd:LI_Lineage/gmd:processStep/gmd:LI_ProcessStep"></field>
+          <field name="processStep" xpath="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:lineage/gmd:LI_Lineage/gmd:processStep"></field>
 
           <action type="add" btnLabel="AddProcessStep" or="processStep" in="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:lineage/gmd:LI_Lineage">
             <template>
@@ -1692,7 +1610,7 @@
             </template>
           </action>
 
-          <field xpath="/gmd:MD_Metadata/gmd:locale/gmd:PT_Locale" in="/gmd:MD_Metadata"/>
+          <field xpath="/gmd:MD_Metadata/gmd:locale" in="/gmd:MD_Metadata"/>
 
           <action type="add" btnLabel="addLocale" name="locale" or="locale" in="/gmd:MD_Metadata">
             <template>
@@ -1702,6 +1620,9 @@
                     <gmd:languageCode>
                       <gmd:LanguageCode codeList="http://www.loc.gov/standards/iso639-2/" codeListValue=""></gmd:LanguageCode>
                     </gmd:languageCode>
+                    <gmd:characterEncoding>
+                      <gmd:MD_CharacterSetCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_CharacterSetCode" codeListValue="utf8"/>
+                    </gmd:characterEncoding>
                   </gmd:PT_Locale>
                 </gmd:locale>
               </snippet>
@@ -1720,9 +1641,6 @@
               </snippet>
             </template>
           </action>
-
-
-
 
           <!-- 5.4 Hiërarchieniveau.-->
           <field xpath="/gmd:MD_Metadata/gmd:hierarchyLevel" removable="false" />
