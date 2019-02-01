@@ -27,6 +27,7 @@
                 xmlns:gco="http://www.isotc211.org/2005/gco"
                 xmlns:gmd="http://www.isotc211.org/2005/gmd"
                 xmlns:gmx="http://www.isotc211.org/2005/gmx"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
                 xmlns:gml="http://www.opengis.net/gml"
                 xmlns:skos="http://www.w3.org/2004/02/skos/core#"
@@ -122,26 +123,31 @@
         <xsl:when test="geonet:contains-any-of($protocol, ('OGC:WMS', 'OGC:WMTS', 'OGC:WFS', 'OGC:WCS'))">
           <xsl:variable name="url" select="gmd:linkage/gmd:URL" />
           <xsl:variable name="paramRequest" select="'request=GetCapabilities'" />
-          <gmd:linkage>
-            <xsl:choose>
-              <xsl:when test="not(contains(lower-case($url), lower-case($paramRequest)))">
-                <xsl:choose>
-                  <xsl:when test="ends-with($url, '?')">
+
+          <xsl:choose>
+            <xsl:when test="not(contains(lower-case($url), lower-case($paramRequest)))">
+              <xsl:choose>
+                <xsl:when test="ends-with($url, '?')">
+                  <gmd:linkage>
                     <gmd:URL><xsl:value-of select="concat($url, $paramRequest)" /></gmd:URL>
-                  </xsl:when>
-                  <xsl:when test="contains($url, '?')">
+                  </gmd:linkage>
+                </xsl:when>
+                <xsl:when test="contains($url, '?')">
+                  <gmd:linkage>
                     <gmd:URL><xsl:value-of select="concat($url, '&amp;', $paramRequest)" /></gmd:URL>
-                  </xsl:when>
-                  <xsl:otherwise>
+                  </gmd:linkage>
+                </xsl:when>
+                <xsl:otherwise>
+                  <gmd:linkage>
                     <gmd:URL><xsl:value-of select="concat($url, '?', $paramRequest)" /></gmd:URL>
-                  </xsl:otherwise>
-                </xsl:choose>
-              </xsl:when>
-              <xsl:otherwise>
-                <xsl:apply-templates select="gmd:linkage" />
-              </xsl:otherwise>
-            </xsl:choose>
-          </gmd:linkage>
+                  </gmd:linkage>
+                </xsl:otherwise>
+              </xsl:choose>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:apply-templates select="gmd:linkage" />
+            </xsl:otherwise>
+          </xsl:choose>
 
         </xsl:when>
         <xsl:otherwise>
