@@ -29,7 +29,7 @@
   <dutchprofile2>Nederlands profiel</dutchprofile2>
   <simple>Eenvoudig</simple>
   <inspire>INSPIRE</inspire>
-<dataIdentificatie>Identificatie</dataIdentificatie>
+  <dataIdentificatie>Identificatie</dataIdentificatie>
 
   <metadata>Over de metadata</metadata>
   <identificationInfo>Identificatie info</identificationInfo>
@@ -63,7 +63,7 @@
 	<endPosition>Tot</endPosition>
 	<inspireTheme>INSPIRE Thema</inspireTheme>
 	<topicCategory>Onderwerp</topicCategory>
-	<conformity>Conformiteits indicatie</conformity>
+	<conformity>Conformiteitindicatie met de specificatie</conformity>
 	<thisIsASeries>Series</thisIsASeries>
 	<thisIsADataset>Dataset</thisIsADataset>
 
@@ -191,7 +191,7 @@
 	<AddKeywordFromThesaurus>Trefwoord uit woordenlijst toevoegen</AddKeywordFromThesaurus>
 	<legalConstraints>Juridische beperkingen</legalConstraints>
 	<addReferenceSystem>Referentie systeem toevoegen</addReferenceSystem>
-<addDistributionInfo>Distributie informatie toevoegen</addDistributionInfo>
+	<addDistributionInfo>Distributie informatie toevoegen</addDistributionInfo>
 	<restrictions>Restricties en beperkingen</restrictions>
 	<addParentIdentifier>Voeg parent toe</addParentIdentifier>
   <spatial>Ruimtelijke informatie</spatial>
