@@ -1817,6 +1817,7 @@
       <flatModeExceptions>
         <for name="gmd:descriptiveKeywords"/>
         <for name="gmd:otherConstraints"/>
+        <for name="gmd:useConstraints"/>
         <for name="gmd:keyword"/>
         <for name="gmd:spatialResolution"/>
         <for name="gmd:pointOfContact"/>

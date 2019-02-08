@@ -1457,6 +1457,7 @@ GEMET - INSPIRE themes, version 1.0 </description>
 	<!-- ==================================================== -->
 	<element name="gmd:useConstraints" context="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:useConstraints">
 		<label>(Juridische) gebruiksrestricties</label>
+		<btnLabel>(Juridische) gebruiksrestrictie toevoegen</btnLabel>
 		<description>Gebruikseisen die er zorg voor dragen dat privacy of intellectueel eigendom gewaarborgd zijn en elke andere speciale beperking(en) voor het verkrijgen van de metadata of data.</description>
 	</element>
 	<element name="gmd:useLimitation" context="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:useLimitation">
