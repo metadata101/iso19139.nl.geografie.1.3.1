@@ -22,10 +22,12 @@
   Op de <a href="catalog.search#/page/Help?page=Help" target="_blank">Help pagina</a> vindt u meer informatie over deze applicatie.</div></dutchProfileDescription>
 
   <fullViewTitle><h3>Nederlands profiel op ISO 19115 voor Geografie versie 1.3.1 - Volledige iso19139 weergave</h3></fullViewTitle>
-  <fullViewDescription><div>De volledige weergave toont alle ISO19139 elementen.</div></fullViewDescription>
+  <fullViewDescription><div>De volledige weergave toont alle ISO19139 elementen. 
+	Op de <a href="catalog.search#/page/Help?page=Help" target="_blank">Help pagina</a> vindt u meer informatie over deze applicatie.</div></fullViewDescription>
 
   <xmlViewTitle><h3>XML weergave</h3></xmlViewTitle>
-  <xmlViewDescription><div>In deze weergave wordt de metadata getoond in XML.</div></xmlViewDescription>
+  <xmlViewDescription><div>In deze weergave wordt de metadata getoond in XML.
+	Op de <a href="catalog.search#/page/Help?page=Help" target="_blank">Help pagina</a> vindt u meer informatie over deze applicatie.</div></xmlViewDescription>
 
   <advanced>Volledig</advanced>
   <default>Basis</default>
