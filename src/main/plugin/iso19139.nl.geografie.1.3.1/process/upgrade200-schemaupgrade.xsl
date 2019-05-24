@@ -337,7 +337,7 @@
       <xsl:copy-of select="@*[name() != 'xsi:schemaLocation']" />
       <xsl:attribute name="xsi:schemaLocation">
         <xsl:value-of select="@xsi:schemaLocation"/>
-        <xsl:if test="not(contains(@xsi:schemaLocation, 'http://www.isotc211.org/2005/gmx'))"> http://www.isotc211.org/2005/gmx http://www.isotc211.org/2005/gmx/gmx.xsd</xsl:if>
+        <xsl:if test="not(contains(@xsi:schemaLocation, 'http://www.isotc211.org/2005/gmx'))"> http://www.isotc211.org/2005/gmx http://schemas.opengis.net/iso/19139/20060504/gmx/gmx.xsd</xsl:if>
       </xsl:attribute>
       <xsl:apply-templates select="*" />
     </xsl:copy>
