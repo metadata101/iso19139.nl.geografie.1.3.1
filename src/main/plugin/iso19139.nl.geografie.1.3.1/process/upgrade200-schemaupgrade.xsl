@@ -304,9 +304,7 @@
             </gmd:otherConstraints>
             <gmd:otherConstraints>
               <gmx:Anchor
-                      xlink:href="http://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/noConditionsApply">
-                <xsl:value-of select="$licenseText" />
-              </gmx:Anchor>
+                      xlink:href="http://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/noConditionsApply">Er zijn geen condities voor toegang en gebruik</gmx:Anchor>
             </gmd:otherConstraints>
           </gmd:MD_LegalConstraints>
         </gmd:resourceConstraints>
@@ -320,9 +318,7 @@
             </gmd:accessConstraints>
             <gmd:otherConstraints>
               <gmx:Anchor
-                      xlink:href="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations">
-                <xsl:value-of select="$licenseText" />
-              </gmx:Anchor>
+                      xlink:href="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations">Geen beperkingen voor publieke toegang</gmx:Anchor>
             </gmd:otherConstraints>
           </gmd:MD_LegalConstraints>
         </gmd:resourceConstraints>
@@ -341,7 +337,7 @@
       <xsl:copy-of select="@*[name() != 'xsi:schemaLocation']" />
       <xsl:attribute name="xsi:schemaLocation">
         <xsl:value-of select="@xsi:schemaLocation"/>
-        <xsl:if test="not(contains(@xsi:schemaLocation, 'http://www.isotc211.org/2005/gmx'))"> http://www.isotc211.org/2005/gmx http://www.isotc211.org/2005/gmx/gmx.xsd</xsl:if>
+        <xsl:if test="not(contains(@xsi:schemaLocation, 'http://www.isotc211.org/2005/gmx'))"> http://www.isotc211.org/2005/gmx http://schemas.opengis.net/iso/19139/20060504/gmx/gmx.xsd</xsl:if>
       </xsl:attribute>
       <xsl:apply-templates select="*" />
     </xsl:copy>
