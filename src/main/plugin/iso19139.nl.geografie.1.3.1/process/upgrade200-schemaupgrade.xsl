@@ -331,9 +331,12 @@
     </xsl:choose>
   </xsl:template>
 
-  <!-- Add gmx namespace to schemaLocation if not present -->
+  <!-- Add gmx namespace to schemaLocation if not present and in namespaces declaration as 1.3.1 metadata doesn't usually have it,
+       to avoid been added inline each element that uses the namespace -->
   <xsl:template match="gmd:MD_Metadata">
     <xsl:copy>
+      <xsl:namespace name="gmx" select="'http://www.isotc211.org/2005/gmx'"/>
+
       <xsl:copy-of select="@*[name() != 'xsi:schemaLocation']" />
       <xsl:attribute name="xsi:schemaLocation">
         <xsl:value-of select="@xsi:schemaLocation"/>
