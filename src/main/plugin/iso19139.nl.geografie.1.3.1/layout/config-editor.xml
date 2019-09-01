@@ -1312,6 +1312,7 @@
                 <key label="turnaround" xpath="gmd:MD_StandardOrderProcess/gmd:turnaround/gco:CharacterString" tooltip="gmd:turnaround"/>
               </values>
               <snippet>
+                <gmd:distributionOrderProcess>
                 <gmd:MD_StandardOrderProcess>
                   <gmd:fees>
                     <gco:CharacterString>{{fees}}</gco:CharacterString>
@@ -1323,6 +1324,7 @@
                     <gco:CharacterString>{{orderingInstructions}}</gco:CharacterString>
                   </gmd:orderingInstructions>
                 </gmd:MD_StandardOrderProcess>
+                </gmd:distributionOrderProcess>
               </snippet>
             </template>
           </field>

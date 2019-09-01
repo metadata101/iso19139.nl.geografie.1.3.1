@@ -48,8 +48,8 @@
 
   <!-- i18n information -->
   <xsl:variable name="upgrade-schema-version-loc">
-    <msg id="a" xml:lang="eng">Update metadata to Nederlandse metadata profiel op ISO 19115 voor geografie 2.0</msg>
-    <msg id="a" xml:lang="dut">Update metadata to Nederlandse metadata profiel op ISO 19115 voor geografie 2.0</msg>
+    <msg id="a" xml:lang="eng">Update record to Nederlandse metadata profiel op ISO 19115 voor geografie 2.0</msg>
+    <msg id="a" xml:lang="dut">Werk record bij naar  "Nederlandse metadata profiel op ISO 19115 voor geografie 2.0"</msg>
   </xsl:variable>
 
   <xsl:template name="list-upgrade200-schemaupgrade">
@@ -88,8 +88,15 @@
       <gco:CharacterString>Nederlandse metadata profiel op ISO 19115 voor geografie 2.0</gco:CharacterString>
     </gmd:metadataStandardVersion>
   </xsl:template>
+  
+  <!-- Update metadataStandardVersion -->
+  <xsl:template match="gmd:metadataStandardName" priority="2">
+    <gmd:metadataStandardName>
+      <gco:CharacterString>ISO 19115</gco:CharacterString>
+    </gmd:metadataStandardName>
+  </xsl:template>
 
-
+  
   <!-- Use Anchor for gmd:MD_Identifier/gmd:code -->
   <!-- Keep xlink:href empty so users can fill the proper value -->
   <xsl:template match="gmd:identifier/gmd:MD_Identifier/gmd:code" priority="2">
