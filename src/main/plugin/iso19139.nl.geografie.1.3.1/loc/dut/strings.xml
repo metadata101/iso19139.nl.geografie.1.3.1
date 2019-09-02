@@ -69,7 +69,7 @@
 	<endPosition>Tot</endPosition>
 	<inspireTheme>INSPIRE Thema</inspireTheme>
 	<topicCategory>Onderwerp</topicCategory>
-	<conformity>Conformiteitindicatie met de specificatie</conformity>
+	<conformity>Conformiteit indicatie met de specificatie</conformity>
 	<thisIsASeries>Series</thisIsASeries>
 	<thisIsADataset>Dataset</thisIsADataset>
 
@@ -101,7 +101,7 @@
 
 	<CompletenessOmission>Compleetheid</CompletenessOmission>
 	<spatialRepresentationType>Ruimtelijk schema</spatialRepresentationType>
-	<qualityScope>Niveau kwaliteitsbeschrijving</qualityScope>
+	<qualityScope>Niveau kwaliteits beschrijving</qualityScope>
 
 	<useLimitation>Gebruiks beperkingen</useLimitation>
 	<accessConstraints>Toegangs beperkingen</accessConstraints>
@@ -166,7 +166,7 @@
     <addResolution>Resolutie toevoegen</addResolution>
     <addScale>Toepassings schaal toevoegen</addScale>
 
-	<conformanceStatement>Conformiteitindicatie met de specificatie</conformanceStatement>
+	<conformanceStatement>Conformiteit indicatie met de specificatie</conformanceStatement>
 	<ExtentDescription>Omschrijving temporele dekking</ExtentDescription>
 	<DsCharacterSet>Karakterset dataset</DsCharacterSet>
 

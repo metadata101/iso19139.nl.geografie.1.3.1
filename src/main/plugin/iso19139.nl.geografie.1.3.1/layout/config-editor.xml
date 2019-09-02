@@ -187,9 +187,9 @@
     <table for="gmd:CI_ResponsibleParty">
       <header>
         <!-- TODO: Add label from strings.xml / label with context-->
-        <col label="gmd:organisationName" class="gn-required"/>
-        <col label="gmd:electronicMailAddress class="gn-required""/>
-        <col label="gmd:role" class="gn-required"/>
+        <col label="organisationName" class="gn-required"/>
+        <col label="electronicMailAddress" class="gn-required"/>
+        <col label="role" class="gn-required"/>
         <col/>
       </header>
       <row>
@@ -201,9 +201,9 @@
     </table>
     <table for="gmd:CI_OnlineResource">
       <header>
-        <col label="gmd:protocol" class="gn-required"/>
-        <col label="gmd:linkage" class="gn-required"/>
-        <col label="gmd:name"/>
+        <col label="protocol" class="gn-required"/>
+        <col label="linkage" class="gn-required"/>
+        <col label="name"/>
         <col/>
       </header>
       <row>
@@ -215,9 +215,9 @@
     </table>
     <table for="gmd:MD_Format">
       <header>
-        <col label="gmd:name"/>
-        <col label="gmd:version"/>
-        <col label="gmd:specification"/>
+        <col label="name"/>
+        <col label="version"/>
+        <col label="specification"/>
         <col/>
       </header>
       <row>
@@ -229,8 +229,8 @@
     </table>
     <table for="gmd:PT_Locale">
       <header>
-        <col label="gmd:languageCode"/>
-        <col label="gmd:characterEncoding"/>
+        <col label="languageCode"/>
+        <col label="characterEncoding"/>
         <col/>
       </header>
       <row>
@@ -242,8 +242,8 @@
 
     <table for="gmd:MD_SecurityConstraints" label="MD_SecurityConstraints">
       <header>
-        <col label="gmd:classification"/>
-        <col label="gmd:userNote"/>
+        <col label="classification"/>
+        <col label="userNote"/>
         <col/>
       </header>
       <row>
@@ -267,7 +267,7 @@
         <text ref="viewTitle"/>
         <text ref="viewDescription"/>
 
-        <directive data-gn-onlinesrc-list="" types="thumbnail|onlinesrc|parent|fcats"/>
+        <directive data-gn-onlinesrc-list="" types="thumbnail|onlinesrc|parent|fcats|sibling|associated"/>
 
         <section name="Basis">
 
@@ -545,7 +545,7 @@
         <text ref="dutchProfileTitle"/>
         <text ref="dutchProfileDescription"/>
 
-        <directive data-gn-onlinesrc-list="" types="thumbnail|onlinesrc|parent|fcats"/>
+        <directive data-gn-onlinesrc-list="" types="thumbnail|onlinesrc|parent|fcats|sibling|associated"/>
 
         <section name="dataIdentificatie">
           <!-- 5.1 Titel van de bron  -->
@@ -1312,6 +1312,7 @@
                 <key label="turnaround" xpath="gmd:MD_StandardOrderProcess/gmd:turnaround/gco:CharacterString" tooltip="gmd:turnaround"/>
               </values>
               <snippet>
+                <gmd:distributionOrderProcess>
                 <gmd:MD_StandardOrderProcess>
                   <gmd:fees>
                     <gco:CharacterString>{{fees}}</gco:CharacterString>
@@ -1323,6 +1324,7 @@
                     <gco:CharacterString>{{orderingInstructions}}</gco:CharacterString>
                   </gmd:orderingInstructions>
                 </gmd:MD_StandardOrderProcess>
+                </gmd:distributionOrderProcess>
               </snippet>
             </template>
           </field>
@@ -1835,7 +1837,7 @@
       <tab id="identificationInfo" default="true">
         <text ref="fullViewTitle"/>
         <text ref="fullViewDescription"/>
-        <directive data-gn-onlinesrc-list="" types="thumbnail|onlinesrc|dataset"/>
+        <directive data-gn-onlinesrc-list="" types="thumbnail|onlinesrc|dataset|fcats|sibling|associated"/>
         <section xpath="/gmd:MD_Metadata/gmd:identificationInfo" or="identificationInfo"
                  in="/gmd:MD_Metadata"/>
       </tab>

@@ -48,8 +48,8 @@
   
   <!-- i18n information -->
   <xsl:variable name="upgrade-schema-version-loc">
-    <msg id="a" xml:lang="eng">Update metadata to Nederlandse metadata profiel op ISO 19115 voor geografie 2.0</msg>
-    <msg id="a" xml:lang="dut">Update metadata to Nederlandse metadata profiel op ISO 19115 voor geografie 2.0</msg>
+    <msg id="a" xml:lang="eng">Update record to Nederlandse metadata profiel op ISO 19115 voor geografie 2.0</msg>
+    <msg id="a" xml:lang="dut">Werk record bij naar  "Nederlandse metadata profiel op ISO 19115 voor geografie 2.0"</msg>
   </xsl:variable>
 
   <xsl:template name="list-upgrade200-schemaupgrade">
@@ -89,6 +89,13 @@
     </gmd:metadataStandardVersion>
   </xsl:template>
   
+  <!-- Update metadataStandardVersion -->
+  <xsl:template match="gmd:metadataStandardName" priority="2">
+    <gmd:metadataStandardName>
+      <gco:CharacterString>ISO 19115</gco:CharacterString>
+    </gmd:metadataStandardName>
+  </xsl:template>
+
   
   <!-- Use Anchor for gmd:MD_Identifier/gmd:code -->
   <!-- Keep xlink:href empty so users can fill the proper value -->
@@ -271,39 +278,76 @@
   </xsl:template>
 
 
-  <!-- Legal constraints with 2 otherContraints: 1 with a link and other with a text -> join them using an Anchor -->
-  <xsl:template match="gmd:resourceConstraints/gmd:MD_LegalConstraints[count(gmd:otherConstraints[gco:CharacterString]) = 2]">
-    <xsl:copy>
-      <xsl:copy-of select="@*" />
+  <!-- Legal constraints with 2 otherContraints: 1 with a link and other with a text.
+       - Create 2 legal constraints: 1 with license url and text and noConditionsApply.
+       - Create 2 legal constraints: 1 with license text and noLimitations.
+ -->
+  <xsl:template match="gmd:resourceConstraints[gmd:MD_LegalConstraints/gmd:accessConstraints/gmd:MD_RestrictionCode/@codeListValue='otherRestrictions' and
+                          count(gmd:MD_LegalConstraints/gmd:otherConstraints) = 2]">
 
-      <xsl:apply-templates select="gmd:accessConstraints" />
-      <xsl:apply-templates select="gmd:useConstraints" />
+    <xsl:variable name="hasLicenceUrl" select="count(starts-with(gmd:otherConstraints/gco:CharacterString, 'http')) =1" />
 
-      <xsl:choose>
-        <xsl:when test="count(gmd:otherConstraints[starts-with(normalize-space(gco:CharacterString), 'http')]) = 1">
-          <xsl:variable name="textValue" select="normalize-space(gmd:otherConstraints[not(starts-with(normalize-space(gco:CharacterString), 'http'))]/gco:CharacterString)" />
-          <xsl:variable name="linkValue" select="normalize-space(gmd:otherConstraints[starts-with(normalize-space(gco:CharacterString), 'http')]/gco:CharacterString)" />
+    <xsl:choose>
+      <xsl:when test="$hasLicenceUrl">
 
-          <gmd:otherConstraints>
-            <gmx:Anchor
-              xlink:href="{$linkValue}"><xsl:value-of select="$textValue" /></gmx:Anchor>
-          </gmd:otherConstraints>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:apply-templates select="gmd:otherConstraints" />
-        </xsl:otherwise>
-      </xsl:choose>
+        <xsl:variable name="licenseUrl" select="gmd:MD_LegalConstraints/gmd:otherConstraints[starts-with(gco:CharacterString, 'http')]/gco:CharacterString" />
+        <xsl:variable name="licenseText" select="gmd:MD_LegalConstraints/gmd:otherConstraints[not(starts-with(gco:CharacterString, 'http'))]/gco:CharacterString" />
 
-    </xsl:copy>
+        <gmd:resourceConstraints>
+          <gmd:MD_LegalConstraints>
+            <gmd:accessConstraints>
+              <gmd:MD_RestrictionCode
+                      codeListValue="otherRestrictions"
+                      codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_RestrictionCode"/>
+            </gmd:accessConstraints>
+
+            <xsl:apply-templates select="gmd:MD_LegalConstraints/gmd:useConstraints" />
+
+            <gmd:otherConstraints>
+              <gmx:Anchor
+                      xlink:href="{$licenseUrl}">
+                <xsl:value-of select="$licenseText" />
+              </gmx:Anchor>
+            </gmd:otherConstraints>
+            <gmd:otherConstraints>
+              <gmx:Anchor
+                      xlink:href="http://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/noConditionsApply">Er zijn geen condities voor toegang en gebruik</gmx:Anchor>
+            </gmd:otherConstraints>
+          </gmd:MD_LegalConstraints>
+        </gmd:resourceConstraints>
+
+        <gmd:resourceConstraints>
+          <gmd:MD_LegalConstraints>
+            <gmd:accessConstraints>
+              <gmd:MD_RestrictionCode
+                      codeListValue="otherRestrictions"
+                      codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_RestrictionCode"/>
+            </gmd:accessConstraints>
+            <gmd:otherConstraints>
+              <gmx:Anchor
+                      xlink:href="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations">Geen beperkingen voor publieke toegang</gmx:Anchor>
+            </gmd:otherConstraints>
+          </gmd:MD_LegalConstraints>
+        </gmd:resourceConstraints>
+
+      </xsl:when>
+
+      <xsl:otherwise>
+        <xsl:copy-of select="gmd:resourceConstraints" />
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
-  <!-- Add gmx namespace to schemaLocation if not present -->
+  <!-- Add gmx namespace to schemaLocation if not present and in namespaces declaration as 1.3.1 metadata doesn't usually have it,
+       to avoid been added inline each element that uses the namespace -->
   <xsl:template match="gmd:MD_Metadata">
     <xsl:copy>
+      <xsl:namespace name="gmx" select="'http://www.isotc211.org/2005/gmx'"/>
+
       <xsl:copy-of select="@*[name() != 'xsi:schemaLocation']" />
       <xsl:attribute name="xsi:schemaLocation">
         <xsl:value-of select="@xsi:schemaLocation"/>
-        <xsl:if test="not(contains(@xsi:schemaLocation, 'http://www.isotc211.org/2005/gmx'))"> http://www.isotc211.org/2005/gmx http://www.isotc211.org/2005/gmx/gmx.xsd</xsl:if>
+        <xsl:if test="not(contains(@xsi:schemaLocation, 'http://www.isotc211.org/2005/gmx'))"> http://www.isotc211.org/2005/gmx http://schemas.opengis.net/iso/19139/20060504/gmx/gmx.xsd</xsl:if>
       </xsl:attribute>
       <xsl:apply-templates select="*" />
     </xsl:copy>
