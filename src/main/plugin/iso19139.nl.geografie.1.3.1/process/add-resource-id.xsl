@@ -63,7 +63,7 @@
 
       <!-- Create resource identifier based on metadata record identifier -->
       <xsl:variable name="urlWithoutLang" select="substring-before($catalogUrl, $nodeId)"/>
-      <xsl:variable name="prefix" select="if ($resource-id-url-prefix != '') then $resource-id-url-prefix else $urlWithoutLang"/>
+      <xsl:variable name="prefix" select="if ($resource-id-url-prefix != '') then concat($resource-id-url-prefix,'/') else $urlWithoutLang"/>
       <xsl:value-of select="concat($prefix, $fileIdentifier)"/>
     </xsl:function>
 
@@ -82,8 +82,6 @@
                 gmd:editionDate"/>
             
             <xsl:variable name="code" select="gn-fn-iso19139:resource-id-generate(/*/gmd:fileIdentifier/gco:CharacterString)"/>
-            <xsl:copy-of
-                select="gmd:identifier[gmd:MD_Identifier/gmd:code/gco:CharacterString != $code]"/>
             <gmd:identifier>
               <gmd:MD_Identifier>
                 <gmd:code>
