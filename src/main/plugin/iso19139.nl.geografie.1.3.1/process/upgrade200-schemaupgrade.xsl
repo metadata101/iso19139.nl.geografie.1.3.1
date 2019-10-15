@@ -85,7 +85,7 @@
   <!-- Update metadataStandardVersion -->
   <xsl:template match="gmd:metadataStandardVersion" priority="2">
     <gmd:metadataStandardVersion>
-      <gco:CharacterString>Nederlandse metadata profiel op ISO 19115 voor geografie 2.0</gco:CharacterString>
+      <gco:CharacterString>Nederlands metadata profiel op ISO 19115 voor geografie 2.0</gco:CharacterString>
     </gmd:metadataStandardVersion>
   </xsl:template>
   
