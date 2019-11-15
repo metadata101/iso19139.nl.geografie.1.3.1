@@ -60,7 +60,7 @@
   <xsl:param name="inspire">false</xsl:param>
 
   <xsl:variable name="inspire-thesaurus"
-                select="if ($inspire!='false') then document(translate(concat('file:///', $thesauriDir, '/external/thesauri/theme/inspire-theme.rdf'),'\','/')) else ''"/>
+                select="if ($inspire!='false') then document(translate(concat('file:///', $thesauriDir, '/external/thesauri/theme/httpinspireeceuropaeutheme-theme.rdf'),'\','/')) else ''"/>
   <xsl:variable name="inspire-theme" select="if ($inspire!='false') then $inspire-thesaurus//skos:Concept else ''"/>
 
   <!-- If identification creation, publication and revision date
@@ -304,6 +304,8 @@
         <xsl:variable name="listOfKeywords"
                       select="gmd:keyword/gco:CharacterString|
                                         gmd:keyword/gmx:Anchor"/>
+        <xsl:variable name="thesaurusName" select="gmd:thesaurusName/gmd:CI_Citation/gmd:title/*[1]"/>
+
         <xsl:for-each select="$listOfKeywords">
           <xsl:variable name="keyword" select="string(.)"/>
 
@@ -325,7 +327,7 @@
 
           <!-- If INSPIRE is enabled, check if the keyword is one of the 34 themes
                and index annex, theme and theme in english. -->
-          <xsl:if test="$inspire='true'">
+          <xsl:if test="$inspire='true' and normalize-space(lower-case($thesaurusName)) = 'gemet - inspire themes, version 1.0'">
             <xsl:if test="string-length(.) &gt; 0">
 
               <xsl:variable name="inspireannex">

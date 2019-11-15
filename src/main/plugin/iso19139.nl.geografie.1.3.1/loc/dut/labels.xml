@@ -117,12 +117,12 @@
 	</element>
 	<!-- ==================================================== -->
 	<element name="gmd:accessConstraints" context="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:accessConstraints">
-		<label>(Juridische) toegangsrestricties</label>
+		<label>(Juridische) toegangs restricties</label>
 		<description>Toegangseisen die er zorg voor dragen dat privacy of intellectueel eigendom gewaarborgd zijn. Als er overige beperkingen worden opgenomen, dient hier de waarde 'anders' gekozen te worden</description>
 		<help_link>http://wiki.geonovum.nl/index.php/2.4.33_Juridische_toegangsrestricties</help_link>
 		<condition>C</condition>
 	</element>
-	
+
 	<!-- ==================================================== -->
 	<element name="gmd:address" context="/gmd:MD_Metadata/gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address">
 		<label>Adres</label>
@@ -255,20 +255,20 @@
 	</element>
 	<!-- ==================================================== -->
 	<element name="gmd:CI_ResponsibleParty" context="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:pointOfContact/gmd:CI_ResponsibleParty">
-		<label>Verantwoordelijke partij</label>
-		<description>Identificatie en wijze van communicatie met verantwoordelijke partij.</description>
+		<label>Verantwoordelijke organisatie</label>
+		<description>Identificatie en wijze van communicatie met verantwoordelijke organisatie.</description>
 	</element>
 	<element name="gmd:CI_ResponsibleParty" context="/gmd:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty">
-		<label>Verantwoordelijke partij</label>
-		<description>Identificatie en wijze van communicatie met verantwoordelijke partij.</description>
+		<label>Verantwoordelijke organisatie</label>
+		<description>Identificatie en wijze van communicatie met verantwoordelijke organisatie.</description>
 	</element>
 	<element name="gmd:CI_ResponsibleParty" context="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:lineage/gmd:LI_Lineage/gmd:processStep/gmd:LI_ProcessStep/gmd:processor/gmd:CI_ResponsibleParty">
-		<label>Verantwoordelijke partij</label>
-		<description>Identificatie en wijze van communicatie met verantwoordelijke partij.</description>
+		<label>Verantwoordelijke organisatie</label>
+		<description>Identificatie en wijze van communicatie met verantwoordelijke organisatie.</description>
 	</element>
 	<element name="gmd:CI_ResponsibleParty" context="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:lineage/gmd:LI_Lineage/gmd:source/gmd:LI_Source/gmd:sourceStep/gmd:LI_ProcessStep/gmd:processor/gmd:CI_ResponsibleParty">
-		<label>Verantwoordelijke partij</label>
-		<description>Identificatie en wijze van communicatie met verantwoordelijke partij.</description>
+		<label>Verantwoordelijke organisatie</label>
+		<description>Identificatie en wijze van communicatie met verantwoordelijke organisatie.</description>
 	</element>
 	<!-- ==================================================== -->
 	<element name="gmd:CI_RoleCode" context="/gmd:MD_Metadata/gmd:contact/gmd:CI_ResponsibleParty/gmd:role/gmd:CI_RoleCode">
@@ -329,14 +329,14 @@
 	</element>
 	<!-- ==================================================== -->
 	<element name="gmd:classification" context="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_SecurityConstraints/gmd:classification">
-		<label>Veiligheidsrestricties</label>
+		<label>Veiligheids restricties</label>
 		<description>Beperkingen die zijn opgelegd op basis van vertrouwelijkheid.</description>
 		<help_link>http://wiki.geonovum.nl/index.php/2.4.35_Veiligheidsrestricties</help_link>
 		<condition>C</condition>
 	</element>
 	<!-- ==================================================== -->
 	<element name="gmd:code" context="/gmd:MD_Metadata/gmd:referenceSystemInfo/gmd:MD_ReferenceSystem/gmd:referenceSystemIdentifier/gmd:RS_Identifier/gmd:code">
-		<label>Code referentiesysteem</label>
+		<label>Code referentie systeem</label>
 		<description>Alfanumerieke waarde die het gebruikte referentiesysteem van de dataset aangeeft. EPSG codes dienen gebruikt te worden. Aantal voorbeelden 28992 (RD), 4937 (ETRS89), 4326 (WGS84).</description>
 		<help_link>http://wiki.geonovum.nl/index.php/2.4.26_Code_Referentiesysteem</help_link>
 		<condition>mandatory</condition>
@@ -353,7 +353,7 @@
 	</element>
 	<!-- ==================================================== -->
 	<element name="gmd:contact" context="/gmd:MD_Metadata/gmd:contact">
-		<label>Partijen verantwoordelijk voor de metadata</label>
+		<label>Organisatie verantwoordelijk voor de metadata</label>
 		<description>Organisatie(s) die verantwoordelijk zijn voor de metadata.</description>
 	</element>
 	<!-- ==================================================== -->
@@ -384,7 +384,7 @@
 	</element>
 	<!-- ==================================================== -->
 	<element name="gmd:dataQualityInfo" context="/gmd:MD_Metadata/gmd:dataQualityInfo">
-		<label>Data kwaliteitsbeschrijving</label>
+		<label>Data kwaliteits beschrijving</label>
 		<description>Informatie over de kwaliteit van de dataset.</description>
 	</element>
 	<!-- ==================================================== -->
@@ -495,7 +495,7 @@
 	</element>
 	<!-- ==================================================== -->
 	<element name="gmd:denominator" context="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:spatialResolution/gmd:MD_Resolution/gmd:equivalentScale/gmd:MD_RepresentativeFraction/gmd:denominator">
-		<label>Toepassingsschaal</label>
+		<label>Toepassings schaal</label>
 		<description>De beoogde schaal waarop de dataset waarheidsgetrouw gebruikt mag worden. Dit moet een positief numeriek getal zijn. '1:' niet mogelijk. Een interval is mogelijk. U kunt dit element dupliceren en de beginwaarde in het eerste element en de eindwaarde in het tweede element invullen. Toepassingsschaal moet ingevuld worden voor vectordata. Voor rasterdata laat u dit element leeg en vult u het element Resolutie in.</description>
 		<help_link>http://wiki.geonovum.nl/index.php/2.4.24_Toepassingsschaal</help_link>
 		<condition>C</condition>
@@ -503,7 +503,7 @@
 	<!-- ==================================================== -->
 	<element name="gmd:description" context="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:description">
 		<label>Beschrijving temporele dekking</label>
-		<description>Inhoudelijke geldigheid van de data, gespecificeerd als een periode.</description>
+		<description>temporele dekking van de data, gespecificeerd als een periode.</description>
 	</element>
 	<element name="gmd:description" context="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:lineage/gmd:LI_Lineage/gmd:processStep/gmd:LI_ProcessStep/gmd:description">
 		<label>Beschrijving uitgevoerde bewerkingen</label>
@@ -520,6 +520,7 @@
 	<!-- ==================================================== -->
 	<element name="gmd:descriptiveKeywords" context="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords">
 		<label>Trefwoorden</label>
+		<btnLabel>Trefwoorden toevoegen</btnLabel>
 		<description>In het algemeen gebruikte woorden of geformaliseerde zinnen om het onderwerp te beschrijven.</description>
 	</element>
 	<!-- ==================================================== -->
@@ -529,7 +530,7 @@
 		<help_link>http://wiki.geonovum.nl/index.php/2.4.25_Resolutie</help_link>
 		<condition>C</condition>
 	</element>
-	
+
 	<!-- ==================================================== -->
 	<element name="gmd:distributionFormat" context="/gmd:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:distributionFormat">
 		<label>Distributie formaat</label>
@@ -563,7 +564,7 @@
 	</element>
 	<!-- ==================================================== -->
 	<element name="gmd:DQ_ConformanceResult" context="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_DomainConsistency/gmd:result/gmd:DQ_ConformanceResult">
-		<label>Conformiteitindicatie met de specificatie</label>
+		<label>Conformiteit indicatie met de specificatie</label>
 		<description>Resultaat conformiteit met de specificatie.</description>
 	</element>
 	<!-- ==================================================== -->
@@ -631,7 +632,7 @@
 	</element>
 	<!-- ==================================================== -->
 	<element name="gmd:equivalentScale" context="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:spatialResolution/gmd:MD_Resolution/gmd:equivalentScale">
-		<label>Toepassingsschaal</label>
+		<label>Toepassings schaal</label>
 		<description>De beoogde schaal waarop de dataset waarheidsgetrouw gebruikt mag worden. Dit moet een positief numeriek getal zijn. '1:' niet mogelijk. Een interval is mogelijk. U kunt dit element dupliceren en de beginwaarde in het eerste element en de eindwaarde in het tweede element invullen. Toepassingsschaal moet ingevuld worden voor vectordata. Voor rasterdata laat u dit element leeg en vult u het element Resolutie in.</description>
 	</element>
 	<!-- ==================================================== -->
@@ -652,8 +653,8 @@
 	</element>
 	<!-- ==================================================== -->
 	<element name="gmd:EX_TemporalExtent" context="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:temporalElement/gmd:EX_TemporalExtent">
-		<label>Temporele dekking</label>
-		<description>Inhoudelijke geldigheid van de data, gespecificeerd naar begin- en einddatum.</description>
+		<label>temporele dekking</label>
+		<description>temporele dekking van de data, gespecificeerd naar begin- en einddatum.</description>
 	</element>
 	<!-- ==================================================== -->
 	<element name="gmd:EX_VerticalExtent" context="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:EX_VerticalExtent">
@@ -673,8 +674,8 @@
 		<description>Informatie over de ruimtelijke, verticale en temporele dekking van de dataset.</description>
 	</element>
 	<element name="gmd:extent" context="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:temporalElement/gmd:EX_TemporalExtent/gmd:extent">
-		<label>Temporele dekking</label>
-		<description>Inhoudelijke geldigheid van de data, gespecificeerd naar begin- en einddatum.</description>
+		<label>temporele dekking</label>
+		<description>temporele dekking van de data, gespecificeerd naar begin- en einddatum.</description>
 		<help_link>http://wiki.geonovum.nl/index.php/2.4.19_Temporele_dekking</help_link>
 	</element>
 	<!-- ==================================================== -->
@@ -731,7 +732,7 @@
 	</element>
 	<!-- ==================================================== -->
 	<element name="gmd:hierarchyLevelName" context="/gmd:MD_Metadata/gmd:hierarchyLevelName">
-		<label>Hiërarchisch niveau naam</label>
+		<label>Naam hiërarchisch niveau</label>
 		<description>Naam van het hiërarchisch niveau waar de metadata betrekking op heeft. Verplicht als Hiërarchisch niveau niet gelijk is aan dataset</description>
 			<help_link>http://wiki.geonovum.nl/index.php/2.4.4_Hi%C3%ABrarchieniveau naam</help_link>
 		<condition>C</condition>
@@ -762,6 +763,7 @@
 	<!-- ==================================================== -->
 	<element name="gmd:keyword" context="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords/gmd:MD_Keywords/gmd:keyword">
 		<label>Trefwoord</label>
+		<btnLabel>Trefwoord toevoegen</btnLabel>
 		<description>In het algemeen gebruikte term(en) of geformaliseerde zin(nen) om een onderwerp te beschrijven.</description>
 		<help_link>http://wiki.geonovum.nl/index.php/2.4.11_Trefwoord</help_link>
 		<condition>mandatory</condition>
@@ -786,7 +788,7 @@
 	</element>
 	<!-- ==================================================== -->
 	<element name="gmd:level" context="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:scope/gmd:DQ_Scope/gmd:level">
-		<label>Niveau kwaliteitsbeschrijving</label>
+		<label>Niveau kwaliteits beschrijving</label>
 		<description>Niveau (dataset of serie) waar de kwaliteitsbeschrijving betrekking op heeft.</description>
 		<help_link>http://wiki.geonovum.nl/index.php/2.4.22_Niveau_kwaliteitsbeschrijving</help_link>
 		<condition>mandatory</condition>
@@ -798,14 +800,11 @@
 	</element>
 
 	<!-- ==================================================== -->
-	<element name="gmd:LI_ProcessStep" context="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:lineage/gmd:LI_Lineage/gmd:processStep/gmd:LI_ProcessStep">
-		<label>Processtap</label>
-		<description>Informatie over een specifieke stap in het proces waarmee de data tot stand is gekomen.</description>
-	</element>
-	<element name="gmd:LI_ProcessStep" context="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:lineage/gmd:LI_Lineage/gmd:source/gmd:LI_Source/gmd:sourceStep/gmd:LI_ProcessStep">
-		<label>Processtap</label>
-		<description>Informatie over een specifieke stap in het proces waarmee de data tot stand is gekomen.</description>
-	</element>
+	<element name="gmd:LI_ProcessStep">
+    <label>Uitgevoerde bewerking</label>
+    <description>Informatie over een bewerking in het proces waarmee de dataset tot stand is gekomen of bewerkt.</description>
+  </element>
+
 	<!-- ==================================================== -->
 	<element name="gmd:LI_Source" context="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:lineage/gmd:LI_Lineage/gmd:source/gmd:LI_Source">
 		<label>Bron</label>
@@ -912,11 +911,12 @@
 	<!-- ==================================================== -->
 	<element name="gmd:MD_Keywords" context="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords/gmd:MD_Keywords">
 		<label>Trefwoorden</label>
+		<btnLabel>Trefwoord toevoegen</btnLabel>
 		<description>In het algemeen gebruikte woorden of geformaliseerde zinnen om het onderwerp te beschrijven.</description>
 	</element>
 	<!-- ==================================================== -->
 	<element name="gmd:MD_LegalConstraints" context="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints">
-		<label>Legale beperkingen</label>
+		<label>Juridische beperkingen</label>
 		<description>Restricties en juridische voorwaarden die van toepassing zijn op zowel het gebruik van als de toegang tot de data.</description>
 	</element>
 	<!-- ==================================================== -->
@@ -952,7 +952,7 @@
 	</element>
 	<!-- ==================================================== -->
 	<element name="gmd:MD_ReferenceSystem" context="/gmd:MD_Metadata/gmd:referenceSystemInfo/gmd:MD_ReferenceSystem">
-		<label>Referentiesysteem</label>
+		<label>Referentie systeem</label>
 		<description>Informatie over het referentiesysteem waarin de data is opgeslagen. De twee secties kunnen gebruikt worden voor de invoer van het horizontale en het verticale referentiesysteem.</description>
 	</element>
 	<!-- ==================================================== -->
@@ -985,7 +985,7 @@
 	</element>
 	<!-- ==================================================== -->
 	<element name="gmd:MD_SecurityConstraints" context="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_SecurityConstraints">
-		<label>Veiligheidsrestricties </label>
+		<label>Veiligheids restricties </label>
 		<description>Restricties op de dataset met betrekking tot het onderwerp (nationale) veiligheid.</description>
 	</element>
 	<!-- ==================================================== -->
@@ -1119,7 +1119,7 @@
 		<label>Inwinnende organisatie</label>
 		<description>Naam van de organisatie die de brongegevens heeft ingewonnen.</description>
 	</element>
-	<element name="gmd:otherConstraints" context="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:otherConstraints">
+	<element name="gmd:otherConstraints" >
 		<label>Overige beperkingen</label>
 		<description>Andere restricties of beperkingen. Dit veld is te gebruiken om de URL naar de licentie van Public domain, Creative Commons of Geo Gedeeld in te vullen. </description>
         <helper>
@@ -1133,6 +1133,7 @@
 			<option value="http://creativecommons.org/licenses/by-nc-nd/3.0/nl">Gebruiksvoorwaarden (naamsvermelding, niet commerieel, geen afgeleide werken)</option>
 			<option value="http://">Gebruiksvoorwaarden Geogedeeld</option>
         </helper>
+		<btnLabel>Overige beperking toevoegen</btnLabel>
 		<help_link>http://wiki.geonovum.nl/index.php/2.4.34_Overige_beperkingen</help_link>
 	</element>
 	<!-- ==================================================== -->
@@ -1144,7 +1145,7 @@
 	</element>
 	<!-- ==================================================== -->
 	<element name="gmd:pass" context="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_DomainConsistency/gmd:result/gmd:DQ_ConformanceResult/gmd:pass">
-		<label>Conformiteitindicatie</label>
+		<label>Conformiteit indicatie</label>
 		<description>Indicatie van conformiteit met de specificatie. Het is alleen verplicht als de dataset een INSPIRE bron is of als de informatie is gemodelleerd volgens een specifiek informatie model.</description>
 		<help_link>http://wiki.geonovum.nl/index.php/2.4.28_Conformiteitindicatie_met_de_specificatie</help_link>
 		<condition>C</condition>
@@ -1196,16 +1197,19 @@
 	<!-- ==================================================== -->
 	<element name="gmd:processor" context="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:lineage/gmd:LI_Lineage/gmd:processStep/gmd:LI_ProcessStep/gmd:processor">
 		<label>Producent</label>
+		<btnLabel>Producent toevoegen</btnLabel>
 		<description>Personen of organisaties die betrokken zijn bij deze stap in het proces.</description>
 	</element>
 	<element name="gmd:processor" context="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:lineage/gmd:LI_Lineage/gmd:source/gmd:LI_Source/gmd:sourceStep/gmd:LI_ProcessStep/gmd:processor">
 		<label>Inwinner</label>
+		<btnLabel>Inwinner toevoegen</btnLabel>
 		<description>Personen of organisaties die betrokken zijn bij deze stap in het proces.</description>
 	</element>
 	<!-- ==================================================== -->
-	<element name="gmd:processStep" context="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:lineage/gmd:LI_Lineage/gmd:processStep">
+	<element name="gmd:processStep">
 		<label>Uitgevoerde bewerking</label>
-		<description>Informatie over een bewerking in het proces waarmee de dataset tot stand is gekomen.</description>
+		<btnLabel>Bewerking toevoegen</btnLabel>
+		<description>Informatie over een bewerking in het proces waarmee de dataset tot stand is gekomen of bewerkt.</description>
 	</element>
 	<!-- ==================================================== -->
 	<element name="gmd:protocol" alias="protocol">
@@ -1221,7 +1225,6 @@
       <option value="INSPIRE Atom">Atom Service Feed Download</option>
       <option value="OGC:WCTS"> Web Coordinate Transformation</option>
       <option value="OGC:WPS"> Web Processing Service</option>
-      <option value="UKST"> Unknown Service Type</option>
       <option value="OGC:WMC"> Web Map Context</option>
       <option value="OGC:KML"> Keyhole Mark-up Language</option>
       <option value="OGC:GML"> Geography Markup Language</option>
@@ -1235,6 +1238,10 @@
       <option value="OGC:OUS"> OpenLS Utility Service </option>
       <option value="OGC:OPS"> OpenLS Presentation Service </option>
       <option value="OGC:ORS"> OpenLS Route Service</option>
+	  <option value="website"> website</option>
+	  <option value="download"> download</option>
+	  <option value="dataset"> URI naar locale dataset locatie</option>
+	  <option value="UKST"> Onbekend Service Type</option>
     </helper>
 		<condition>mandatory</condition>
 	</element>
@@ -1245,12 +1252,12 @@
 	</element>
 	<!-- ==================================================== -->
 	<element name="gmd:referenceSystemIdentifier" context="/gmd:MD_Metadata/gmd:referenceSystemInfo/gmd:MD_ReferenceSystem/gmd:referenceSystemIdentifier">
-		<label>Referentiesysteem</label>
+		<label>Referentie systeem</label>
 		<description>Informatie over het referentiesysteem. Eerst voert u het horizontale referentiesysteem in en vervolgens het verticale referentiesysteem.</description>
 	</element>
 	<!-- ==================================================== -->
 	<element name="gmd:referenceSystemInfo" context="/gmd:MD_Metadata/gmd:referenceSystemInfo">
-		<label>Referentiesysteem informatie</label>
+		<label>Referentie systeem informatie</label>
 		<description>Beschrijving van de referentiesystemen welke van toepassing zijn op de dataset. </description>
 	</element>
 	<!-- ==================================================== -->
@@ -1313,7 +1320,7 @@
 	</element>
 	<!-- ==================================================== -->
 	<element name="gmd:RS_Identifier" context="/gmd:MD_Metadata/gmd:referenceSystemInfo/gmd:MD_ReferenceSystem/gmd:referenceSystemIdentifier/gmd:RS_Identifier">
-		<label>Referentiesysteem</label>
+		<label>Referentie systeem</label>
 		<description>Gegevens van het referentiesysteem.</description>
 	</element>
 	<!-- ==================================================== -->
@@ -1385,7 +1392,7 @@
 	</element>
 	<!-- ==================================================== -->
 	<element name="gmd:temporalElement" context="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:temporalElement">
-		<label>Temporeel element</label>
+		<label>temporele dekking</label>
 		<description>Informatie over de temporele dekking van de gegevens.</description>
 	</element>
 	<!-- ==================================================== -->
@@ -1416,66 +1423,6 @@ GEMET - INSPIRE themes, version 1.0 </description>
 		<description>Naam van de specificatie. Indien het een INSPIRE dataset is dient de specificatie opgenomen te worden</description>
 		<help_link>http://wiki.geonovum.nl/index.php/2.4.30_Specificatie</help_link>
 		<condition>C</condition>
-		<helper>
-			<option value="-" class="title">--- INSPIRE ---</option>
-			<option value="VERORDENING (EU) Nr. 1089/2010 VAN DE COMMISSIE van 23 november 2010 ter uitvoering van Richtlijn 2007/2/EG van het Europees Parlement en de Raad betreffende de interoperabiliteit van verzamelingen ruimtelijke gegevens en van diensten met betrekking tot ruimtelijke gegevens">Interoperabiliteit van datasets en services (EU VERORDENING 1089/2010)</option>
-			<option value="VERORDENING (EG) Nr. 976/2009 VAN DE COMMISSIE van 19 oktober 2009 tot uitvoering van Richtlijn 2007/2/EG van het Europees Parlement en de Raad wat betreft de netwerkdiensten">VERORDENING (EG) wat betreft de netwerkdiensten</option>
-			<option value="Technical Guidance for the implementation of INSPIRE Download Services">Download Services</option>
-			<option value="Technical Guidance for the implementation of INSPIRE View Services">View Services</option>
-			<option value="INSPIRE Data Specification on Addresses and Technical Guidelines">Adressen</option>
-			<option value="INSPIRE Data Specification on Administrative Units and Technical Guidelines">Administratieve eenheden</option>
-			<option value="INSPIRE Data Specification on Cadastral Parcels and Technical Guidelines">Kadastrale percelen</option>
-			<option value="INSPIRE Data Specification on Coordinate Reference Systems and Technical Guidelines">Systemen voor verwijzing door middel van coördinaten</option>
-			<option value="INSPIRE Data Specification on Geographical Grid Systems and Technical Guidelines">Geografisch rastersysteem</option>
-			<option value="INSPIRE Data Specification on Geographical Names and Technical Guidelines">Geografische namen</option>
-			<option value="INSPIRE Data Specification on Hydrography and Technical Guidelines">Hydrografie</option>
-			<option value="INSPIRE Data Specification on Protected Sites and Technical Guidelines">Beschermde gebieden</option>
-			<option value="INSPIRE Data Specification on Transport Networks and Technical Guidelines">Vervoersnetwerken</option>
-			<option value="INSPIRE Data Specification on Agricultural and Aquaculture Facilities and Technical Guidelines">Faciliteiten voor landbouw en aquacultuur</option>
-			<option value="INSPIRE Data Specification on Area Management/Restriction/Regulation Zones and Reporting Units and Technical Guidelines">Gebiedsbeheer, gebieden waar beperkingen gelden, gereguleerde gebieden en rapportage-eenheden</option>
-			<option value="INSPIRE Data Specification on Atmospheric Conditions and Meteorological Geographical Features and Technical Guidelines">Atmosferische omstandigheden en Meteorologische geografische kenmerken</option>
-			<option value="INSPIRE Data Specification on Bio-geographical Regions and Technical Guidelines">Biogeografische gebieden</option>
-			<option value="INSPIRE Data Specification on Buildings and Technical Guidelines">Gebouwen</option>
-			<option value="INSPIRE Data Specification on Elevation and Technical Guidelines">Hoogte</option>
-			<option value="INSPIRE Data Specification on Energy Resources and Technical Guidelines">Energiebronnen</option>
-			<option value="INSPIRE Data Specification on Environmental Monitoring Facilities and Technical Guidelines">Milieubewakingsvoorzieningen</option>
-			<option value="INSPIRE Data Specification on Geology and Technical Guidelines">Geologie</option>
-			<option value="INSPIRE Data Specification on Habitats and Biotopes and Technical Guidelines">Habitats en biotopen</option>
-			<option value="INSPIRE Data Specification on Human Health and Safety and Technical Guidelines">Menselijke gezondheid en veiligheid</option>
-			<option value="INSPIRE Data Specification on Land Cover and Technical Guidelines">Landgebruik</option>
-			<option value="INSPIRE Data Specification on Land Use and Technical Guidelines">Bodemgebruik</option>
-			<option value="INSPIRE Data Specification on Mineral Resources and Technical Guidelines">Minerale bronnen</option>
-			<option value="INSPIRE Data Specification on Natural Risk Zones and Technical Guidelines">Gebieden met natuurrisico’s</option>
-			<option value="INSPIRE Data Specification on Oceanographic geographical features and Technical Guidelines">Oceanografische geografische kenmerken</option>
-			<option value="INSPIRE Data Specification on Orthoimagery and Technical Guidelines">Orthobeeldvorming</option>
-			<option value="INSPIRE Data Specification on Population Distribution and Technical Guidelines">Spreiding van de bevolking – demografie</option>
-			<option value="INSPIRE Data Specification on Production and Industrial Facilities and Technical Guidelines">Faciliteiten voor productie en industrie</option>
-			<option value="INSPIRE Data Specification on Sea Regions and Technical Guidelines">Zeegebieden</option>
-			<option value="INSPIRE Data Specification on Soil and Technical Guidelines">Bodem</option>
-			<option value="INSPIRE Data Specification on Species Distribution and Technical Guidelines">Verspreiding van soorten</option>
-			<option value="INSPIRE Data Specification on Statistical Units and Technical Guidelines">Statistische eenheden</option>
-			<option value="INSPIRE Data Specification on Utility and Government Services and Technical Guidelines">Nutsdiensten en overheidsdiensten</option>
-			<option value="-" class="title">--- Nationaal ---</option>
-			<option value="Basismodel geo-informatie (NEN3610:2011)">Basismodel geo-informatie</option>
-			<option value="Informatiemodel AERIUS (IMAER)">IM AERIUS</option>
-			<option value="Informatiemodel Archeologie (IM SIKB0102)">IM Archeologie</option>
-			<option value="Informatiemodel Basisregistratie Ondergrond">IM Basisregistratie Ondergrond</option>
-			<option value="Informatiemodel Beheer openbare ruimte (IMBOR)">IM Beheer openbare ruimte</option>
-			<option value="Informatiemodel berichtenverkeer Digitale Bereikbaarheidskaart">IM berichtenverkeer Digitale Bereikbaarheidskaart</option>
-			<option value="Informatiemodel Bodembeheer (IMSIKB0101)">IM Bodembeheer</option>
-			<option value="Informatiemodel IMOOV conceptueel model">IMOOV conceptueel model</option>
-			<option value="Informatiemodel IMOOV UML model">IMOOV UML model</option>
-			<option value="Informatiemodel Kabels en Leidingen (IMKL)">IM Kabels en Leidingen</option>
-			<option value="Informatiemodel Kadaster (IMKAD)">IM Kadaster</option>
-			<option value="Informatiemodel Landelijk Gebied (IMLG)">IM Landelijk Gebied</option>
-			<option value="Informatiemodel Metingen (IM Metingen)">IM Metingen</option>
-			<option value="Informatiemodel Natuurbeheerplannen (IMNA)">IM Natuurbeheerplannen</option>
-			<option value="Informatiemodel Ruimtelijke Ordening (IMRO2012)">IM Ruimtelijke Ordening</option>
-			<option value="Informatiemodel Ruimtelijke Ordening Planteksten (IMROPT2012)">IM Ruimtelijke Ordening Planteksten</option>
-			<option value="Informatiemodel Stedelijk Water (IMSW)">IM Stedelijk Water</option>
-			<option value="Informatiemodel TOP10NL">IM TOP10NL</option>
-			<option value="Informatiemodel Water (IMWA)">IM Water</option>
-		</helper>
 	</element>
 		<element name="gmd:title" context="/gmd:MD_Metadata/gmd:contentInfo/gmd:MD_FeatureCatalogueDescription/gmd:featureCatalogueCitation/gmd:CI_Citation/gmd:title">
 		<label>Titel van de featurecatalog</label>
@@ -1510,11 +1457,20 @@ GEMET - INSPIRE themes, version 1.0 </description>
 	<!-- ==================================================== -->
 	<element name="gmd:useConstraints" context="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:useConstraints">
 		<label>(Juridische) gebruiksrestricties</label>
+		<btnLabel>(Juridische) gebruiksrestrictie toevoegen</btnLabel>
 		<description>Gebruikseisen die er zorg voor dragen dat privacy of intellectueel eigendom gewaarborgd zijn en elke andere speciale beperking(en) voor het verkrijgen van de metadata of data.</description>
+	</element>
+	<element name="gmd:useLimitation" context="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:useLimitation">
+		<label>(Juridische) gebruiks beperkingen</label>
+		<description>Juridische beperkingen op de geschiktheid van deze data.</description>
+	</element>
+	<element name="gmd:useLimitation" context="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_SecurityConstraints/gmd:useLimitation">
+		<label>(Veiligheids) gebruiks beperkingen</label>
+		<description>Veiligheids beperkingen op de geschiktheid van deze data.</description>
 	</element>
 	<!-- ==================================================== -->
 	<element name="gmd:useLimitation" context="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_Constraints/gmd:useLimitation">
-		<label>Gebruiksbeperkingen</label>
+		<label>Gebruiks beperkingen</label>
 		<description>Toepassingen waarvoor de data niet geschikt is.</description>
 		<help_link>http://wiki.geonovum.nl/index.php/2.4.36_Gebruiksbeperkingen</help_link>
 		<condition>mandatory</condition>
@@ -1534,12 +1490,28 @@ GEMET - INSPIRE themes, version 1.0 </description>
 		<label>Compleetheid</label>
 		<description>Omschrijving in hoeverre een dataset compleet is, of anders gezegd, een inschatting van wat er nog ontbreekt.</description>
 	</element>
+  <element name="gmd:DQ_QuantitativeResult" context="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_CompletenessOmission/gmd:result/gmd:DQ_QuantitativeResult">
+    <label>Compleetheid</label>
+    <description>Omschrijving in hoeverre een dataset compleet is, of anders gezegd, een inschatting van wat er nog ontbreekt.</description>
+  </element>
+  <element name="gmd:DQ_QuantitativeResult" context="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_AbsoluteExternalPositionalAccuracy/gmd:result/gmd:DQ_QuantitativeResult">
+    <label>Geometrische nauwkeurigheid</label>
+    <description>Afwijking van de x- en ycoordinaten ten opzichte van de werkelijke plaats op aarde.</description>
+  </element>
 	<element name="gmd:value" context="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_AbsoluteExternalPositionalAccuracy/gmd:result/gmd:DQ_QuantitativeResult/gmd:value">
 		<label>Geometrische nauwkeurigheid</label>
 		<description>Afwijking van de x- en ycoordinaten ten opzichte van de werkelijke plaats op aarde.</description>
 	</element>
-	<!-- ==================================================== -->
-	<element name="gmd:valueUnit" context="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_CompletenessOmission/gmd:result/gmd:DQ_QuantitativeResult/gmd:valueUnit">
+
+  <element name="gmd:DQ_QuantitativeResult" context="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_TopologicalConsistency/gmd:result/gmd:DQ_QuantitativeResult">
+    <label>Topologische consistentie</label>
+    <description>Juistheid van de topologische kenmerkenvan de dataset, Verplicht voor INSPIRE als voor netwerken de aansluiting van hartlijnen niet is verzekerd. In dat geval moet de Connectivity tolerance parameter vastgelegd worden om automatische creatie van hartlijn topologie mogelijk te maken</description>
+  </element>
+  <element name="gmd:value" context="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_TopologicalConsistency/gmd:result/gmd:DQ_QuantitativeResult/gmd:value">
+    <label>Topologische consistentie</label>
+    <description>Juistheid van de topologische kenmerkenvan de dataset, Verplicht voor INSPIRE als voor netwerken de aansluiting van hartlijnen niet is verzekerd. In dat geval moet de Connectivity tolerance parameter vastgelegd worden om automatische creatie van hartlijn topologie mogelijk te maken</description>
+  </element>
+  <element name="gmd:valueUnit" context="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_CompletenessOmission/gmd:result/gmd:DQ_QuantitativeResult/gmd:valueUnit">
 		<label>Type waarde</label>
 		<description>Indien bij Compleetheid geen numerieke waarde wordt ingevuld, dient de waarde: tekst ingevuld te worden.</description>
 	</element>
@@ -1553,6 +1525,17 @@ GEMET - INSPIRE themes, version 1.0 </description>
 			<help_link>http://wiki.geonovum.nl/index.php/Type waarde</help_link>
 		<condition>C</condition>
 		</element>
+    <element name="gmd:valueType">
+      <label>Type waarde</label>
+      <description>Het type van de ingevulde waarde</description>
+      <helper>
+          <option value="string">textueel</option>
+          <option value="numeric">numeriek</option>
+          <option value="boolean">boolean</option>
+          <option value="date">datum</option>
+      </helper>
+    </element>
+
 
 	<!-- ==================================================== -->
 	<element name="gmd:verticalElement" context="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:verticalElement">
@@ -1648,12 +1631,12 @@ GEMET - INSPIRE themes, version 1.0 </description>
 		<description>Identificatie</description>
 	</element>
 	<element name="gml:TimeInstant" context="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:temporalElement/gmd:EX_TemporalExtent/gmd:extent/gml:TimePeriod/gml:TimePeriodTypeCHOICE_ELEMENT2/gml:begin/gml:TimeInstant">
-		<label>Temporele dekking begindatum</label>
-		<description>Inhoudelijke geldigheid van de data, gespecificeerd naar begin- en einddatum.</description>
+		<label>temporele dekking begindatum</label>
+		<description>temporele dekking van de data, gespecificeerd naar begin- en einddatum.</description>
 	</element>
 	<element name="gml:TimeInstant" context="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:temporalElement/gmd:EX_TemporalExtent/gmd:extent/gml:TimePeriod/gml:TimePeriodTypeCHOICE_ELEMENT3/gml:end/gml:TimeInstant">
-		<label>Temporele dekking einddatum</label>
-		<description>Inhoudelijke geldigheid van de data, gespecificeerd naar begin- en einddatum.</description>
+		<label>temporele dekking einddatum</label>
+		<description>temporele dekking van de data, gespecificeerd naar begin- en einddatum.</description>
 	</element>
 	<element name="gml:id" context="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_CompletenessOmission/gmd:result/gmd:DQ_QuantitativeResult/gmd:valueUnit/gml:BaseUnit/@gml:id">
 		<label>Compleetheid</label>
@@ -1843,7 +1826,7 @@ GEMET - INSPIRE themes, version 1.0 </description>
 	</element>
 
 	<element name="conformity">
-		<label>Conformiteitindicatie</label>
+		<label>Conformiteit indicatie</label>
 		<description></description>
 	</element>
 </labels>

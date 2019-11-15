@@ -238,11 +238,8 @@
             specified by the scope or lack of knowledge about lineage</description>
 	</element>
 	<element name="gmd:LI_ProcessStep" id="86.0">
-		<label>Process step</label>
-		<description>Information about an event in the creation process for the data specified by
-            the scope</description>
-		<help>information about an event or transformation in the life of a dataset including the
-            process used to maintain the dataset</help>
+		<label>Bewerking</label>
+		<description>Omschrijving van de bewerking</description>
 	</element>
 	<element name="gmd:LI_Source" id="92.0">
 		<label>Source</label>
@@ -1885,9 +1882,8 @@
 		<description>Mode in which the resource is represented</description>
 	</element>
 	<element name="gmd:processStep" id="84.0">
-		<label>Process step</label>
-		<description>Information about an event in the creation process for the data specified by
-            the scope</description>
+		<label>Bewerking</label>
+		<description>Omschrijving van de bewerking</description>
 		<condition>conditional</condition>
 	</element>
 	<element name="gmd:processingLevelCode" id="249.0">
@@ -1900,7 +1896,7 @@
 		<description>Identification of, and means of communication with, person(s) and
             organization(s) associated with the process step</description>
 	</element>
-	<element name="gmd:protocol" context="/gmd:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource/gmd:protocol"  alias="protocol">
+	<element name="gmd:protocol" alias="protocol">
     <label>Protocol </label>
     <description>Protocol of the resource</description>
     <helper>
@@ -1926,6 +1922,9 @@
       <option value="OGC:OUS"> OpenLS Utility Service </option>
       <option value="OGC:OPS"> OpenLS Presentation Service </option>
       <option value="OGC:ORS"> OpenLS Route Service</option>
+	  <option value="website"> website</option>
+	  <option value="download"> download</option>
+	  <option value="dataset"> URI naar locale dataset locatie</option>
     </helper>
     <condition>conditional</condition>
   </element>
@@ -2083,9 +2082,8 @@
 		<description>Spatial reference system used by the source data</description>
 	</element>
 	<element name="gmd:sourceStep" id="98.0">
-		<label>Source step</label>
-		<description>Information about an event in the creation process for the source
-            data</description>
+		<label>Bewerking</label>
+		<description>Omschrijving van de bewerking</description>
 	</element>
 	<element name="gmd:southBoundLatitude" id="346.0">
 		<label>South bound</label>
