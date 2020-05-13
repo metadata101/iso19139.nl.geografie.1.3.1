@@ -45,7 +45,7 @@
   <xsl:variable name="inspire-thesaurus"
     select="document(concat('file:///', replace($thesauriDir, '\\', '/'), '/external/thesauri/theme/httpinspireeceuropaeutheme-theme.rdf'))"/>
   <xsl:variable name="inspire-theme" select="$inspire-thesaurus//skos:Concept"/>
-  
+
   <!-- i18n information -->
   <xsl:variable name="upgrade-schema-version-loc">
     <msg id="a" xml:lang="eng">Update record to Nederlandse metadata profiel op ISO 19115 voor geografie 2.0</msg>
@@ -115,15 +115,16 @@
      </xsl:choose>
     </xsl:copy>
   </xsl:template>
-  
-  
+
+
   <!-- Online resources description: accessPoint, endPoint -->
   <xsl:template match="gmd:onLine/gmd:CI_OnlineResource" priority="2">
-    
+
     <xsl:copy>
       <xsl:copy-of select="@*" />
-      
+
       <xsl:variable name="protocol" select="gmd:protocol/*/text()" />
+      <xsl:variable name="applicationProfile" select="gmd:applicationProfile/*/text()" />
 
       <xsl:choose>
         <!-- Add request=GetCapabilities if missing -->
@@ -163,34 +164,39 @@
       </xsl:choose>
 
       <xsl:choose>
+        <xsl:when test="contains($protocol, 'INSPIRE Atom')">
+          <gmd:protocol>
+            <gmx:Anchor xlink:href="https://tools.ietf.org/html/rfc4287">INSPIRE Atom</gmx:Anchor>
+          </gmd:protocol>
+        </xsl:when>
         <xsl:when test="contains($protocol, 'OGC:CSW')">
           <gmd:protocol>
-            <gmx:Anchor xlink:href="http://www.opengeospatial.org/standards/cat">OGC:CSW</gmx:Anchor>
+            <gmx:Anchor xlink:href="http://www.opengis.net/def/serviceType/ogc/csw">OGC:CSW</gmx:Anchor>
           </gmd:protocol>
         </xsl:when>
         <xsl:when test="contains($protocol, 'OGC:WMS')">
           <gmd:protocol>
-            <gmx:Anchor xlink:href="http://www.opengeospatial.org/standards/wms">OGC:WMS</gmx:Anchor>
+            <gmx:Anchor xlink:href="http://www.opengis.net/def/serviceType/ogc/wms">OGC:WMS</gmx:Anchor>
           </gmd:protocol>
         </xsl:when>
         <xsl:when test="contains($protocol, 'OGC:WMTS')">
           <gmd:protocol>
-            <gmx:Anchor xlink:href="http://www.opengeospatial.org/standards/wmts">OGC:WMTS</gmx:Anchor>
+            <gmx:Anchor xlink:href="http://www.opengis.net/def/serviceType/ogc/wmts">OGC:WMTS</gmx:Anchor>
           </gmd:protocol>
         </xsl:when>
         <xsl:when test="contains($protocol, 'OGC:WFS')">
           <gmd:protocol>
-            <gmx:Anchor xlink:href="http://www.opengeospatial.org/standards/wfs">OGC:WFS</gmx:Anchor>
+            <gmx:Anchor xlink:href="http://www.opengis.net/def/serviceType/ogc/wfs">OGC:WFS</gmx:Anchor>
           </gmd:protocol>
         </xsl:when>
         <xsl:when test="contains($protocol, 'OGC:WCS')">
           <gmd:protocol>
-            <gmx:Anchor xlink:href="http://www.opengeospatial.org/standards/wcs">OGC:WCS</gmx:Anchor>
+            <gmx:Anchor xlink:href="http://www.opengis.net/def/serviceType/ogc/wcs">OGC:WCS</gmx:Anchor>
           </gmd:protocol>
         </xsl:when>
         <xsl:when test="contains($protocol, 'OGC:SOS')">
           <gmd:protocol>
-            <gmx:Anchor xlink:href="http://www.opengeospatial.org/standards/sos">OGC:SOS</gmx:Anchor>
+            <gmx:Anchor xlink:href="http://www.opengis.net/def/serviceType/ogc/sos">OGC:SOS</gmx:Anchor>
           </gmd:protocol>
         </xsl:when>
         <xsl:when test="contains($protocol, 'OGC:WCTS')">
@@ -200,7 +206,7 @@
         </xsl:when>
         <xsl:when test="contains($protocol, 'OGC:WPS')">
           <gmd:protocol>
-            <gmx:Anchor xlink:href="http://www.opengeospatial.org/standards/wps">OGC:WPS</gmx:Anchor>
+            <gmx:Anchor xlink:href="http://www.opengis.net/def/serviceType/ogc/wps">OGC:WPS</gmx:Anchor>
           </gmd:protocol>
         </xsl:when>
         <xsl:when test="contains($protocol, 'OGC:WFS-G')">
@@ -273,26 +279,39 @@
         </xsl:otherwise>
       </xsl:choose>
 
-      <xsl:apply-templates select="gmd:applicationProfile" />
+      <!-- gmd:applicationProfile -->
+      <xsl:choose>
+        <xsl:when test="geonet:contains-any-of($applicationProfile, ('discovery','view','download','transformation','invoke','other'))">
+          <gmd:applicationProfile>
+              <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceType/{$applicationProfile}">
+              <xsl:value-of select="$applicationProfile" /></gmx:Anchor>
+          </gmd:applicationProfile>
+        </xsl:when>
+
+        <xsl:otherwise>
+          <xsl:apply-templates select="gmd:applicationProfile" />
+        </xsl:otherwise>
+      </xsl:choose>
+
       <xsl:apply-templates select="gmd:name" />
-      
+
       <!-- gmd:description -->
       <xsl:choose>
         <!-- Access points -->
-        <xsl:when test="geonet:contains-any-of($protocol, ('OGC:WMS', 'OGC:WMTS', 'OGC:WFS', 'OGC:WCS', 'INSPIRE Atom', 
-          'landingpage', 'application', 'dataset', 'OGC:WPS', 'OGC:SOS', 
+        <xsl:when test="geonet:contains-any-of($protocol, ('OGC:WMS', 'OGC:WMTS', 'OGC:WFS', 'OGC:WCS', 'INSPIRE Atom',
+          'landingpage', 'application', 'dataset', 'OGC:WPS', 'OGC:SOS',
           'OGC:SensorThings', 'OAS', 'W3C:SPARQL', 'OASIS:OData', 'OGC:CSW',
           'OGC:WCTS', 'OGC:WFS-G', 'OGC:SPS', 'OGC:SAS', 'OGC:WNS', 'OGC:ODS', 'OGC:OGS', 'OGC:OUS', 'OGC:OPS', 'OGC:ORS', 'UKST'))">
-                      
+
           <gmd:description>
             <gmx:Anchor
               xlink:href="http://inspire.ec.europa.eu/metadata-codelist/OnLineDescriptionCode/accessPoint">
               accessPoint</gmx:Anchor>
           </gmd:description>
         </xsl:when>
-        
+
         <!-- End points -->
-        <xsl:when test="geonet:contains-any-of($protocol, ('gml', 'geojson', 'gpkg', 'tiff', 'kml', 'csv', 'zip', 
+        <xsl:when test="geonet:contains-any-of($protocol, ('gml', 'geojson', 'gpkg', 'tiff', 'kml', 'csv', 'zip',
           'wmc', 'json', 'jsonld', 'rdf-xml', 'xml', 'png', 'gif', 'jp2', 'mapbox-vector-tile', 'UKMT'))">
           <gmd:description>
             <gmx:Anchor
@@ -300,25 +319,25 @@
               endPoint</gmx:Anchor>
           </gmd:description>
         </xsl:when>
-        
+
         <!-- Other cases: copy current gmd:description element -->
         <xsl:otherwise>
-          <xsl:apply-templates select="gmd:description" />          
+          <xsl:apply-templates select="gmd:description" />
         </xsl:otherwise>
       </xsl:choose>
-      
+
       <xsl:apply-templates select="gmd:function" />
     </xsl:copy>
   </xsl:template>
-  
-  
-  <!-- Temporal element --> 
+
+
+  <!-- Temporal element -->
   <xsl:template match="gmd:extent/gml:TimePeriod[gml:begin]" priority="2">
     <xsl:copy>
       <xsl:copy-of select="@*" />
-      
-      <gml:beginPosition><xsl:value-of select="gml:begin/gml:TimeInstant/gml:timePosition"/></gml:beginPosition> 
-      <gml:endPosition><xsl:value-of select="gml:end/gml:TimeInstant/gml:timePosition"/></gml:endPosition> 
+
+      <gml:beginPosition><xsl:value-of select="gml:begin/gml:TimeInstant/gml:timePosition"/></gml:beginPosition>
+      <gml:endPosition><xsl:value-of select="gml:end/gml:TimeInstant/gml:timePosition"/></gml:endPosition>
     </xsl:copy>
   </xsl:template>
 
@@ -326,12 +345,12 @@
   <xsl:template match="gmd:thesaurusName/gmd:CI_Citation[gmd:title/gco:CharacterString = 'GEMET - INSPIRE themes, version 1.0']" priority="2">
     <xsl:copy>
       <xsl:copy-of select="@*" />
-      
+
       <gmd:title>
         <gmx:Anchor
           xlink:href="http://www.eionet.europa.eu/gemet/nl/inspire-themes/">GEMET - INSPIRE themes, version 1.0</gmx:Anchor>
       </gmd:title>
- 
+
       <xsl:apply-templates select="gmd:alternateTitle" />
       <xsl:apply-templates select="gmd:date" />
       <xsl:apply-templates select="gmd:edition" />
@@ -347,28 +366,28 @@
       <xsl:apply-templates select="gmd:ISSN" />
     </xsl:copy>
   </xsl:template>
-  
+
   <!-- INSPIRE Theme keywords -->
   <xsl:template match="gmd:keyword[../gmd:thesaurusName/*/gmd:title/gco:CharacterString = 'GEMET - INSPIRE themes, version 1.0']" priority="2">
     <xsl:copy>
       <xsl:copy-of select="@*" />
-      
+
       <xsl:choose>
         <xsl:when test="gmx:Anchor">
           <xsl:apply-templates select="gmx:Anchor" />
         </xsl:when>
-        
-        <xsl:otherwise>                   
+
+        <xsl:otherwise>
           <xsl:variable name="keyword" select="gco:CharacterString" />
           <xsl:variable name="inspireThemeURI" select="$inspire-theme[skos:prefLabel = $keyword]/@rdf:about"/>
-          
+
           <gmx:Anchor
             xlink:href="{$inspireThemeURI}">
             <xsl:value-of select="$keyword" />
           </gmx:Anchor>
         </xsl:otherwise>
       </xsl:choose>
-      
+
     </xsl:copy>
   </xsl:template>
 
@@ -446,6 +465,86 @@
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
+
+
+  <xsl:template match="gmd:MD_DataIdentification">
+     <xsl:copy>
+      <xsl:apply-templates select="@*" />
+
+      <xsl:apply-templates
+        select="gmd:citation|
+        gmd:abstract|
+        gmd:purpose|
+        gmd:credit|
+        gmd:status|
+        gmd:pointOfContact|
+        gmd:resourceMaintenance|
+        gmd:graphicOverview|
+        gmd:resourceFormat|
+        gmd:descriptiveKeywords" />
+
+      <xsl:variable name="isInspireMetadata"
+                    select="count(//gmd:DQ_DomainConsistency/gmd:result/gmd:DQ_ConformanceResult/gmd:specification/gmd:CI_Citation/gmd:title[*/text()='VERORDENING (EU) Nr. 1089/2010 VAN DE COMMISSIE van 23 november 2010 ter uitvoering van Richtlijn 2007/2/EG van het Europees Parlement en de Raad betreffende de interoperabiliteit van verzamelingen ruimtelijke gegevens en van diensten met betrekking tot ruimtelijke gegevens' or
+                                    */text()='VERORDENING (EG) Nr. 976/2009 VAN DE COMMISSIE van 19 oktober 2009 tot uitvoering van Richtlijn 2007/2/EG van het Europees Parlement en de Raad wat betreft de netwerkdiensten']) > 0" />
+
+      <!-- Check if INSPIRE metadata: add keyword block with thesaurus http://inspire.ec.europa.eu/metadata-codelist/SpatialScope -->
+      <xsl:if test="$isInspireMetadata">
+        <gmd:descriptiveKeywords>
+          <gmd:MD_Keywords>
+            <gmd:keyword>
+              <gmx:Anchor xlink:href=""></gmx:Anchor>
+            </gmd:keyword>
+            <gmd:type>
+              <gmd:MD_KeywordTypeCode codeList="https://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/gmxCodelists.xml#MD_KeywordTypeCode"
+                                      codeListValue="theme">theme</gmd:MD_KeywordTypeCode>
+            </gmd:type>
+            <gmd:thesaurusName>
+              <gmd:CI_Citation>
+                <gmd:title>
+                  <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/metadata-codelist/SpatialScope#">Ruimtelijke dekking</gmx:Anchor>
+                </gmd:title>
+                <gmd:date>
+                  <gmd:CI_Date>
+                    <gmd:date>
+                      <gco:Date>2019-06-03</gco:Date>
+                    </gmd:date>
+                    <gmd:dateType>
+                      <gmd:CI_DateTypeCode codeList="https://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/gmxCodelists.xml#CI_DateTypeCode"
+                                           codeListValue="publication">publicatie</gmd:CI_DateTypeCode>
+                    </gmd:dateType>
+                  </gmd:CI_Date>
+                </gmd:date>
+              </gmd:CI_Citation>
+            </gmd:thesaurusName>
+          </gmd:MD_Keywords>
+        </gmd:descriptiveKeywords>
+      </xsl:if>
+
+      <xsl:apply-templates
+        select="gmd:resourceSpecificUsage|
+        gmd:resourceConstraints|
+        gmd:aggregationInfo|
+        gmd:spatialRepresentationType"/>
+
+       <xsl:if test="$isInspireMetadata and not(gmd:spatialRepresentationType)">
+         <gmd:spatialRepresentationType>
+           <gmd:MD_SpatialRepresentationTypeCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_SpatialRepresentationTypeCode" codeListValue="vector" codeSpace="dut">vector
+           </gmd:MD_SpatialRepresentationTypeCode>
+         </gmd:spatialRepresentationType>
+       </xsl:if>
+
+       <xsl:apply-templates
+         select="gmd:spatialResolution|
+        gmd:language|
+        gmd:characterSet|
+        gmd:topicCategory|
+        gmd:environmentDescription|
+        gmd:extent|
+        gmd:supplementalInformation" />
+
+    </xsl:copy>
+  </xsl:template>
+
 
   <!-- Add gmx namespace to schemaLocation if not present and in namespaces declaration as 1.3.1 metadata doesn't usually have it,
        to avoid been added inline each element that uses the namespace -->
