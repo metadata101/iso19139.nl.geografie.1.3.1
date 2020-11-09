@@ -325,19 +325,8 @@
 
           <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:abstract"/>
 
-          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/
-            gmd:descriptiveKeywords/gmd:MD_Keywords[not(gmd:thesaurusName)]" />
-
-          <action type="add" btnLabel="addKeyword" name="keyword" or="keyword" in="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/
-            gmd:descriptiveKeywords/gmd:MD_Keywords">
-            <template>
-              <snippet>
-                <gmd:keyword>
-                  <gco:CharacterString></gco:CharacterString>
-                </gmd:keyword>
-              </snippet>
-            </template>
-          </action>
+          <!-- keywords -->
+          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords" or="descriptiveKeywords" in="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification"/>
 
           <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation/gmd:date"/>
 
@@ -527,11 +516,27 @@
             </template>
           </action>
 
-
         </section>
 
-
       </tab>
+
+      <!-- Elements that should not use the "flat" mode -->
+      <flatModeExceptions>
+        <for name="gmd:descriptiveKeywords"/>
+        <for name="gmd:otherConstraints"/>
+        <for name="gmd:useConstraints"/>
+        <for name="gmd:keyword"/>
+        <for name="gmd:spatialResolution"/>
+        <for name="gmd:pointOfContact"/>
+        <for name="gmd:distributor"/>
+        <for name="gmd:contact" excludeFrom="gmd:MD_MaintenanceInformation"/>
+        <for name="gmd:processor"/>
+        <for name="gmd:topicCategory"/>
+        <for name="gmd:distributionFormat"/>
+        <for name="gmd:resourceConstraints"/>
+        <for name="gmd:dateOfNextUpdate" />
+        <for name="gmd:report" />
+      </flatModeExceptions>
 
     </view>
 
@@ -1796,6 +1801,7 @@
 
       </tab>
 
+
       <!-- Elements that should not use the "flat" mode -->
       <flatModeExceptions>
         <for name="gmd:descriptiveKeywords"/>
@@ -1808,7 +1814,10 @@
         <for name="gmd:contact" excludeFrom="gmd:MD_MaintenanceInformation"/>
         <for name="gmd:processor"/>
         <for name="gmd:topicCategory"/>
+        <for name="gmd:distributionFormat"/>
+        <for name="gmd:resourceConstraints"/>
         <for name="gmd:dateOfNextUpdate" />
+        <for name="gmd:report" />
       </flatModeExceptions>
     </view>
 
