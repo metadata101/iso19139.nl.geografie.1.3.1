@@ -445,6 +445,35 @@
           <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/
               gmd:extent/gmd:EX_Extent/gmd:geographicElement/gmd:EX_GeographicBoundingBox"/>
 
+          <action type="add" btnLabel="addGeographicBoundingBox" or="extent" name="geographicElement" forceLabel="true" 
+            in="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification" 
+            if="count(gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:geographicElement)=0">
+            <template>
+              <snippet>
+                <gmd:extent>
+                  <gmd:EX_Extent>
+                    <gmd:geographicElement>
+                      <gmd:EX_GeographicBoundingBox>
+                         <gmd:westBoundLongitude>
+                        <gco:Decimal></gco:Decimal>
+                     </gmd:westBoundLongitude>
+                     <gmd:eastBoundLongitude>
+                        <gco:Decimal></gco:Decimal>
+                     </gmd:eastBoundLongitude>
+                     <gmd:southBoundLatitude>
+                        <gco:Decimal></gco:Decimal>
+                     </gmd:southBoundLatitude>
+                     <gmd:northBoundLatitude>
+                        <gco:Decimal></gco:Decimal>
+                     </gmd:northBoundLatitude>
+                      </gmd:EX_GeographicBoundingBox>
+                    </gmd:geographicElement>
+                  </gmd:EX_Extent>
+                </gmd:extent>
+              </snippet>
+            </template>
+          </action>
+
           <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:spatialResolution"/>
 
           <!-- scale -->
@@ -993,20 +1022,32 @@
           <!--   5.17 bounds -->
           <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:geographicElement"/>
 
-          <action type="add" btnLabel="addGeographicBoundingBox" or="extent" name="geographicElement" forceLabel="true" in="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification">
+          <action type="add" btnLabel="addGeographicBoundingBox" or="extent" name="geographicElement" forceLabel="true" in="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification" >
             <template>
               <snippet>
                 <gmd:extent>
                   <gmd:EX_Extent>
                     <gmd:geographicElement>
-                      <gmd:EX_GeographicBoundingBox></gmd:EX_GeographicBoundingBox>
+                      <gmd:EX_GeographicBoundingBox>
+                        <gmd:westBoundLongitude>
+                          <gco:Decimal></gco:Decimal>
+                        </gmd:westBoundLongitude>
+                        <gmd:eastBoundLongitude>
+                          <gco:Decimal></gco:Decimal>
+                        </gmd:eastBoundLongitude>
+                        <gmd:southBoundLatitude>
+                          <gco:Decimal></gco:Decimal>
+                        </gmd:southBoundLatitude>
+                        <gmd:northBoundLatitude>
+                          <gco:Decimal></gco:Decimal>
+                        </gmd:northBoundLatitude>
+                      </gmd:EX_GeographicBoundingBox>
                     </gmd:geographicElement>
                   </gmd:EX_Extent>
                 </gmd:extent>
               </snippet>
             </template>
           </action>
-
 
           <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent[gmd:EX_Extent/gmd:temporalElement]"/>
 
