@@ -565,7 +565,7 @@
 
         <xsl:for-each select="gmd:distance/gco:Distance">
           <!-- Units may be encoded as
-          http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/uom/ML_gmxUom.xml#m
+          http://schemas.opengis.net/iso/19139/20060504/resources/uom/ML_gmxUom.xml#m
           in such case retrieve the unit acronym only. -->
           <xsl:variable name="unit" select="if (contains(@uom, '#')) then substring-after(@uom, '#') else @uom"/>
           <Field name="resolution" string="{concat(string(.), ' ', $unit)}" store="true" index="true"/>
@@ -638,56 +638,6 @@
           <Field name="agg_with_association" string="{$associationType}" store="false" index="true"/>
           <Field name="agg_use" string="true" store="false" index="true"/>
         </xsl:if>
-      </xsl:for-each>
-
-      <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-      <!--  Fields use to search on Service -->
-
-      <xsl:for-each select="srv:serviceType/gco:LocalName">
-        <xsl:variable name="srvTypes" select="'|view|download|invoke|discovery|transformation|other|'"/>
-        <xsl:if test="contains($srvTypes,concat('|',string(.),'|'))">
-          <Field name="serviceType" string="{string(.)}" store="true" index="true"/>
-        </xsl:if>
-        <xsl:if test=". = 'view'">
-          <Field name="dynamic" string="true" store="false" index="true"/>
-        </xsl:if>
-        <xsl:if test=". = 'download'">
-          <Field name="wfsdownload" string="true" store="false" index="true"/>
-          <Field name="download" string="true" store="false" index="true"/>
-        </xsl:if>
-      </xsl:for-each>
-
-      <xsl:for-each select="srv:serviceTypeVersion/gco:CharacterString">
-        <Field name="serviceTypeVersion" string="{string(.)}" store="true" index="true"/>
-      </xsl:for-each>
-
-
-      <xsl:for-each select="srv:coupledResource">
-        <xsl:for-each select="srv:SV_CoupledResource/srv:identifier/gco:CharacterString">
-          <Field name="operatesOnIdentifier" string="{string(.)}" store="true" index="true"/>
-        </xsl:for-each>
-
-        <xsl:for-each select="srv:SV_CoupledResource/srv:operationName/gco:CharacterString">
-          <Field name="operatesOnName" string="{string(.)}" store="true" index="true"/>
-        </xsl:for-each>
-      </xsl:for-each>
-
-      <xsl:for-each select="//srv:SV_CouplingType/@codeListValue">
-        <Field name="couplingType" string="{string(.)}" store="true" index="true"/>
-      </xsl:for-each>
-
-      <xsl:for-each select="//srv:SV_OperationMetadata/srv:operationName/gco:CharacterString">
-        <Field name="operation" string="{string(.)}" store="true" index="true"/>
-      </xsl:for-each>
-
-      <xsl:for-each select="srv:operatesOn/@uuidref">
-        <Field name="operatesOn" string="{string(.)}" store="true" index="true"/>
-      </xsl:for-each>
-
-      <xsl:for-each select="srv:operatesOn/@xlink:href">
-        <!-- extract the uuid from csw request and add as operateson -->
-        <Field name="operatesOn" string="{tokenize(tokenize(string(.),'&amp;id=')[2],'&amp;')[1]}" store="true"
-               index="true"/>
       </xsl:for-each>
 
       <xsl:for-each

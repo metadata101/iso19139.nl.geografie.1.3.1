@@ -495,7 +495,7 @@
               <gmx:Anchor xlink:href=""></gmx:Anchor>
             </gmd:keyword>
             <gmd:type>
-              <gmd:MD_KeywordTypeCode codeList="https://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/gmxCodelists.xml#MD_KeywordTypeCode"
+              <gmd:MD_KeywordTypeCode codeList="https://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_KeywordTypeCode"
                                       codeListValue="theme">theme</gmd:MD_KeywordTypeCode>
             </gmd:type>
             <gmd:thesaurusName>
@@ -509,7 +509,7 @@
                       <gco:Date>2019-06-03</gco:Date>
                     </gmd:date>
                     <gmd:dateType>
-                      <gmd:CI_DateTypeCode codeList="https://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/gmxCodelists.xml#CI_DateTypeCode"
+                      <gmd:CI_DateTypeCode codeList="https://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode"
                                            codeListValue="publication">publicatie</gmd:CI_DateTypeCode>
                     </gmd:dateType>
                   </gmd:CI_Date>
