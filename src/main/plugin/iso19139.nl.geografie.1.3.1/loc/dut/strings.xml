@@ -200,7 +200,8 @@
 	<addDistributionInfo>Distributie informatie toevoegen</addDistributionInfo>
 	<restrictions>Restricties en beperkingen</restrictions>
 	<addParentIdentifier>Voeg parent toe</addParentIdentifier>
-  <spatial>Ruimtelijke informatie</spatial>
+  	<spatial>Ruimtelijke informatie</spatial>
 
-
+	<overviews>Overzicht</overviews>
+	<spatialExtent>Ruimtelijke dekking</spatialExtent>
 </strings>
