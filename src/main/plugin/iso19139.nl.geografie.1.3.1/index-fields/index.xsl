@@ -37,4 +37,56 @@
                 version="2.0">
 
   <xsl:import href="../../iso19139/index-fields/index.xsl" />
+
+
+  <xsl:template match="*" mode="index-extra-fields">
+    <xsl:variable name="licenseMap">
+      <license value="http://creativecommons.org/publicdomain/mark/1.0/deed.nl">Public Domain</license>
+      <license value="http://creativecommons.org/licenses/publicdomain/deed.nl">Public Domain</license>
+    </xsl:variable>
+
+    <xsl:for-each select="gmd:identificationInfo[1]/*[1]">
+      <xsl:for-each select="gmd:resourceConstraints">
+        <xsl:for-each select="*/gmd:otherConstraints/gco:CharacterString">
+
+          <xsl:variable name="otherConstraint" select="."/>
+
+          <xsl:choose>
+            <xsl:when test=".='Public Domain'
+							or .='http://creativecommons.org/publicdomain/mark/1.0/deed.nl'
+							or .='http://creativecommons.org/licenses/publicdomain/deed.nl'
+							or .='Open Database License (ODbL)'">
+              <xsl:message>1</xsl:message>
+              <license><xsl:value-of select="if ($licenseMap/license[@value=$otherConstraint])
+								then $licenseMap/license[@value=$otherConstraint]
+								else $otherConstraint" /></license>
+            </xsl:when>
+
+            <xsl:when test="contains(.,'Geo Gedeeld licentie')">
+              <license>Geo Gedeeld licentie</license>
+            </xsl:when>
+
+            <xsl:when test="starts-with($otherConstraint, 'http://creativecommons.org/publicdomain/zero/')
+							or .='Creative Commons CC0'">
+              <license>CC0</license>
+            </xsl:when>
+
+            <xsl:when test="starts-with($otherConstraint, 'http://creativecommons.org/licenses/by/')">
+              <license>CC-BY</license>
+            </xsl:when>
+
+            <xsl:when test=".='Geen beperkingen'"></xsl:when>
+
+            <xsl:otherwise>
+              <!-- 14-11 JB: OtherConstraints no longer needed -->
+              <!--Field name="license" string="OtherConstraints" store="true" index="true"/-->
+            </xsl:otherwise>
+          </xsl:choose>
+
+        </xsl:for-each>
+      </xsl:for-each>
+
+    </xsl:for-each>
+
+  </xsl:template>
 </xsl:stylesheet>
