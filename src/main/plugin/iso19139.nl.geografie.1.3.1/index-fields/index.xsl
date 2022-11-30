@@ -56,7 +56,6 @@
 							or .='http://creativecommons.org/publicdomain/mark/1.0/deed.nl'
 							or .='http://creativecommons.org/licenses/publicdomain/deed.nl'
 							or .='Open Database License (ODbL)'">
-              <xsl:message>1</xsl:message>
               <license><xsl:value-of select="if ($licenseMap/license[@value=$otherConstraint])
 								then $licenseMap/license[@value=$otherConstraint]
 								else $otherConstraint" /></license>
