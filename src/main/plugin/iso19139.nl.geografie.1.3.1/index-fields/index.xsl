@@ -40,6 +40,86 @@
 
 
   <xsl:template match="*" mode="index-extra-fields">
+    <!-- downloadable protocols -->
+    <xsl:variable name="downloadableProtocols">
+      <protocol value="OGC:WFS" />
+      <protocol value="OGC:WCS" />
+      <protocol value="OGC:SOS" />
+      <protocol value="INSPIRE Atom" />
+      <protocol value="WWW:DOWNLOAD" />
+    </xsl:variable>
+
+    <xsl:if test="gmd:hierarchyLevel/gmd:MD_ScopeCode/@codeListValue='dataset'
+          and
+            (not (
+              gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource/gmd:protocol/gco:CharacterString[contains(., 'download')] or
+              gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource/gmd:protocol/gco:CharacterString[contains(., 'dataset')] or
+              gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource/gmd:protocol/gco:CharacterString[contains(., 'WFS')] or
+              gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource/gmd:protocol/gco:CharacterString[contains(., 'WCS')] or
+              gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource/gmd:protocol/gco:CharacterString[contains(., 'CSW')] or
+              gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource/gmd:protocol/gco:CharacterString[contains(., 'SOS')] or
+              gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource/gmd:protocol/gco:CharacterString[contains(., 'INSPIRE Atom')] or
+              gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource/gmd:protocol/gco:CharacterString[contains(., 'WMTS')] or
+              gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource/gmd:protocol/gco:CharacterString[contains(., 'WMS')]
+              )
+              and not (
+              //srv:serviceType/gco:LocalName[contains(., 'download')] or
+              //srv:serviceType/gco:LocalName[contains(., 'dataset')] or
+              //srv:serviceType/gco:LocalName[contains(., 'WFS')] or
+              //srv:serviceType/gco:LocalName[contains(., 'WCS')] or
+              //srv:serviceType/gco:LocalName[contains(., 'CSW')] or
+              //srv:serviceType/gco:LocalName[contains(., 'SOS')] or
+              //srv:serviceType/gco:LocalName[contains(., 'INSPIRE Atom')] or
+              //srv:serviceType/gco:LocalName[contains(., 'WMTS')] or
+              //srv:serviceType/gco:LocalName[contains(., 'WMS')]
+              )
+            )">
+      <nodynamicdownload>true</nodynamicdownload>
+    </xsl:if>
+
+    <xsl:variable name="isDownloadable">
+      <xsl:for-each select="gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource">
+        <xsl:variable name="linkage" select="gmd:linkage/gmd:URL"/>
+        <xsl:variable name="protocol" select="gmd:protocol/*/text()"/>
+
+        <xsl:variable name="wfsLinkNoProtocol"
+                      select="contains(lower-case($linkage), 'service=wfs') and not(string($protocol))"/>
+        <xsl:variable name="wcsLinkNoProtocol"
+                      select="contains(lower-case($linkage), 'service=wcs') and not(string($protocol))"/>
+
+        <xsl:if
+          test="contains($protocol, 'OGC:WFS') or contains($protocol, 'OGC:WCS') or contains($protocol, 'OGC:SOS') or contains($protocol, 'INSPIRE Atom') or $wfsLinkNoProtocol or $wcsLinkNoProtocol">
+          downloadable
+        </xsl:if>
+      </xsl:for-each>
+    </xsl:variable>
+
+    <xsl:variable name="isDynamic">
+      <xsl:for-each select="gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource">
+        <xsl:variable name="linkage" select="gmd:linkage/gmd:URL"/>
+        <xsl:variable name="protocol" select="gmd:protocol/*/text()"/>
+
+        <xsl:variable name="wmsLinkNoProtocol"
+                      select="contains(lower-case($linkage), 'service=wms') and not(string($protocol))"/>
+        <xsl:variable name="wmtsLinkNoProtocol"
+                      select="contains(lower-case($linkage), 'service=wmts') and not(string($protocol))"/>
+
+        <xsl:if
+          test="contains(., 'OGC:WMS') or contains(., 'OGC:WMTS') or $wmsLinkNoProtocol or $wmtsLinkNoProtocol">
+          dynamic
+        </xsl:if>
+
+      </xsl:for-each>
+    </xsl:variable>
+
+    <xsl:if test="string(normalize-space($isDownloadable))">
+      <download>true</download>
+    </xsl:if>
+
+    <xsl:if test="string(normalize-space($isDynamic))">
+      <dynamic>true</dynamic>
+    </xsl:if>
+
     <xsl:variable name="licenseMap">
       <license value="http://creativecommons.org/publicdomain/mark/1.0/deed.nl">Public Domain</license>
       <license value="http://creativecommons.org/licenses/publicdomain/deed.nl">Public Domain</license>
