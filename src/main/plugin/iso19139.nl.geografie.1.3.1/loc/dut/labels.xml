@@ -335,13 +335,13 @@
 		<condition>C</condition>
 	</element>
 	<!-- ==================================================== -->
-	<element name="gmd:code" context="/gmd:MD_Metadata/gmd:referenceSystemInfo/gmd:MD_ReferenceSystem/gmd:referenceSystemIdentifier/gmd:RS_Identifier/gmd:code">
+	<element name="gmd:code" context="gmd:RS_Identifier">
 		<label>Code referentie systeem</label>
 		<description>Alfanumerieke waarde die het gebruikte referentiesysteem van de dataset aangeeft. EPSG codes dienen gebruikt te worden. Aantal voorbeelden 28992 (RD), 4937 (ETRS89), 4326 (WGS84).</description>
 		<help_link>http://wiki.geonovum.nl/index.php/2.4.26_Code_Referentiesysteem</help_link>
 		<condition>mandatory</condition>
 	</element>
-	<element name="gmd:code" context="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:identifier/gmd:MD_Identifier/gmd:code">
+	<element name="gmd:code" context="gmd:MD_Identifier">
 		<label>Unieke Identifier van de bron</label>
 		<description>De unieke Identifier van de bron bevat de waarde (veelal een UUID) die de dataset uniek identificeert.</description>
 		<help_link>http://wiki.geonovum.nl/index.php/2.4.8_Unieke_Identifier_van_de_bron</help_link>
