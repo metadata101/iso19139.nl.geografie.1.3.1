@@ -88,7 +88,7 @@
                       select="contains(lower-case($linkage), 'service=wcs') and not(string($protocol))"/>
 
         <xsl:if
-          test="contains($protocol, 'OGC:WFS') or contains($protocol, 'OGC:WCS') or contains($protocol, 'OGC:SOS') or contains($protocol, 'INSPIRE Atom') or $wfsLinkNoProtocol or $wcsLinkNoProtocol">
+          test="((contains($protocol, 'OGC:WFS') or contains($protocol, 'OGC:WCS') or contains($protocol, 'OGC:SOS') or contains($protocol, 'INSPIRE Atom')) and string($linkage)) or $wfsLinkNoProtocol or $wcsLinkNoProtocol">
           downloadable
         </xsl:if>
       </xsl:for-each>
