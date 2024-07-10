@@ -63,12 +63,12 @@
       <directiveAttributes
         data-template-add-action="true" data-search-action="true"
         data-insert-modes="text" data-template-type="report"
-        data-popup-action="false" data-filter='{"_root": "gmd:DQ_DomainConsistency"}'/>
+        data-popup-action="false" data-filter='{"root": "gmd:DQ_DomainConsistency"}'/>
     </for>
 
     <!-- Example configuration: Add onLine source from subtemplate
     <for name="gmd:onLine" addDirective="data-gn-directory-entry-selector">
-      <directiveAttributes data-template-add-action="true" data-template-type="onLine" data-filter='{"_root": "gmd:CI_OnlineResource"}'/>
+      <directiveAttributes data-template-add-action="true" data-template-type="onLine" data-filter='{"root": "gmd:CI_OnlineResource"}'/>
     </for>
     -->
     <for name="gmd:descriptiveKeywords" addDirective="data-gn-thesaurus-selector">
@@ -445,8 +445,8 @@
           <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/
               gmd:extent/gmd:EX_Extent/gmd:geographicElement/gmd:EX_GeographicBoundingBox"/>
 
-          <action type="add" btnLabel="addGeographicBoundingBox" or="extent" name="geographicElement" forceLabel="true" 
-            in="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification" 
+          <action type="add" btnLabel="addGeographicBoundingBox" or="extent" name="geographicElement" forceLabel="true"
+            in="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification"
             if="count(gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:geographicElement)=0">
             <template>
               <snippet>
