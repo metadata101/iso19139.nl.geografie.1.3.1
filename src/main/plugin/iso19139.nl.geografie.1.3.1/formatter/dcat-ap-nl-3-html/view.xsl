@@ -44,6 +44,8 @@
                 extension-element-prefixes="saxon"
                 exclude-result-prefixes="#all">
 
-  <xsl:import href="../../../iso19139.nl.geografie.2.0.0/formatter/xsl-view/view.xsl"/>
+  <xsl:import href="../../layout/evaluate.xsl"/>
+
+  <xsl:import href="../../../iso19139.nl.geografie.2.0.0/formatter/dcat-ap-nl-3-html/view.xsl"/>
 
 </xsl:stylesheet>
